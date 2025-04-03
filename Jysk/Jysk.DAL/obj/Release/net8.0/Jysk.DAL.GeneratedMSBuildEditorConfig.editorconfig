@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Jysk.DAL
-build_property.ProjectDir = D:\Projects\Project_Jysk\Jysk\Jysk.DAL\
+build_property.ProjectDir = D:\Projects\ASP_Jysk\Jysk\Jysk.DAL\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

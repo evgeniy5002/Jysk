@@ -1,0 +1,134 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Projects\\ASP_Jysk\\Jysk\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|D:\\Projects\\ASP_Jysk\\Jysk\\jysk\\wwwroot\\scss\\styles.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}",
+      "RelativeMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|solutionrelative:jysk\\wwwroot\\scss\\styles.scss||{181FE41B-5A5D-479F-9F8F-BF665F4EBC2A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|D:\\Projects\\ASP_Jysk\\Jysk\\jysk\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|solutionrelative:jysk\\wwwroot\\css\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|d:\\projects\\asp_jysk\\jysk\\jysk\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|solutionrelative:jysk\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|D:\\Projects\\ASP_Jysk\\Jysk\\jysk\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|solutionrelative:jysk\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{329FB168-0279-4F0D-96A0-C86B06D15E49}|Jysk.BLL\\Jysk.BLL.csproj|D:\\Projects\\ASP_Jysk\\Jysk\\jysk.bll\\jysk.bll.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{329FB168-0279-4F0D-96A0-C86B06D15E49}|Jysk.BLL\\Jysk.BLL.csproj|solutionrelative:jysk.bll\\jysk.bll.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|D:\\Projects\\ASP_Jysk\\Jysk\\jysk\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|solutionrelative:jysk\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|D:\\Projects\\ASP_Jysk\\Jysk\\jysk\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{7750C82F-B59C-4726-8FCB-0A2A9A21CFE0}|Jysk\\Jysk.csproj|solutionrelative:jysk\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Jysk\\Views\\_ViewImports.cshtml",
+              "ToolTip": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Jysk\\Views\\_ViewImports.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T15:58:48.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Jysk\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Jysk\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-03T15:58:41.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Jysk.BLL",
+              "DocumentMoniker": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.BLL\\Jysk.BLL.csproj",
+              "RelativeDocumentMoniker": "Jysk.BLL\\Jysk.BLL.csproj",
+              "ToolTip": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.BLL\\Jysk.BLL.csproj",
+              "RelativeToolTip": "Jysk.BLL\\Jysk.BLL.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-04-03T15:57:42.117Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "styles.css",
+              "DocumentMoniker": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\css\\styles.css",
+              "RelativeDocumentMoniker": "Jysk\\wwwroot\\css\\styles.css",
+              "ToolTip": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\css\\styles.css",
+              "RelativeToolTip": "Jysk\\wwwroot\\css\\styles.css",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAACMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-04-03T15:04:11.129Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Jysk\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Jysk\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-03T15:12:39.864Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "styles.scss",
+              "DocumentMoniker": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\scss\\styles.scss",
+              "RelativeDocumentMoniker": "Jysk\\wwwroot\\scss\\styles.scss",
+              "ToolTip": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\scss\\styles.scss",
+              "RelativeToolTip": "Jysk\\wwwroot\\scss\\styles.scss",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002663|",
+              "WhenOpened": "2025-04-03T15:05:13.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "favicon.ico -  [Russian (Russia)] - Icon [32x32, 32 bit, BMP]",
+              "DocumentMoniker": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\favicon.ico",
+              "RelativeDocumentMoniker": "Jysk\\wwwroot\\favicon.ico",
+              "ToolTip": "D:\\Projects\\Project_Jysk\\Jysk\\Jysk\\wwwroot\\favicon.ico -  [Russian (Russia)] - Icon [32x32, 32 bit, BMP]",
+              "RelativeToolTip": "..\\..\\Project_Jysk\\Jysk\\Jysk\\wwwroot\\favicon.ico -  [Russian (Russia)] - Icon [32x32, 32 bit, BMP]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2025-04-03T15:05:12.629Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

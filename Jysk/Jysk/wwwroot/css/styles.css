@@ -1,0 +1,35 @@
+.card-primary {
+  padding: 10px;
+  width: 200px;
+  margin: 10px;
+  border: 1px solid black;
+  box-shadow: 0px 0px 5px rgba(118, 118, 118, 0.4235294118);
+  height: 300px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1em;
+  background: #404040;
+  color: white;
+}
+.card-primary:hover {
+  background: rgb(38.5, 38.5, 38.5);
+}
+
+.card-secondary {
+  padding: 10px;
+  width: 200px;
+  margin: 10px;
+  border: 1px solid black;
+  box-shadow: 0px 0px 5px rgba(118, 118, 118, 0.4235294118);
+  height: 300px;
+  border-radius: 5px;
+  border: none;
+  font-size: 1em;
+  background: #e8eee8;
+  color: blaack;
+}
+.card-secondary:hover {
+  background: rgb(202.675, 216.325, 202.675);
+}
+
+/*# sourceMappingURL=styles.css.map */

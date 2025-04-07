@@ -62,3 +62,4 @@ D:\Projects\ASP_Jysk\Jysk\Jysk\obj\Debug\net8.0\refint\Jysk.dll
 D:\Projects\ASP_Jysk\Jysk\Jysk\obj\Debug\net8.0\Jysk.pdb
 D:\Projects\ASP_Jysk\Jysk\Jysk\obj\Debug\net8.0\Jysk.genruntimeconfig.cache
 D:\Projects\ASP_Jysk\Jysk\Jysk\obj\Debug\net8.0\ref\Jysk.dll
+D:\Projects\ASP_Jysk\Jysk\Jysk\obj\Debug\net8.0\Jysk.sourcelink.json

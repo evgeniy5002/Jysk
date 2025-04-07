@@ -4,31 +4,64 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Jysk</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Jysk.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Jysk</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <header class="site-header">
+        <div class="decorative-strip"></div>
+        <div class="header-container">
+            <div class="header-wrapper">
+                <div class="header-item left">
+                    <div class="section">
+                        <img class="site-logo" src="~/img/logo.png" alt="Logo">
+                    </div>
+                    <div class="section row">
+                        <img class="icon-menu" src="~/img/menu.svg" alt="Icon">
+                        <p>Menu</p>
+                    </div>
+                </div>
+                <div class="search-bar-container">
+                    <div class="search-bar-wrapper row">
+                        <input class="search-bar" type="text" name="search" placeholder="Search item or category">
+                        <div class="icon-container">
+                            <img class="icon" src="~/img/search.svg" alt="Icon">
+                        </div>
+                    </div>
+                </div>
+                <div class="header-item right">
+                    <div class="section col">
+                        <img class="icon" src="~/img/wishlist.png" alt="Icon">
+                        <p>Обране</p>
+                    </div>
+                    <div class="section col">
+                        <img class="icon" src="~/img/profile.svg" alt="Icon">
+                        <p>Вхід</p>
+                    </div>
+                    <div class="section col">
+                        <img class="icon" src="~/img/basket.svg" alt="Icon">
+                        <p>Кошик</p>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
+        <div class="header-bottom-container">
+            <div class="container">
+                <div class="header-bottom row">
+                    <div class="section left">
+                        <img class="icon-marker" src="~/img/marker.svg" alt="Icon">
+                        <span class="element">HYGGY Київ ТЦ Променада</span>
+                        <img class="icon-arrow-down" src="~/img/arrow-down.svg" alt="Icon">
+                    </div>
+                    <div class="section row right">
+                        <p class="element">Блог</p>
+                        <p class="element">Магазини</p>
+                        <p class="element">Питання-відповідь</p>
+                        <p class="element">Робота</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
     <div class="container">
         <main role="main" class="pb-3">

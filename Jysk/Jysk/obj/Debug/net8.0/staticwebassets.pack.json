@@ -17,6 +17,38 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\arrow-down.svg",
+      "PackagePath": "staticwebassets\\img\\arrow-down.svg"
+    },
+    {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\basket.svg",
+      "PackagePath": "staticwebassets\\img\\basket.svg"
+    },
+    {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\logo.png",
+      "PackagePath": "staticwebassets\\img\\logo.png"
+    },
+    {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\marker.svg",
+      "PackagePath": "staticwebassets\\img\\marker.svg"
+    },
+    {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\menu.svg",
+      "PackagePath": "staticwebassets\\img\\menu.svg"
+    },
+    {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\profile.svg",
+      "PackagePath": "staticwebassets\\img\\profile.svg"
+    },
+    {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\search.svg",
+      "PackagePath": "staticwebassets\\img\\search.svg"
+    },
+    {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\wishlist.png",
+      "PackagePath": "staticwebassets\\img\\wishlist.png"
+    },
+    {
       "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

@@ -13,16 +13,40 @@ $font-default: 'Raleway', sans-serif;
     box-sizing: border-box;
 }
 
-.row {
-    display: flex;
-    flex-direction: row;
+html, body {
+    height: 100%; 
+    margin: 0;
 }
 
-.col {
+body {
     display: flex;
     flex-direction: column;
 }
 
+main {
+    flex: 1;
+}
+
+.site-footer {
+    margin-top: auto;
+}
+
+
+
+@mixin center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.header-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.header-col {
+    display: flex;
+    flex-direction: column;
+}
 .site-header {
     display: flex;
     flex-direction: column;
@@ -31,6 +55,8 @@ $font-default: 'Raleway', sans-serif;
     font-size: 1em;
     font-weight: 400;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+
+
 
     .decorative-strip {
         background-color: $color-tiffany-blue;
@@ -152,7 +178,7 @@ $font-default: 'Raleway', sans-serif;
             border: none;
         }
 
-        .container {
+        .section-container {
             width: $max-width;
 
             @media (max-width: $max-width) {
@@ -237,3 +263,80 @@ $font-default: 'Raleway', sans-serif;
         }
     }
 }
+
+
+.site-footer {
+    background-color: $color-tiffany-blue;
+    @include center;
+}
+
+.footer-container {
+    width: 970px;
+    font-family: $font-default;
+    color: white;
+    padding: 15px 15px 0px 15px;
+
+    @media (max-width: 970px) {
+        width: 100%;
+    }
+
+    div {
+        padding: 0;
+        padding-right: 15px;
+
+        h2 {
+            font-size: 1em;
+            font-weight: 700;
+        }
+
+        p {
+            font-size: 0.9em;
+            font-weight: 400;
+        }
+
+        * {
+            margin-bottom: 20px;
+        }
+    }
+
+    .payment-options {
+        display: flex;
+        justify-content: flex-start;
+        padding: unset;
+
+        img {
+            height: 35px;
+            margin-right: 15px;
+        }
+    }
+
+    .social {
+        padding-right: 0 !important;
+        display: flex;
+        justify-content: flex-end;
+
+        img {
+            height: 30px;
+            margin-left: 15px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .payment-options {
+            justify-content: center;
+
+            img {
+                margin: 15px;
+            }
+        }
+
+        .social {
+            justify-content: center;
+
+            img {
+                margin: 15px;
+            }
+        }
+    }
+}
+

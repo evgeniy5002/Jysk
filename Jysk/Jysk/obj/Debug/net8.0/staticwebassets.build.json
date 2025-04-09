@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FM7LLTTCwijTou6KAXAAdg/6mVVeYQa0V7+iwDLKiNo=",
+  "Hash": "JRy1CijjdtqZ6I5O8YmgAUy3gi1gyEfzSxK5ylYtc2w=",
   "Source": "Jysk",
   "BasePath": "_content/Jysk",
   "Mode": "Default",
@@ -150,6 +150,25 @@
       "OriginalItemSpec": "wwwroot\\img\\basket.svg"
     },
     {
+      "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\gpay.png",
+      "SourceId": "Jysk",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\",
+      "BasePath": "_content/Jysk",
+      "RelativePath": "img/gpay.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\gpay.png"
+    },
+    {
       "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\logo.png",
       "SourceId": "Jysk",
       "SourceType": "Discovered",
@@ -186,6 +205,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\marker.svg"
+    },
+    {
+      "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\mastercard.png",
+      "SourceId": "Jysk",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\",
+      "BasePath": "_content/Jysk",
+      "RelativePath": "img/mastercard.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\mastercard.png"
     },
     {
       "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\menu.svg",
@@ -243,6 +281,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\search.svg"
+    },
+    {
+      "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\visa.png",
+      "SourceId": "Jysk",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\",
+      "BasePath": "_content/Jysk",
+      "RelativePath": "img/visa.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\visa.png"
     },
     {
       "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\wishlist.png",

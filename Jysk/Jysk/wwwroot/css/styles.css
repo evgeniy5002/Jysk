@@ -5,12 +5,30 @@
   box-sizing: border-box;
 }
 
-.row {
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.site-footer {
+  margin-top: auto;
+}
+
+.header-row {
   display: flex;
   flex-direction: row;
 }
 
-.col {
+.header-col {
   display: flex;
   flex-direction: column;
 }
@@ -128,35 +146,35 @@
     border: none;
   }
 }
-.site-header .header-bottom-container .container {
+.site-header .header-bottom-container .section-container {
   width: 1170px;
 }
 @media (max-width: 1170px) {
-  .site-header .header-bottom-container .container {
+  .site-header .header-bottom-container .section-container {
     padding: 0 15px;
   }
 }
-.site-header .header-bottom-container .container .header-bottom {
+.site-header .header-bottom-container .section-container .header-bottom {
   background-color: white;
   height: 61px;
   display: flex;
   justify-content: space-between;
 }
-.site-header .header-bottom-container .container .header-bottom .section {
+.site-header .header-bottom-container .section-container .header-bottom .section {
   height: 100%;
   align-items: center;
 }
-.site-header .header-bottom-container .container .header-bottom .right {
+.site-header .header-bottom-container .section-container .header-bottom .right {
   display: flex;
   justify-content: flex-end;
 }
 @media (max-width: 770px) {
-  .site-header .header-bottom-container .container .header-bottom .right {
+  .site-header .header-bottom-container .section-container .header-bottom .right {
     justify-content: space-between;
     width: 100%;
   }
 }
-.site-header .header-bottom-container .container .header-bottom .right .element {
+.site-header .header-bottom-container .section-container .header-bottom .right .element {
   background-color: #E0E0E0;
   height: 40px;
   display: flex;
@@ -168,26 +186,26 @@
   font-family: "Raleway", sans-serif;
 }
 @media (max-width: 770px) {
-  .site-header .header-bottom-container .container .header-bottom .right .element {
+  .site-header .header-bottom-container .section-container .header-bottom .right .element {
     margin: 0;
   }
 }
-.site-header .header-bottom-container .container .header-bottom .left {
+.site-header .header-bottom-container .section-container .header-bottom .left {
   display: flex;
   align-items: center;
 }
 @media (max-width: 770px) {
-  .site-header .header-bottom-container .container .header-bottom .left {
+  .site-header .header-bottom-container .section-container .header-bottom .left {
     display: none;
   }
 }
-.site-header .header-bottom-container .container .header-bottom .left .icon-marker {
+.site-header .header-bottom-container .section-container .header-bottom .left .icon-marker {
   height: 20px;
 }
-.site-header .header-bottom-container .container .header-bottom .left .icon-arrow-down {
+.site-header .header-bottom-container .section-container .header-bottom .left .icon-arrow-down {
   height: 8px;
 }
-.site-header .header-bottom-container .container .header-bottom .left * {
+.site-header .header-bottom-container .section-container .header-bottom .left * {
   margin-right: 10px;
 }
 @media (max-width: 1170px) {
@@ -202,6 +220,72 @@
     order: 1;
     width: 100%;
     padding-bottom: 5px;
+  }
+}
+
+.site-footer {
+  background-color: #00AAAD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-container {
+  width: 970px;
+  font-family: "Raleway", sans-serif;
+  color: white;
+  padding: 15px 15px 0px 15px;
+}
+@media (max-width: 970px) {
+  .footer-container {
+    width: 100%;
+  }
+}
+.footer-container div {
+  padding: 0;
+  padding-right: 15px;
+}
+.footer-container div h2 {
+  font-size: 1em;
+  font-weight: 700;
+}
+.footer-container div p {
+  font-size: 0.9em;
+  font-weight: 400;
+}
+.footer-container div * {
+  margin-bottom: 20px;
+}
+.footer-container .payment-options {
+  display: flex;
+  justify-content: flex-start;
+  padding: unset;
+}
+.footer-container .payment-options img {
+  height: 35px;
+  margin-right: 15px;
+}
+.footer-container .social {
+  padding-right: 0 !important;
+  display: flex;
+  justify-content: flex-end;
+}
+.footer-container .social img {
+  height: 30px;
+  margin-left: 15px;
+}
+@media (max-width: 768px) {
+  .footer-container .payment-options {
+    justify-content: center;
+  }
+  .footer-container .payment-options img {
+    margin: 15px;
+  }
+  .footer-container .social {
+    justify-content: center;
+  }
+  .footer-container .social img {
+    margin: 15px;
   }
 }
 

@@ -25,12 +25,20 @@
       "PackagePath": "staticwebassets\\img\\basket.svg"
     },
     {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\gpay.png",
+      "PackagePath": "staticwebassets\\img\\gpay.png"
+    },
+    {
       "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\logo.png",
       "PackagePath": "staticwebassets\\img\\logo.png"
     },
     {
       "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\marker.svg",
       "PackagePath": "staticwebassets\\img\\marker.svg"
+    },
+    {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\mastercard.png",
+      "PackagePath": "staticwebassets\\img\\mastercard.png"
     },
     {
       "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\menu.svg",
@@ -43,6 +51,10 @@
     {
       "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\search.svg",
       "PackagePath": "staticwebassets\\img\\search.svg"
+    },
+    {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\visa.png",
+      "PackagePath": "staticwebassets\\img\\visa.png"
     },
     {
       "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\wishlist.png",

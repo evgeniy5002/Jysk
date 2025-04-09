@@ -25,8 +25,16 @@
       "PackagePath": "staticwebassets\\img\\basket.svg"
     },
     {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\facebook.svg",
+      "PackagePath": "staticwebassets\\img\\facebook.svg"
+    },
+    {
       "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\gpay.png",
       "PackagePath": "staticwebassets\\img\\gpay.png"
+    },
+    {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\instagram.svg",
+      "PackagePath": "staticwebassets\\img\\instagram.svg"
     },
     {
       "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\logo.png",
@@ -53,12 +61,20 @@
       "PackagePath": "staticwebassets\\img\\search.svg"
     },
     {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\telegram.svg",
+      "PackagePath": "staticwebassets\\img\\telegram.svg"
+    },
+    {
       "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\visa.png",
       "PackagePath": "staticwebassets\\img\\visa.png"
     },
     {
       "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\wishlist.png",
       "PackagePath": "staticwebassets\\img\\wishlist.png"
+    },
+    {
+      "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\youtube.svg",
+      "PackagePath": "staticwebassets\\img\\youtube.svg"
     },
     {
       "Id": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\js\\site.js",

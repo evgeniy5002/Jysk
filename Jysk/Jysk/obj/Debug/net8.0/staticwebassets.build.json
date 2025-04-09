@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JRy1CijjdtqZ6I5O8YmgAUy3gi1gyEfzSxK5ylYtc2w=",
+  "Hash": "5jqANlkj5c+iUNhlus9QZoo197g9x9azKHJxire1mjY=",
   "Source": "Jysk",
   "BasePath": "_content/Jysk",
   "Mode": "Default",
@@ -150,6 +150,25 @@
       "OriginalItemSpec": "wwwroot\\img\\basket.svg"
     },
     {
+      "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\facebook.svg",
+      "SourceId": "Jysk",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\",
+      "BasePath": "_content/Jysk",
+      "RelativePath": "img/facebook.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\facebook.svg"
+    },
+    {
       "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\gpay.png",
       "SourceId": "Jysk",
       "SourceType": "Discovered",
@@ -167,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\gpay.png"
+    },
+    {
+      "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\instagram.svg",
+      "SourceId": "Jysk",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\",
+      "BasePath": "_content/Jysk",
+      "RelativePath": "img/instagram.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\instagram.svg"
     },
     {
       "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\logo.png",
@@ -283,6 +321,25 @@
       "OriginalItemSpec": "wwwroot\\img\\search.svg"
     },
     {
+      "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\telegram.svg",
+      "SourceId": "Jysk",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\",
+      "BasePath": "_content/Jysk",
+      "RelativePath": "img/telegram.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\telegram.svg"
+    },
+    {
       "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\visa.png",
       "SourceId": "Jysk",
       "SourceType": "Discovered",
@@ -319,6 +376,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\wishlist.png"
+    },
+    {
+      "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\img\\youtube.svg",
+      "SourceId": "Jysk",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\",
+      "BasePath": "_content/Jysk",
+      "RelativePath": "img/youtube.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\youtube.svg"
     },
     {
       "Identity": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk\\wwwroot\\js\\site.js",

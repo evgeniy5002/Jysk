@@ -21,6 +21,8 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background-color: #F3F3F3;
 }
 
 main {
@@ -29,6 +31,14 @@ main {
 
 .site-footer {
     margin-top: auto;
+}
+.main-container {
+    width: $max-width;
+    padding:15px;
+
+    @media (max-width: $max-width) {
+        width: 100%;
+    }
 }
 
 
@@ -55,6 +65,8 @@ main {
     font-size: 1em;
     font-weight: 400;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    background-color: white;
 
 
 
@@ -73,6 +85,8 @@ main {
             flex-wrap: wrap;
             justify-content: space-between;
             height: 95px;
+            padding: 0 15px;
+
 
             .header-item {
                 display: flex;
@@ -180,10 +194,7 @@ main {
 
         .section-container {
             width: $max-width;
-
-            @media (max-width: $max-width) {
-                padding: 0 15px;
-            }
+            padding: 0 15px;
 
             .header-bottom {
                 background-color: white;
@@ -251,7 +262,6 @@ main {
             width: 100%;
 
             .header-wrapper {
-                padding: 0 15px;
                 height: 150px;
 
                 .search-bar-container {
@@ -268,6 +278,7 @@ main {
 .site-footer {
     background-color: $color-tiffany-blue;
     @include center;
+    width: 100%;
 }
 
 .footer-container {
@@ -340,3 +351,6 @@ main {
     }
 }
 
+.about-us {
+    width:100%;
+}

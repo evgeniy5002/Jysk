@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Jysk")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fad04222d37892244bc8da8a46e142ec97241042")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aba9f12683403328eb293503114024d702165781")]
 [assembly: System.Reflection.AssemblyProductAttribute("Jysk")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Jysk")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

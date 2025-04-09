@@ -13,6 +13,8 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: #F3F3F3;
 }
 
 main {
@@ -21,6 +23,16 @@ main {
 
 .site-footer {
   margin-top: auto;
+}
+
+.main-container {
+  width: 1170px;
+  padding: 15px;
+}
+@media (max-width: 1170px) {
+  .main-container {
+    width: 100%;
+  }
 }
 
 .header-row {
@@ -41,6 +53,8 @@ main {
   font-size: 1em;
   font-weight: 400;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  background-color: white;
 }
 .site-header .decorative-strip {
   background-color: #00AAAD;
@@ -56,6 +70,7 @@ main {
   flex-wrap: wrap;
   justify-content: space-between;
   height: 95px;
+  padding: 0 15px;
 }
 .site-header .header-container .header-wrapper .header-item {
   display: flex;
@@ -148,11 +163,7 @@ main {
 }
 .site-header .header-bottom-container .section-container {
   width: 1170px;
-}
-@media (max-width: 1170px) {
-  .site-header .header-bottom-container .section-container {
-    padding: 0 15px;
-  }
+  padding: 0 15px;
 }
 .site-header .header-bottom-container .section-container .header-bottom {
   background-color: white;
@@ -213,7 +224,6 @@ main {
     width: 100%;
   }
   .site-header .header-container .header-wrapper {
-    padding: 0 15px;
     height: 150px;
   }
   .site-header .header-container .header-wrapper .search-bar-container {
@@ -228,6 +238,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .footer-container {
@@ -287,6 +298,10 @@ main {
   .footer-container .social img {
     margin: 15px;
   }
+}
+
+.about-us {
+  width: 100%;
 }
 
 /*# sourceMappingURL=styles.css.map */

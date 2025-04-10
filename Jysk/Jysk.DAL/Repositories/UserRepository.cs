@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Jysk.DAL.EF;
 using Jysk.DAL.Entities;
 using Jysk.DAL.Interfaces;
+using LoggerLib;
 using Microsoft.EntityFrameworkCore;
 
 namespace Jysk.DAL.Repositories
@@ -24,23 +25,61 @@ namespace Jysk.DAL.Repositories
         public async Task<User> Get(int id)
         {
             User user = await db.T_User.FindAsync(id);
+            if (user == null)
+            {
+                Logger log = new Logger();
+                log.Log("Error: User doesnt exist");
+            }
             return user;
         }
         public async Task Create(User user)
         {
-            await db.T_User.AddAsync(user);
+            try
+            {
+                await db.T_User.AddAsync(user);
+                Logger log = new Logger();
+                log.Log("User added into database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during adding user into database\nException: " + ex.ToString());
+            }
+            
         }
         public void Update(User user)
         {
-            db.Entry(user).State = EntityState.Modified;
+            try
+            {
+                db.Entry(user).State = EntityState.Modified;
+                Logger log = new Logger();
+                log.Log("User updated in database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during updating user in database\nException: " + ex.ToString());
+            }
+            
         }
         public async Task Delete(int id)
         {
-            User user = await db.T_User.FindAsync(id);
-            if (user != null)
+            try
             {
-                db.T_User.Remove(user);
+                User user = await db.T_User.FindAsync(id);
+                if (user != null)
+                {
+                    db.T_User.Remove(user);
+                }
+                Logger log = new Logger();
+                log.Log("User deleted from database successfully");
             }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during deleting user from database\nException: " + ex.ToString());
+            }
+            
         }
     }
 }

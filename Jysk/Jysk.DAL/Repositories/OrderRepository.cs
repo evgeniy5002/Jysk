@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Jysk.DAL.EF;
 using Jysk.DAL.Entities;
 using Jysk.DAL.Interfaces;
+using LoggerLib;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Scaffolding.Metadata;
 
@@ -25,23 +26,60 @@ namespace Jysk.DAL.Repositories
         public async Task<Order> Get(int id)
         {
             Order order = await db.T_Order.FindAsync(id);
+            if (order == null)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Order doesnt exist");
+            }
             return order;
         }
         public async Task Create(Order order)
         {
-            await db.T_Order.AddAsync(order);
+            try
+            {
+                await db.T_Order.AddAsync(order);
+                Logger log = new Logger();
+                log.Log("Order added into database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during adding order into database\nException: " + ex.ToString());
+            }
+            
         }
         public void Update(Order order)
         {
-            db.Entry(order).State = EntityState.Modified;
+            try
+            {
+                db.Entry(order).State = EntityState.Modified;
+                Logger log = new Logger();
+                log.Log("Order updated in database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during updating order in database\nException: " + ex.ToString());
+            }
         }
         public async Task Delete(int id)
         {
-            Order order = await db.T_Order.FindAsync(id);
-            if (order != null)
+            try
             {
-                db.T_Order.Remove(order);
+                Order order = await db.T_Order.FindAsync(id);
+                if (order != null)
+                {
+                    db.T_Order.Remove(order);
+                }
+                Logger log = new Logger();
+                log.Log("Order deleted from database successfully");
             }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during deleting order from database\nException: " + ex.ToString());
+            }
+            
         }
     }
 }

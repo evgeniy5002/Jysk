@@ -9,7 +9,8 @@ namespace Jysk.DAL.Entities
     public class Employee
     {
         public int Id { get; set; }
-        public User UserId { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
         public string Position { get; set; }
         public string Comment { get; set; }
         public virtual ICollection<WriteOff> WriteOffId { get; set; }

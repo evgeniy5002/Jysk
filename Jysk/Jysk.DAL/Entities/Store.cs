@@ -12,8 +12,10 @@ namespace Jysk.DAL.Entities
         public string Name { get; set; }
         public int HouseNumber { get; set; }
         public int TotalProductSum { get; set; }
-        public virtual Storage StorageId { get; set; }
+        public int StorageId { get; set; }
+        public virtual Storage Storage { get; set; }
         public string Photo { get; set; }
-        public ICollection<WorkHours> WorkHoursId { get; set; }
+        public int[] WorkHoursId { get; set; }
+        public ICollection<WorkHours> WorkHours { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Jysk.DAL.EF;
 using Jysk.DAL.Entities;
 using Jysk.DAL.Interfaces;
+using LoggerLib;
 using Microsoft.EntityFrameworkCore;
 
 namespace Jysk.DAL.Repositories
@@ -24,22 +25,58 @@ namespace Jysk.DAL.Repositories
         public async Task<Employee> Get(int id)
         {
             Employee employee = await db.T_Employee.FindAsync(id);
+            if (employee == null)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Employee doesnt exist");
+            }
             return employee;
         }
         public async Task Create(Employee employee)
         {
-            await db.T_Employee.AddAsync(employee);
+            try
+            {
+                await db.T_Employee.AddAsync(employee);
+                Logger log = new Logger();
+                log.Log("Employee added into database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during adding employee into database\nException: " + ex.ToString());
+            }
+            
         }
         public void Update(Employee employee)
         {
-            db.Entry(employee).State = EntityState.Modified;
+            try
+            {
+                db.Entry(employee).State = EntityState.Modified;
+                Logger log = new Logger();
+                log.Log("Employee updated in database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during updating employee in database\nException: " + ex.ToString());
+            }
         }
         public async Task Delete(int id)
         {
-            Employee employee = await db.T_Employee.FindAsync(id);
-            if (employee != null)
+            try
             {
-                db.T_Employee.Remove(employee);
+                Employee employee = await db.T_Employee.FindAsync(id);
+                if (employee != null)
+                {
+                    db.T_Employee.Remove(employee);
+                }
+                Logger log = new Logger();
+                log.Log("Employee deleted from database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during deleting employee from database\nException: " + ex.ToString());
             }
         }
     }

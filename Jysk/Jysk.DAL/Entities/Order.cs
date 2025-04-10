@@ -9,11 +9,13 @@ namespace Jysk.DAL.Entities
     public class Order
     {
         public int Id { get; set; }
-        public virtual Product ProductId { get; set; }
+        public int ProductId { get; set; }
+        public virtual Product Product { get; set; }
         public int Count { get; set; }
         public int ProductionPrice { get; set; }
         public int FinalPrice { get; set; }
         public int MarkUp { get; set; }
-        public virtual User UserId { get; set; }
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
     }
 }

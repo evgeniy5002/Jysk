@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Jysk.DAL.EF;
 using Jysk.DAL.Entities;
 using Jysk.DAL.Interfaces;
+using LoggerLib;
 using Microsoft.EntityFrameworkCore;
 
 namespace Jysk.DAL.Repositories
@@ -26,23 +27,61 @@ namespace Jysk.DAL.Repositories
         public async Task<Category> Get(int id)
         {
             Category category = await db.T_Category.FindAsync(id);
+            if (category == null)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Category doesnt exist");
+            }
             return category;
         }
         public async Task Create(Category category)
         {
-            await db.T_Category.AddAsync(category);
+            try
+            {
+                await db.T_Category.AddAsync(category);
+                Logger log = new Logger();
+                log.Log("Category added into database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during adding category into database\nException: " + ex.ToString());
+            }
+            
         }
         public void Update(Category category)
         {
-            db.Entry(category).State = EntityState.Modified;
+            try
+            {
+                db.Entry(category).State = EntityState.Modified;
+                Logger log = new Logger();
+                log.Log("Category updated in database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during updating category in database\nException: " + ex.ToString());
+            }
+            
         }
         public async Task Delete(int id)
         {
-            Category category = await db.T_Category.FindAsync(id);
-            if(category != null)
+            try
             {
-                db.T_Category.Remove(category);
+                Category category = await db.T_Category.FindAsync(id);
+                if (category != null)
+                {
+                    db.T_Category.Remove(category);
+                }
+                Logger log = new Logger();
+                log.Log("Category deleted from database successfully");
             }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during deleting category from database\nException: " + ex.ToString());
+            }
+            
         }
     }
 }

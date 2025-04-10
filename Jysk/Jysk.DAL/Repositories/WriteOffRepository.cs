@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Jysk.DAL.EF;
 using Jysk.DAL.Entities;
 using Jysk.DAL.Interfaces;
+using LoggerLib;
 using Microsoft.EntityFrameworkCore;
 
 namespace Jysk.DAL.Repositories
@@ -24,23 +25,60 @@ namespace Jysk.DAL.Repositories
         public async Task<WriteOff> Get(int id)
         {
             WriteOff writeOff = await db.T_WriteOff.FindAsync(id);
+            if (writeOff == null)
+            {
+                Logger log = new Logger();
+                log.Log("Error: WriteOff doesnt exist");
+            }
             return writeOff;
         }
         public async Task Create(WriteOff writeOff)
         {
-            await db.T_WriteOff.AddAsync(writeOff);
+            try
+            {
+                await db.T_WriteOff.AddAsync(writeOff);
+                Logger log = new Logger();
+                log.Log("WriteOff added into database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during adding WriteOff into database\nException: " + ex.ToString());
+            }
+            
         }
         public void Update(WriteOff writeOff)
         {
-            db.Entry(writeOff).State = EntityState.Modified;
+            try
+            {
+                db.Entry(writeOff).State = EntityState.Modified;
+                Logger log = new Logger();
+                log.Log("WriteOff updated in database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during updating WriteOff in database\nException: " + ex.ToString());
+            }
         }
         public async Task Delete(int id)
         {
-            WriteOff writeOff = await db.T_WriteOff.FindAsync(id);
-            if (writeOff != null)
+            try
             {
-                db.T_WriteOff.Remove(writeOff);
+                WriteOff writeOff = await db.T_WriteOff.FindAsync(id);
+                if (writeOff != null)
+                {
+                    db.T_WriteOff.Remove(writeOff);
+                }
+                Logger log = new Logger();
+                log.Log("WriteOff deleted from database successfully");
             }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during deleting WriteOff from database\nException: " + ex.ToString());
+            }
+            
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Jysk.DAL.EF;
 using Jysk.DAL.Entities;
 using Jysk.DAL.Interfaces;
+using LoggerLib;
 using Microsoft.EntityFrameworkCore;
 
 namespace Jysk.DAL.Repositories
@@ -24,22 +25,57 @@ namespace Jysk.DAL.Repositories
         public async Task<Manufacturer> Get(int id)
         {
             Manufacturer manufacturer = await db.T_Manufacturer.FindAsync(id);
+            if (manufacturer == null)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Manufacturer doesnt exist");
+            }
             return manufacturer;
         }
         public async Task Create(Manufacturer manufacturer)
         {
-            await db.T_Manufacturer.AddAsync(manufacturer);
+            try
+            {
+                await db.T_Manufacturer.AddAsync(manufacturer);
+                Logger log = new Logger();
+                log.Log("Manufacturer added into database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during adding manufacturer into database\nException: " + ex.ToString());
+            }
         }
         public void Update(Manufacturer manufacturer)
         {
-            db.Entry(manufacturer).State = EntityState.Modified;
+            try
+            {
+                db.Entry(manufacturer).State = EntityState.Modified;
+                Logger log = new Logger();
+                log.Log("Manufacturer updated in database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during updating manufacturer in database\nException: " + ex.ToString());
+            }
         }
         public async Task Delete(int id)
         {
-            Manufacturer manufacturer = await db.T_Manufacturer.FindAsync(id);
-            if (manufacturer != null)
+            try
             {
-                db.T_Manufacturer.Remove(manufacturer);
+                Manufacturer manufacturer = await db.T_Manufacturer.FindAsync(id);
+                if (manufacturer != null)
+                {
+                    db.T_Manufacturer.Remove(manufacturer);
+                }
+                Logger log = new Logger();
+                log.Log("Manufacturer deleted from database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during deleting manufacturer from database\nException: " + ex.ToString());
             }
         }
     }

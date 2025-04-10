@@ -8,11 +8,15 @@ namespace Jysk.DAL.Entities
 {
     public class Cargo
     {
-        int Id { get; set; }
-        public virtual Product ProductId { get; set; }
-        public virtual Storage StorageToId { get; set; }
-        public virtual Storage StorageFromId { get; set; }
+        public int Id { get; set; }
+        public int ProductId { get; set; }
+        public virtual Product Product { get; set; }
+        public int StorageToId { get; set; }
+        public virtual Storage StorageTo { get; set; }
+        public int StorageFromId { get; set; }
+        public virtual Storage StorageFrom { get; set; }
         public int Count { get; set; }
-        public virtual Employee EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

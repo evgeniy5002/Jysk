@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Jysk.DAL.EF;
 using Jysk.DAL.Entities;
 using Jysk.DAL.Interfaces;
+using LoggerLib;
 using Microsoft.EntityFrameworkCore;
 
 namespace Jysk.DAL.Repositories
@@ -24,23 +25,61 @@ namespace Jysk.DAL.Repositories
         public async Task<Store> Get(int id)
         {
             Store store = await db.T_Store.FindAsync(id);
+            if (store == null)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Store doesnt exist");
+            }
             return store;
         }
         public async Task Create(Store store)
         {
-            await db.T_Store.AddAsync(store);
+            try
+            {
+                await db.T_Store.AddAsync(store);
+                Logger log = new Logger();
+                log.Log("Store added into database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during adding store into database\nException: " + ex.ToString());
+            }
+            
         }
         public void Update(Store store)
         {
-            db.Entry(store).State = EntityState.Modified;
+            try
+            {
+                db.Entry(store).State = EntityState.Modified;
+                Logger log = new Logger();
+                log.Log("Store updated in database successfully");
+            }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during updating store in database\nException: " + ex.ToString());
+            }
+            
         }
         public async Task Delete(int id)
         {
-            Store store = await db.T_Store.FindAsync(id);
-            if (store != null)
+            try
             {
-                db.T_Store.Remove(store);
+                Store store = await db.T_Store.FindAsync(id);
+                if (store != null)
+                {
+                    db.T_Store.Remove(store);
+                }
+                Logger log = new Logger();
+                log.Log("Store deleted from database successfully");
             }
+            catch (Exception ex)
+            {
+                Logger log = new Logger();
+                log.Log("Error: Exception during deleting store from database\nException: " + ex.ToString());
+            }
+            
         }
     }
 }

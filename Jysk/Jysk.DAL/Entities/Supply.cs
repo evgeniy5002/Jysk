@@ -9,7 +9,8 @@ namespace Jysk.DAL.Entities
     public class Supply
     {
         public int Id { get; set; }
-        public virtual Product ProductId { get; set; }
+        public int ProductId { get; set; }
+        public virtual Product Product { get; set; }
         public int Count { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace Jysk.DAL.Entities
         public string Day { get; set; }
         public string Start { get; set; }
         public string End { get; set; }
-        public virtual ICollection<Store> StoreId { get; set; }
+        public int[] StoreId { get; set; }
+        public virtual ICollection<Store> Store { get; set; }
     }
 }

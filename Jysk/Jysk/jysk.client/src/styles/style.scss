@@ -12,6 +12,7 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: $font-default;
+    background-color: #F3F3F3;
 }
 
 main {
@@ -342,4 +343,42 @@ main {
 
 .about-us {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    p{
+        font-size: 0.9em;
+    }
+    .title{
+        margin-bottom: 10px;
+        font-weight: 700;
+        font-size: 1.3em;
+    }
+    .small-screen{
+        display: none;
+        text-align: center;
+        @media (max-width: 767px) {
+            display: block;
+        }
+    }
+    .big-screen{
+        display: block;
+        @media (max-width: 767px) {
+            display: none;
+        }
+    }
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: right center;
+        
+        @media (max-width: 767px) {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
 }

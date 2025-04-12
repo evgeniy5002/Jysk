@@ -10,10 +10,10 @@
     justify-content:center;
 
     .section-container {
-        width: 970px;
+        width: $max-width;
         padding: 15px;
 
-        @media (max-width: 970px) {
+        @media (max-width: $max-width) {
             width: 100%;
         }
     }

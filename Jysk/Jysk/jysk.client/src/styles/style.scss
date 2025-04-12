@@ -272,12 +272,12 @@ main {
 }
 
 .footer-container {
-    width: 970px;
+    width: $max-width;
     font-family: $font-default;
     color: white;
     padding: 15px 15px 0px 15px;
 
-    @media (max-width: 970px) {
+    @media (max-width: $max-width) {
         width: 100%;
     }
 
@@ -374,7 +374,8 @@ main {
         height: 100%;
         object-fit: cover;
         object-position: right center;
-        
+        flex-grow: 1;
+
         @media (max-width: 767px) {
             width: 100%;
             height: auto;

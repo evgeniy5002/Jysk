@@ -2,6 +2,8 @@
 @use "bootstrap/scss/bootstrap-grid";
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 @import './variables';
+@import './mixins';
+
 
 * {
     margin: 0;
@@ -13,7 +15,13 @@ html, body {
     margin: 0;
     font-family: $font-default;
     background-color: #F3F3F3;
+    font-size: 100%;
 }
+@media (max-width: 768px) {
+    html {
+      font-size: 90%; 
+    }
+  }
 
 main {
     width: 100%;
@@ -32,12 +40,6 @@ main {
 
 .main-content {
     flex: 1;
-}
-
-@mixin center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .header-row {
@@ -378,8 +380,44 @@ main {
 
         @media (max-width: 767px) {
             width: 100%;
-            height: auto;
+            height: 35vw;
+            object-position: center 15%;
+
             object-fit: cover;
         }
+    }
+}
+.banner {
+    height: 80px;
+    position: relative;
+    @include center;
+
+    @media (max-width: 767px) {
+        height: 100px;
+        h1{
+        font-weight: 700;
+
+        }
+    }
+    .overlay {
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    h1{
+        position: absolute;
+        color: white;
+        z-index: 1;
+        font-weight: 700;
+        font-size: 1.3em;
+        text-align: center;
+        margin: 20px;
+
+    }
+    img{
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        object-position: center 60%;;
     }
 }

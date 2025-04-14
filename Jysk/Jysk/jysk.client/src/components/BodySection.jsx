@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/components.scss';
+import '../styles/components/BodySection.scss';
 
 export default function BodySection({ children }) {
     return (

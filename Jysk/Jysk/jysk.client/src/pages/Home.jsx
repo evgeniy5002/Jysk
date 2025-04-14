@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/style.scss';
+import '../styles/pages/Home.scss';
 import BodySection from "../components/BodySection";
 import aboutUs from '../assets/img/about-us.png';
 import banner from '../assets/img/banner.png';
@@ -9,9 +9,6 @@ import livingRoom from '../assets/img/living-room.png';
 import office from '../assets/img/office.png';
 import kitchen from '../assets/img/kitchen.png';
 import garden from '../assets/img/garden.png';
-
-
-
 
 export default function Home() {
     return (
@@ -72,11 +69,6 @@ export default function Home() {
                     </div>
                 </div>
             </BodySection>
-
-            <BodySection>
-                <h1>Categories</h1>
-            </BodySection>
-
         </div>
     );
 }

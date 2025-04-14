@@ -1,4 +1,4 @@
-import '../styles/style.scss';
+import '../styles/components/Header.scss';
 
 import logo from '../assets/icons/logo.png';
 import menuIcon from '../assets/icons/menu.svg';

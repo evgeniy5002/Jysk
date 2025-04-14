@@ -1,4 +1,4 @@
-import '../styles/style.scss';
+import '../styles/components/Footer.scss';
 import gpayIcon from '../assets/icons/gpay.png';
 import mastercardIcon from '../assets/icons/mastercard.png';
 import visaIcon from '../assets/icons/visa.png';
@@ -43,7 +43,7 @@ export default function Footer() {
                     </div>
                     <div className="col-6 col-md-3 mb-4">
                         <h2>Head Office</h2>
-                        <p>LLC “"</p>
+                        <p>LLC ï¿½"</p>
                         <p>City ()</p>
                         <p>Street ()</p>
                         <p>123456</p>

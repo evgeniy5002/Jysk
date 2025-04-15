@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Jysk.BLL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e5235ea12809bdc4d9f87a44959db378ad80c1e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb854352aad354ab9605e7feff1d76ce1d492df9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Jysk.BLL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Jysk.BLL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -161,3 +161,18 @@
         }
     }
 }
+.overview{
+    font-size: 0.9em;
+
+    .overview-container{
+        display: flex;
+        .overview-box{
+            display: flex;
+            flex-direction: column;
+            img{
+                height: 40px;
+                margin: 15px;
+            }
+        }
+    }
+}

@@ -131,6 +131,23 @@ export default function Home() {
                 </div>
             </BodySection>
             <BodySection>
+                <div className='mailing'>
+                    <h2>Subscribe to our newsletter and get a free shipping code for your first order!</h2>
+                    <p>Sign up for our newsletter and get a bonus! 10% off your first order, exclusive offers, and early access to sales. Enter your email below and start enjoying the benefits!</p>
+                    <div>
+                        <input
+                            className="input-name"
+                            type="text"
+                            placeholder="Name"
+                        />
+                        <input
+                            className="input-email"
+                            type="text"
+                            placeholder="Email"
+                        />
+                        <button>Share</button>
+                    </div>
+                </div>
             </BodySection>
 
         </div>

@@ -19,7 +19,7 @@ import overviewIcon1 from '../assets/icons/overview-icon1.svg';
 import overviewIcon2 from '../assets/icons/overview-icon2.svg';
 import overviewIcon3 from '../assets/icons/overview-icon3.svg';
 
-
+import blogImg1 from '../assets/img/blog-img1.png';
 
 export default function Home() {
     return (
@@ -109,7 +109,7 @@ export default function Home() {
                 </div>
             </BodySection>
             <BodySection noBorder>
-                <div className='blog'>
+                <div className="blog ">
                 </div>
             </BodySection>
             <BodySection bgWhite>

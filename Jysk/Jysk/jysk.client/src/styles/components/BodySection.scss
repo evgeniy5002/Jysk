@@ -1,15 +1,15 @@
 @import '../variables';
 
 .border-bottom {
-    border-bottom: 1px solid #d4d4d4;
+    border-bottom: 1px solid $color-border;
 }
 .no-border {
     border-bottom: none !important;
 }
 .bg-white {
-  background-color: #ffffff;
+  background-color: $color-surface;
   border-bottom: none !important;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: $shadow-light;
 }
 .body-section {
     width: 100%;
@@ -17,7 +17,7 @@
     align-items:center;
     justify-content:center;
     &.bg-white {
-        background-color: #ffffff; 
+        background-color: $color-surface; 
     }
 
     .section-container {

@@ -12,7 +12,7 @@ export default function Footer() {
             <footer className="site-footer">
                 <div className="footer-container row">
                     <div className="col-6 col-md-3 mb-4">
-                        <h2>Product Categories</h2>
+                        <h3>Product Categories</h3>
                         <p>Bedroom</p>
                         <p>Bathroom</p>
                         <p>Office</p>
@@ -25,7 +25,7 @@ export default function Footer() {
                         <p>All Categories</p>
                     </div>
                     <div className="col-6 col-md-3 mb-4">
-                        <h2>Information</h2>
+                        <h3>Information</h3>
                         <p>Feedback</p>
                         <p>Stores and Opening Hours</p>
                         <p>Terms and Conditions</p>
@@ -33,7 +33,7 @@ export default function Footer() {
                         <p>Privacy Policy</p>
                     </div>
                     <div className="col-6 col-md-3 mb-4">
-                        <h2>Hyggy</h2>
+                        <h3>Hyggy</h3>
                         <p>About Us</p>
                         <p>Careers at Hyggy</p>
                         <p>Subscribe to Newsletter</p>
@@ -42,27 +42,25 @@ export default function Footer() {
                         <p>Useful Links</p>
                     </div>
                     <div className="col-6 col-md-3 mb-4">
-                        <h2>Head Office</h2>
-                        <p>LLC �"</p>
+                        <h3>Head Office</h3>
+                        <p>LLC ""</p>
                         <p>City ()</p>
                         <p>Street ()</p>
                         <p>123456</p>
-                        <h2>HYGGY B2B</h2>
+                        <h3>HYGGY B2B</h3>
                         <p>Phone: +380123456789</p>
                         <p>Email: b2b@hyggy.com</p>
                         <p>Contact Us</p>
-                        <h2>Feedback:</h2>
+                        <h3>Feedback:</h3>
                         <p>email@hyggy.com</p>
                         <p>Phone: +380123456789 B2B</p>
                         <p>Contact Us</p>
                     </div>
-
                     <div className="col-12 col-sm-6 payment-options">
                         <img src={gpayIcon} alt="Google Pay" />
                         <img src={mastercardIcon} alt="Mastercard" />
                         <img src={visaIcon} alt="Visa" />
                     </div>
-
                     <div className="col-12 col-sm-6 social">
                         <img src={facebookIcon} alt="Facebook" />
                         <img src={telegramIcon} alt="Telegram" />

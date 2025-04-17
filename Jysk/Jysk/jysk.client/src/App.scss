@@ -7,15 +7,14 @@
     padding: 0;
     box-sizing: border-box;
     font-family: $font-default;
-    
 }
 html {
+    background-color: $color-background;
     font-size: 0.9em;
 }
 main {
     width: 100%;
     flex: 1;
-    background-color:#F3F3F3;
 }
 @media (max-width: $breakpoint-tablet) {
     html {

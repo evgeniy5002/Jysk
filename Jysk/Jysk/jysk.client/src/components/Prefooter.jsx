@@ -47,5 +47,4 @@ export default function Prefooter(){
             </BodySection>
         </div>
     )
-
 }

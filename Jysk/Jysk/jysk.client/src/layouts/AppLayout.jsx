@@ -1,5 +1,7 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Prefooter from "../components/Prefooter";
+
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -10,6 +12,7 @@ function AppLayout() {
             <main className="main-content">
                 <Outlet />
             </main>
+            <Prefooter />
             <Footer />
         </div>
 

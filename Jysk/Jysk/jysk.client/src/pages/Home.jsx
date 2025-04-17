@@ -128,8 +128,6 @@ export default function Home() {
                     </div>
                 </div>
             </BodySection>
-            <Prefooter></Prefooter>
-
         </div>
     );
 }

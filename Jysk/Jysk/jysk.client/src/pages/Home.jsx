@@ -20,6 +20,8 @@ import overviewIcon2 from '../assets/icons/overview-icon2.svg';
 import overviewIcon3 from '../assets/icons/overview-icon3.svg';
 
 import blogImg1 from '../assets/img/blog-img1.png';
+import blogImg2 from '../assets/img/blog-img2.png';
+
 
 export default function Home() {
     return (
@@ -109,7 +111,23 @@ export default function Home() {
                 </div>
             </BodySection>
             <BodySection noBorder>
-                <div className="blog ">
+                <div className="blog">
+                    <div className="row custom-stack">
+                        <div className="blog-element col-sm-6 mb-3 mb-sm-0">
+                            <img src={blogImg1} alt="Blog Image" />
+                            <p>Choosing furniture for your home is not only a matter of style but also of comfort and functionality. In this post, we will tell you how to select the perfect items for each room in your home to create a cozy and harmonious space.</p>
+                            <div>
+                                <button>More</button>
+                            </div>
+                        </div>
+                        <div className="blog-element col-sm-6">
+                            <img src={blogImg2} alt="Blog Image" />
+                            <p>Lighting plays a key role in creating a comfortable atmosphere in your home. Properly selected lighting not only highlights the style of the interior but also affects your mood. We will tell you how to choose lighting for each room in your home to create the perfect ambiance.</p>
+                            <div>
+                                <button>More</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </BodySection>
             <BodySection bgWhite>

@@ -3,21 +3,25 @@
 .border-bottom {
     border-bottom: 1px solid #d4d4d4;
 }
+
 .no-border {
     border-bottom: none !important;
 }
+
 .bg-white {
-  background-color: #ffffff;
-  border-bottom: none !important;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    border-bottom: none !important;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }
+
 .body-section {
     width: 100%;
     display: flex;
-    align-items:center;
-    justify-content:center;
+    align-items: center;
+    justify-content: center;
+
     &.bg-white {
-        background-color: #ffffff; 
+        background-color: #ffffff;
     }
 
     .section-container {

@@ -1,0 +1,54 @@
+@import '../variables';
+@import '../mixins';
+
+
+.my-orders {
+    .order {
+        background: white;
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid transparent;
+        padding: 26px 32px;
+
+        @media (max-width: $breakpoint-tablet) {
+            padding: 13px 16px;
+        }
+
+        &:hover {
+            border: 1px solid $color-grey-light;
+        }
+
+        .order-info {
+            display: contents;
+
+            @media (max-width: $breakpoint-mobile) {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .order-number {
+                font-weight: 600;
+                font-size: 1.2rem;
+            }
+
+            .order-status {
+                font-family: Raleway;
+                font-weight: 700;
+                font-size: 1.2rem;
+                color: rgba(52, 185, 6, 1);
+            }
+
+            .order-price {
+                font-weight: 700;
+                font-size: 1rem;
+            }
+        }
+
+        img {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

@@ -1,0 +1,90 @@
+@import '../variables';
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 40px;
+
+    .heading {
+
+        span {
+            font: {
+                size: 2.5rem;
+                weight: 700;
+            }
+        }
+    }
+
+    form {
+        width: 100%;
+        max-width: 810px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        @media (max-width: $breakpoint-tablet) {
+            gap: 10px;
+        }
+
+        input {
+            font-size: 1.2em;
+
+            border-radius: 10px;
+            border-width: 1px;
+            border: 1px solid #afafaf;
+
+            background-color: $color-grey-light;
+            padding: 18px 0 18px 50px;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+
+            gap: 20px;
+            width: 100%;
+
+            @media (max-width: $breakpoint-tablet) {
+                margin-top: 10px;
+            }
+
+            button {
+                background-color: rgba(0, 170, 173, 1);
+
+                color: white;
+
+                font-weight: 700;
+                padding: 15px 0;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                border-radius: 10px;
+
+                font-size: 1.5em;
+                line-height: 100%;
+            }
+
+            .save-btn {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .calcel-btn {
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            .delete-acount-btn {
+                grid-column: 1 / span 2;
+                grid-row: 2;
+                background-color: rgba(247, 77, 77, 1);
+            }
+        }
+    }
+}

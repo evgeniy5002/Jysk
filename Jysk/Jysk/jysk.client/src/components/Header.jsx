@@ -8,6 +8,7 @@ import profileIcon from '../assets/icons/profile.svg';
 import basketIcon from '../assets/icons/basket.svg';
 import markerIcon from '../assets/icons/marker.svg';
 import arrowDownIcon from '../assets/icons/arrow-down.svg';
+import { NavLink } from 'react-router-dom';
 
 export default function Header() {
     return (
@@ -17,7 +18,9 @@ export default function Header() {
                 <div className="header-wrapper">
                     <div className="header-item left">
                         <div className="section">
-                            <img className="site-logo" src={logo} alt="Logo" />
+                            <NavLink to="/">
+                                <img className="site-logo" src={logo} alt="Logo" />
+                            </NavLink>
                         </div>
                         <div className="section header-row">
                             <img className="icon-menu" src={menuIcon} alt="Menu Icon" />
@@ -40,18 +43,20 @@ export default function Header() {
                     </div>
 
                     <div className="header-item right">
-                        <div className="section header-col">
+                        <NavLink to="#" className="section header-col">
                             <img className="icon" src={wishlistIcon} alt="Wishlist Icon" />
                             <p>Favorites</p>
-                        </div>
-                        <div className="section header-col">
+                        </NavLink>
+
+                        <NavLink to="/login" className="section header-col">
                             <img className="icon" src={profileIcon} alt="Profile Icon" />
                             <p>Login</p>
-                        </div>
-                        <div className="section header-col">
+                        </NavLink>
+
+                        <NavLink to="#" className="section header-col">
                             <img className="icon" src={basketIcon} alt="Basket Icon" />
                             <p>Cart</p>
-                        </div>
+                        </NavLink>
                     </div>
                 </div>
             </div>

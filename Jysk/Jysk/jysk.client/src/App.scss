@@ -8,16 +8,19 @@
     box-sizing: border-box;
     font-family: $font-default;
 }
+
 main {
     width: 100%;
     flex: 1;
-    background-color:#F3F3F3;
+    background-color: #F3F3F3;
 }
+
 @media (max-width: 768px) {
     html {
-      font-size: 90%; 
+        font-size: 90%;
     }
 }
+
 @media (max-width: 320px) {
     html {
         font-size: 75%;

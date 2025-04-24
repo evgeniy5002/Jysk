@@ -8,27 +8,33 @@
     align-items: center;
     justify-content: center;
 
-    p{
+    p {
         font-size: 0.9em;
     }
-    .title{
+
+    .title {
         margin-bottom: 10px;
         font-weight: 700;
         font-size: 1.3em;
     }
-    .small-screen{
+
+    .small-screen {
         display: none;
         text-align: center;
+
         @media (max-width: 767px) {
             display: block;
         }
     }
-    .big-screen{
+
+    .big-screen {
         display: block;
+
         @media (max-width: 767px) {
             display: none;
         }
     }
+
     img {
         width: 100%;
         height: 100%;
@@ -45,6 +51,7 @@
         }
     }
 }
+
 .banner {
     height: 80px;
     position: relative;
@@ -52,17 +59,20 @@
 
     @media (max-width: 767px) {
         height: 100px;
-        h1{
-        font-weight: 700;
+
+        h1 {
+            font-weight: 700;
 
         }
     }
+
     .overlay {
         position: absolute;
         inset: 0;
         background-color: rgba(0, 0, 0, 0.1);
     }
-    h1{
+
+    h1 {
         position: absolute;
         color: white;
         z-index: 1;
@@ -72,20 +82,22 @@
         margin: 20px;
 
     }
-    img{
+
+    img {
         object-fit: cover;
         height: 100%;
         width: 100%;
-        object-position: center 60%;;
+        object-position: center 60%;
+        ;
     }
 }
 
 .categories {
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
     h1 {
         font-weight: 700;
         font-size: 1.3em;
@@ -96,14 +108,15 @@
         margin-bottom: 15px;
         width: 50%;
     }
-    .categories-grid{
+
+    .categories-grid {
         width: 100%;
         display: grid;
         gap: 1rem;
-        grid-template-columns: repeat(3, 1fr); 
-        
+        grid-template-columns: repeat(3, 1fr);
+
         .category {
-            aspect-ratio: 4 / 3; 
+            aspect-ratio: 4 / 3;
             width: 100%;
             position: relative;
 
@@ -112,8 +125,8 @@
                 align-items: center;
                 justify-content: center;
             }
-            
-            p{
+
+            p {
                 position: absolute;
                 z-index: 1;
                 font-weight: 700;
@@ -121,55 +134,62 @@
                 margin: 25px;
                 color: #231F20BF;
             }
+
             img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              display: block;
-              position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                position: absolute;
             }
         }
     }
+
     @media (max-width: 767px) {
         .categories-grid {
-          grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr);
         }
-        .categories-grid .category p{
+
+        .categories-grid .category p {
             font-weight: 500;
             margin: 0;
         }
     }
 }
-  
+
 .brands {
     width: 100%;
     font-size: 0.9em;
+
     .brand-box {
         background-color: white;
         display: flex;
         align-items: center;
         flex-direction: column;
         padding: 15px;
-    
+
         img {
             max-height: 65px;
             width: 100%;
-            max-width: 120px; 
+            max-width: 120px;
             height: auto;
             object-fit: contain;
             margin-bottom: 15px;
         }
     }
 }
-.overview{
+
+.overview {
     font-size: 0.9em;
 
-    .overview-container{
+    .overview-container {
         display: flex;
-        .overview-box{
+
+        .overview-box {
             display: flex;
             flex-direction: column;
-            img{
+
+            img {
                 height: 40px;
                 margin: 15px;
             }

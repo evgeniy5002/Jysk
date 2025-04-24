@@ -1,0 +1,169 @@
+@import '../variables';
+
+.register-page {
+    display: flex;
+    justify-content: center;
+
+    .register-container {
+        width: 100%;
+        max-width: $max-width;
+
+        padding: 0px 15px;
+
+        margin-bottom: 300px;
+
+        .heading {
+            text-align: center;
+            padding: 44px 0 34px 0px;
+
+            font: {
+                size: 2.5rem;
+                weight: 700;
+            }
+
+            border: {
+                top: 1px $color-grey-light solid;
+                bottom: 2px $color-grey-light solid;
+            }
+        }
+
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            form {
+                max-width: 810px;
+                width: 100%;
+
+                display: flex;
+                flex-direction: column;
+
+                gap: 20px;
+
+                padding: {
+                    top: 50px;
+                    bottom: 30px;
+                }
+
+                @media (max-width: 768px) {
+                    gap: 10px;
+                }
+
+                .email,
+                .password,
+                .repeate-password,
+                .name,
+                .register-btn {
+                    font-size: 1.2em;
+                    border-radius: 10px;
+                    border-width: 1px;
+                    border: 1px solid #afafaf;
+                }
+
+                .email,
+                .password,
+                .repeate-password,
+                .name {
+                    background-color: $color-grey-light;
+                    padding: 18px 0 18px 50px;
+                }
+
+                .register-btn {
+                    background-color: $color-tiffany-blue;
+                    color: white;
+
+                    cursor: pointer;
+
+                    font-weight: 700;
+                    padding: 18px 0;
+                    font-size: 1.5em;
+                }
+
+                .forgot-password {
+                    color: $color-tiffany-blue;
+                    text-decoration: underline;
+                    font-size: 1.5em;
+                }
+
+                .cancel {
+                    margin: auto;
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                    color: $color-tiffany-blue;
+                    text-decoration: underline;
+                }
+
+                .checkboxes {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+
+                    padding-left: 75px;
+
+                    @media (max-width: 768px) {
+                        padding-left: 25px;
+                        gap: 10px;
+                    }
+
+                    @media (max-width: 480px) {
+                        padding-left: 0px;
+                        gap: 5px;
+                    }
+
+                    label {
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+
+                        font-size: 1.5rem;
+
+                        position: relative;
+
+                        &hover {
+                            cursor: pointer;
+                        }
+
+                        @media (max-width: 480px) {
+                            font-size: 1.2rem;
+                        }
+
+                        input[type="checkbox"] {
+                            appearance: none;
+                            min-width: 25px;
+                            min-height: 25px;
+
+                            border: 2px solid #afafaf;
+                            border-radius: 5px;
+
+                            transition: all 0.3s;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+
+                            &:checked {
+                                background-color: $color-tiffany-blue;
+                                border-color: $color-tiffany-blue;
+                            }
+
+                            &:checked::after {
+                                content: "✓";
+                                position: absolute;
+                                left: 5px;
+                                top: 1px;
+                                color: white;
+                                font-size: 20px;
+                            }
+                        }
+
+                        a {
+                            color: $color-tiffany-blue;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

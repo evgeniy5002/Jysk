@@ -2804,28 +2804,28 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj",
+      "C:\\Users\\KIKIMORA\\Desktop\\Jysk\\Jysk\\Jysk\\Logger\\Logger.csproj",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MSI\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\KIKIMORA\\.nuget\\packages\\": {},
+    "D:\\VstudioComponents\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\KIKIMORA\\Desktop\\Jysk\\Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj",
       "projectName": "Jysk.DAL",
-      "projectPath": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj",
-      "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.DAL\\obj\\",
+      "projectPath": "C:\\Users\\KIKIMORA\\Desktop\\Jysk\\Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj",
+      "packagesPath": "C:\\Users\\KIKIMORA\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\KIKIMORA\\Desktop\\Jysk\\Jysk\\Jysk\\Jysk.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "D:\\VstudioComponents\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\KIKIMORA\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2840,8 +2840,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj": {
-              "projectPath": "D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj"
+            "C:\\Users\\KIKIMORA\\Desktop\\Jysk\\Jysk\\Jysk\\Logger\\Logger.csproj": {
+              "projectPath": "C:\\Users\\KIKIMORA\\Desktop\\Jysk\\Jysk\\Jysk\\Logger\\Logger.csproj"
             }
           }
         }
@@ -2855,8 +2855,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -2883,7 +2882,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
@@ -2891,8 +2890,8 @@
     {
       "code": "NU1105",
       "level": "Error",
-      "message": "Unable to find project information for 'D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
-      "libraryId": "D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj",
+      "message": "Unable to find project information for 'C:\\Users\\KIKIMORA\\Desktop\\Jysk\\Jysk\\Jysk\\Logger\\Logger.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
+      "libraryId": "C:\\Users\\KIKIMORA\\Desktop\\Jysk\\Jysk\\Jysk\\Logger\\Logger.csproj",
       "targetGraphs": [
         "net8.0"
       ]

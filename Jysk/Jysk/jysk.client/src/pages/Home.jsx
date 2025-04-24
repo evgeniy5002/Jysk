@@ -2,7 +2,6 @@ import React from 'react';
 import '../styles/pages/Home.scss';
 
 import BodySection from "../components/BodySection";
-import Prefooter from "../components/Prefooter";
 
 import aboutUs from '../assets/img/about-us.png';
 import banner from '../assets/img/banner.png';

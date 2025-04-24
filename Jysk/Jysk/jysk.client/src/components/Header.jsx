@@ -1,15 +1,22 @@
 import '../styles/components/Header.scss';
+import { useNavigate } from 'react-router-dom';
 
 import logo from '../assets/icons/logo.png';
 import menuIcon from '../assets/icons/menu.svg';
 import searchIcon from '../assets/icons/search.svg';
-import wishlistIcon from '../assets/icons/wishlist.png';
+import wishlistIcon from '../assets/icons/heart.svg';
 import profileIcon from '../assets/icons/profile.svg';
 import basketIcon from '../assets/icons/basket.svg';
 import markerIcon from '../assets/icons/marker.svg';
 import arrowDownIcon from '../assets/icons/arrow-down.svg';
 
 export default function Header() {
+    const navigate = useNavigate();
+
+    const handleSearchClick = () => {
+        navigate('/search'); 
+    };
+
     return (
         <header className="site-header">
             <div className="decorative-strip"></div>
@@ -33,7 +40,7 @@ export default function Header() {
                                 name="search"
                                 placeholder="Search item or category"
                             />
-                            <div className="icon-container">
+                            <div className="icon-container" onClick={handleSearchClick} style={{ cursor: 'pointer' }}>
                                 <img className="icon" src={searchIcon} alt="Search Icon" />
                             </div>
                         </div>

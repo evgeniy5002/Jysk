@@ -28,7 +28,7 @@ namespace Jysk.DAL.Repositories
             if (manufacturer == null)
             {
                 Logger log = new Logger();
-                log.Log("Error: Manufacturer doesnt exist");
+                log.Log("Error: Manufacturer doesnt exist " + id);
             }
             return manufacturer;
         }

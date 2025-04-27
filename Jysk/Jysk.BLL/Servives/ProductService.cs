@@ -141,6 +141,8 @@ namespace Jysk.BLL.Servives
             .ForMember("Manufacturer", opt => opt.MapFrom(c => c.Manufacturer.Name))
             .ForMember("Category", opt => opt.MapFrom(c => c.Category.Name)));
             var mapper = new Mapper(config);
+            var test = await db.R_Product.Get(1);
+            //Console.WriteLine(test.Manufacturer.Name);
             return mapper.Map<IEnumerable<Product>, IEnumerable<ProductDTO>>(await db.R_Product.GetAll());
         }
     }

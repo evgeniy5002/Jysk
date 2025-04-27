@@ -37,7 +37,6 @@ namespace Jysk.BLL.Servives
                         Day = entity.Day,
                         Start = entity.Start,
                         End = entity.End,
-                        StoreId = entity.StoreId
                     };
                     await db.R_WorkHours.Create(res);
                     await db.Save();
@@ -68,7 +67,6 @@ namespace Jysk.BLL.Servives
                         Day = entity.Day,
                         Start = entity.Start,
                         End = entity.End,
-                        StoreId = entity.StoreId
                     };
                     db.R_WorkHours.Update(res);
                     await db.Save();
@@ -112,14 +110,11 @@ namespace Jysk.BLL.Servives
                 Day = res.Day,
                 Start = res.Start,
                 End = res.End,
-                StoreId = res.StoreId,
-                Store = res.Store.Select(x => x.Name).ToArray()
             };
         }
         public async Task<IEnumerable<WorkHoursDTO>> GetAll()
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<WorkHours, WorkHoursDTO>()
-            .ForMember("Store", opt => opt.MapFrom(c => c.Store.Select(x => x.Name).ToArray())));
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<WorkHours, WorkHoursDTO>());
             var mapper = new Mapper(config);
             return mapper.Map<IEnumerable<WorkHours>, IEnumerable<WorkHoursDTO>>(await db.R_WorkHours.GetAll());
         }

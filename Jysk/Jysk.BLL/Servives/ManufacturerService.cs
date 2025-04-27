@@ -93,6 +93,8 @@ namespace Jysk.BLL.Servives
         }
         public async Task<ManufacturerDTO> GetById(int id)
         {
+            Logger log1 = new Logger();
+            log1.Log("TEST" + id.ToString());
             var res = await db.R_Manufacturer.Get(id);
             if (res == null)
             {

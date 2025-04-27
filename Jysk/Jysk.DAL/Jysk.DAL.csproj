@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Logger\Logger.csproj" />
+    <ProjectReference Include="..\..\..\..\evgeniy50021\Jysk\Jysk\Jysk\Backend\Logger\Logger.csproj" />
   </ItemGroup>
 
 </Project>

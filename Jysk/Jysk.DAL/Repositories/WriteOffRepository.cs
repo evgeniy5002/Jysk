@@ -20,11 +20,12 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<IEnumerable<WriteOff>> GetAll()
         {
-            return await db.T_WriteOff.ToListAsync();
+            return await db.T_WriteOff.Include(o => o.Employee).Include(o => o.Employee.User).Include(o => o.Product).Include(o => o.Storage).ToListAsync();
         }
         public async Task<WriteOff> Get(int id)
         {
-            WriteOff writeOff = await db.T_WriteOff.FindAsync(id);
+            var list = await db.T_WriteOff.Include(o => o.Employee).Include(o => o.Employee.User).Include(o => o.Product).Include(o => o.Storage).Where(a => a.Id == id).ToListAsync();
+            WriteOff writeOff = list.FirstOrDefault();
             if (writeOff == null)
             {
                 Logger log = new Logger();

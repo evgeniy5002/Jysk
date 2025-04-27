@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\evgeniy50021\Jysk\Jysk\Jysk\Backend\Logger\Logger.csproj" />
     <ProjectReference Include="..\Jysk.DAL\Jysk.DAL.csproj" />
-    <ProjectReference Include="..\Logger\Logger.csproj" />
   </ItemGroup>
 
 </Project>

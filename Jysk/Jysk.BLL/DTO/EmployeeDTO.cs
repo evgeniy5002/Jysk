@@ -10,7 +10,7 @@ namespace Jysk.BLL.DTO
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public string User { get; set; }
+        public string? User { get; set; }
         public string Position { get; set; }
         public string Comment { get; set; }
     }

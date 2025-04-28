@@ -1,4 +1,5 @@
 @import '../variables';
+@import '../mixins';
 
 .edit-profile-form {
     display: flex;
@@ -8,7 +9,6 @@
     margin-bottom: 40px;
 
     .heading {
-
         span {
             font: {
                 size: 2.5rem;
@@ -18,26 +18,24 @@
     }
 
     form {
+        max-width: 570px;
         width: 100%;
-        max-width: 810px;
 
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 10px;
 
         @media (max-width: $breakpoint-tablet) {
-            gap: 10px;
+            width: 80%;
         }
 
         input {
             font-size: 1.2em;
-
             border-radius: 10px;
             border-width: 1px;
             border: 1px solid #afafaf;
-
-            background-color: $color-grey-light;
-            padding: 18px 0 18px 50px;
+            background-color: $color-secondary-light;
+            @include input-style(100%);
         }
 
         .options {
@@ -53,21 +51,14 @@
             }
 
             button {
-                background-color: rgba(0, 170, 173, 1);
-
-                color: white;
-
+                font-size: 1.2rem;
                 font-weight: 700;
-                padding: 15px 0;
-
-                &:hover {
-                    cursor: pointer;
-                }
-
-                border-radius: 10px;
-
-                font-size: 1.5em;
-                line-height: 100%;
+                color: white;
+                background-color: $color-accent;
+                height: 42px;
+                border-radius: 5px;
+                border-width: 1px;
+                border: 1px solid #afafaf;
             }
 
             .save-btn {

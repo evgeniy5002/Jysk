@@ -20,17 +20,17 @@ export default function Register() {
                         <div className="checkboxes">
                             <label>
                                 <input type="checkbox" />
-                                Accept <NavLink>Terms and Conditions</NavLink>
+                                <span>Accept <NavLink>Terms and Conditions</NavLink></span>
                             </label>
 
                             <label>
                                 <input type="checkbox" />
-                                Find past orders for this account
+                                <span>Find past orders for this account</span>
                             </label>
 
                             <label>
                                 <input type="checkbox" />
-                                Subscribe to our news. <NavLink>View</NavLink>
+                                <span>Subscribe to our news. <NavLink>View</NavLink></span>
                             </label>
                         </div>
 

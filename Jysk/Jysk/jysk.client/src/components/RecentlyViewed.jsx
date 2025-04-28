@@ -1,23 +1,7 @@
 import BodySection from "./BodySection";
 import "../styles/components/RecentlyViewed.scss";
 
-import img from "../assets/img/image.png";
-
-function Card() {
-    return (
-        <div className="card">
-            <div className="card-image">
-                <img src={img} />
-            </div>
-            <div className="card-info">
-                <div >asdasd</div>
-                <div >dadddd</div>
-                <div >asdasd</div>
-                <div >dadddd</div>
-            </div>
-        </div>
-    );
-}
+import ProductCard from "./ProductCard";
 
 export default function RecentlyViewed() {
     return (
@@ -28,10 +12,10 @@ export default function RecentlyViewed() {
                 </div>
 
                 <div className="cards">
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
+                    <ProductCard />
                 </div>
             </div>
         </BodySection>

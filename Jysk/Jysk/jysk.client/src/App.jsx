@@ -3,18 +3,23 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss';
 import './styles/reset.scss';
 
-import AppLayout from './layouts/AppLayout';
-import Home from './pages/Home';
-import Register from './pages/Register';
-import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
-import NotFound from './pages/NotFound';
 import ResetPassword from './pages/ResetPassword';
-import { Profile } from './pages/Profile';
-import MyOrders from './components/MyOrders';
-import Favorites from './components/Favorites';
 import EditProfile from './components/EditProfile';
+import Favorites from './components/Favorites';
 import MyReviews from './components/MyReviews';
+import AppLayout from './layouts/AppLayout';
+import NotFound from './pages/NotFound';
+import MyOrders from './components/MyOrders';
+import Register from './pages/Register';
+import Profile from './pages/Profile';
+import Search from './pages/Search';
+import Login from './pages/Login';
+import Store from './pages/Store';
+import Home from './pages/Home';
+import Stores from './pages/Stores';
+import Categories from './pages/Categories';
+import Work from './pages/Work';
 
 function App() {
     return (
@@ -24,8 +29,15 @@ function App() {
                     <Route index element={<Home />} />
                     <Route path="login" element={<Login />} />
                     <Route path="register" element={<Register />} />
+                    <Route path="search" element={<Search />} />
                     <Route path="forgot-password" element={<ForgotPassword />} />
                     <Route path="reset-password" element={<ResetPassword />} />
+
+                    <Route path="stores" element={<Stores />} />
+                    <Route path="stores/store" element={<Store />} />
+                    <Route path="categories" element={<Categories />} />
+                    <Route path="work" element={<Work />} />
+
                     <Route path="profile" element={<Profile />}>
                         <Route index element={<Navigate to="my-orders" />} />
                         <Route path="my-orders" element={<MyOrders />} />

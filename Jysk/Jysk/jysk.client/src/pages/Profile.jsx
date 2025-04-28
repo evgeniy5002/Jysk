@@ -7,7 +7,7 @@ import profileArrow from "../assets/icons/profile-arrow.svg";
 import { NavLink, Outlet } from 'react-router-dom';
 import RecentlyViewed from '../components/RecentlyViewed';
 
-export function Profile() {
+export default function Profile() {
     return (
         <div className="profile">
             <BodySection noBorder={true}>

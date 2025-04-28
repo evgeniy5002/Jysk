@@ -1,4 +1,5 @@
 @import '../variables';
+@import '../mixins';
 
 .register-page {
     display: flex;
@@ -7,24 +8,16 @@
     .register-container {
         width: 100%;
         max-width: $max-width;
-
         padding: 0px 15px;
-
         margin-bottom: 300px;
 
         .heading {
             text-align: center;
             padding: 44px 0 34px 0px;
-
-            font: {
-                size: 2.5rem;
-                weight: 700;
-            }
-
-            border: {
-                top: 1px $color-grey-light solid;
-                bottom: 2px $color-grey-light solid;
-            }
+            font-size: 2.5rem;
+            font-weight: 700;
+            border-top: 1px $color-secondary-light solid;
+            border-bottom: 2px $color-secondary-light solid;
         }
 
         .register-form {
@@ -33,64 +26,45 @@
             align-items: center;
 
             form {
-                max-width: 810px;
+                max-width: 570px;
                 width: 100%;
-
                 display: flex;
                 flex-direction: column;
+                gap: 10px;
 
-                gap: 20px;
+                padding-top: 50px;
+                padding-bottom: 30px;
 
-                padding: {
-                    top: 50px;
-                    bottom: 30px;
+                @media (max-width: $breakpoint-tablet) {
+                    width: 80%;
                 }
 
-                @media (max-width: 768px) {
-                    gap: 10px;
-                }
-
-                .email,
-                .password,
-                .repeate-password,
-                .name,
-                .register-btn {
+                &>input {
                     font-size: 1.2em;
                     border-radius: 10px;
                     border-width: 1px;
                     border: 1px solid #afafaf;
-                }
-
-                .email,
-                .password,
-                .repeate-password,
-                .name {
-                    background-color: $color-grey-light;
-                    padding: 18px 0 18px 50px;
+                    background-color: $color-secondary-light;
+                    @include input-style(100%);
                 }
 
                 .register-btn {
-                    background-color: $color-tiffany-blue;
-                    color: white;
-
-                    cursor: pointer;
-
+                    font-size: 1.2rem;
                     font-weight: 700;
-                    padding: 18px 0;
-                    font-size: 1.5em;
-                }
-
-                .forgot-password {
-                    color: $color-tiffany-blue;
-                    text-decoration: underline;
-                    font-size: 1.5em;
+                    color: white;
+                    background-color: $color-accent;
+                    height: 42px;
+                    border-radius: 5px;
+                    border-width: 1px;
+                    border: 1px solid #afafaf;
+                    cursor: pointer;
                 }
 
                 .cancel {
                     margin: auto;
                     font-weight: 400;
-                    font-size: 1.5rem;
-                    color: $color-tiffany-blue;
+                    font-size: 1.2rem;
+                    color: $color-accent;
                     text-decoration: underline;
                 }
 
@@ -98,15 +72,14 @@
                     display: flex;
                     flex-direction: column;
                     gap: 15px;
-
                     padding-left: 75px;
 
-                    @media (max-width: 768px) {
+                    @media (max-width: $breakpoint-tablet) {
                         padding-left: 25px;
                         gap: 10px;
                     }
 
-                    @media (max-width: 480px) {
+                    @media (max-width: $breakpoint-mobile) {
                         padding-left: 0px;
                         gap: 5px;
                     }
@@ -115,27 +88,23 @@
                         display: flex;
                         align-items: center;
                         gap: 15px;
-
-                        font-size: 1.5rem;
-
+                        font-size: 1.2rem;
                         position: relative;
 
                         &hover {
                             cursor: pointer;
                         }
 
-                        @media (max-width: 480px) {
+                        @media (max-width: $breakpoint-mobile) {
                             font-size: 1.2rem;
                         }
 
                         input[type="checkbox"] {
                             appearance: none;
-                            min-width: 25px;
-                            min-height: 25px;
-
+                            min-width: 20px;
+                            min-height: 20px;
                             border: 2px solid #afafaf;
                             border-radius: 5px;
-
                             transition: all 0.3s;
 
                             &:hover {
@@ -143,8 +112,8 @@
                             }
 
                             &:checked {
-                                background-color: $color-tiffany-blue;
-                                border-color: $color-tiffany-blue;
+                                background-color: $color-accent;
+                                border-color: $color-accent;
                             }
 
                             &:checked::after {
@@ -158,7 +127,7 @@
                         }
 
                         a {
-                            color: $color-tiffany-blue;
+                            color: $color-accent;
                             text-decoration: underline;
                         }
                     }

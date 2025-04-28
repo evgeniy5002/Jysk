@@ -37,7 +37,9 @@ export default function Login() {
                         </ul>
                     </div>
 
-                    <NavLink to="/register" className="create-account-btn" >Create an account</NavLink>
+                    <NavLink to="/register" className="create-account-btn" >
+                        <span>Create an account</span>
+                    </NavLink>
                 </div>
             </div>
         </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 import '../styles/pages/Home.scss';
+
 import BodySection from "../components/BodySection";
+
 import aboutUs from '../assets/img/about-us.png';
 import banner from '../assets/img/banner.png';
 import bedroom from '../assets/img/bedroom.png';
@@ -15,11 +17,8 @@ import svenskaHem from '../assets/img/svenska-hem.png';
 import fritzHansen from '../assets/img/fritz-hansen.png';
 import muuto from '../assets/img/muuto.png';
 
-import overviewIcon1 from '../assets/icons/overview-icon1.svg';
-import overviewIcon2 from '../assets/icons/overview-icon2.svg';
-import overviewIcon3 from '../assets/icons/overview-icon3.svg';
-
-
+import blogImg1 from '../assets/img/blog-img1.png';
+import blogImg2 from '../assets/img/blog-img2.png';
 
 export default function Home() {
     return (
@@ -109,30 +108,25 @@ export default function Home() {
                 </div>
             </BodySection>
             <BodySection noBorder>
-                <div className='blog'>
-                </div>
-            </BodySection>
-            <BodySection bgWhite>
-                <div className="overview">
-                    <div className="overview-container row flex-wrap justify-content-center">
-                        <div className="overview-box col-6 col-md-4 mb-4 text-center ">
-                                <img src={overviewIcon1} alt="Overview 1" />
-                                <p>A wide variety of modern solutions for decorating and furnishing both interior and exterior spaces.</p>
+                <div className="blog">
+                    <div className="row custom-stack">
+                        <div className="blog-element col-sm-6 mb-3 mb-sm-0">
+                            <img src={blogImg1} alt="Blog Image" />
+                            <p>Choosing furniture for your home is not only a matter of style but also of comfort and functionality. In this post, we will tell you how to select the perfect items for each room in your home to create a cozy and harmonious space.</p>
+                            <div>
+                                <button>More</button>
+                            </div>
                         </div>
-                        <div className="overview-box col-6 col-md-4 mb-4 text-center">
-                                <img src={overviewIcon2} alt="Overview 2" />
-                                <p>Our style is reminiscent of Scandinavian, but we go beyond a single direction, offering versatile and functional options that cater to various tastes.</p>
-                        </div>
-                        <div className="overview-box col-6 col-md-4 mb-4 text-center mt-3 mt-md-0 mx-md-auto">
-                                <img src={overviewIcon3} alt="Overview 3" />
-                                <p>We cater to different categories of customers, offering products in a range from mid-low to mid-high prices.</p>
+                        <div className="blog-element col-sm-6">
+                            <img src={blogImg2} alt="Blog Image" />
+                            <p>Lighting plays a key role in creating a comfortable atmosphere in your home. Properly selected lighting not only highlights the style of the interior but also affects your mood. We will tell you how to choose lighting for each room in your home to create the perfect ambiance.</p>
+                            <div>
+                                <button>More</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </BodySection>
-            <BodySection>
-            </BodySection>
-
         </div>
     );
 }

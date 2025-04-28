@@ -1,31 +1,11 @@
 @import '../variables';
 @import '../mixins';
 
-.card {
-    width: 100%;
-    max-width: 390px;
-    background-color: white;
-
-    .card-image {
-        width: 100%;
-        overflow: hidden;
-
-        img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            object-fit: cover;
-        }
-    }
-}
-
 
 .recently-viewed {
     .heading {
-        font: {
-            size: 2em;
-            weight: 700;
-        }
+        font-size: 2em;
+        font-weight: 700;
 
         margin-bottom: 30px;
     }

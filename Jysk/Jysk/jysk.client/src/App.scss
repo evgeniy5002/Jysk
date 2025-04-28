@@ -2,6 +2,11 @@
 @import './styles/variables';
 @import './styles/mixins';
 
+html {
+    background-color: $color-background;
+    font-size: 0.9em;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,16 +17,15 @@
 main {
     width: 100%;
     flex: 1;
-    background-color: #F3F3F3;
 }
 
-@media (max-width: 768px) {
+@media (max-width: $breakpoint-tablet) {
     html {
         font-size: 90%;
     }
 }
 
-@media (max-width: 320px) {
+@media (max-width: $breakpoint-mobile-xs) {
     html {
         font-size: 75%;
     }

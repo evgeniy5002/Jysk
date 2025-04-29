@@ -9,7 +9,6 @@ function Manufacturer() {
     });
 
     const url = "https://localhost:7196/api/Manufacturer";
-    let Hold_Id = 0;
 
     const InputChange = (e) => {
         const { name, value } = e.target;

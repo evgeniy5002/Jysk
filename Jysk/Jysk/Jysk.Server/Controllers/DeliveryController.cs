@@ -33,10 +33,6 @@ public class DeliveryController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(delivery.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(delivery);
         return Ok(delivery);
     }

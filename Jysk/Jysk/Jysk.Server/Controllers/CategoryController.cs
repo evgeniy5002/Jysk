@@ -33,10 +33,6 @@ public class CategoryController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(category.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(category);
         return Ok(category);
     }

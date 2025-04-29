@@ -83,21 +83,25 @@
             box-shadow: 0 5px 15px;
             text-align: center;
 
+            div {
 
-            button {
-                margin-top: 20px;
-                border: none;
-                background-color: $color-tiffany-blue;
-                padding-left: 100px;
-                height: 30px;
-                color: white;
-                font-size: 1.2em;
-                border-radius: 10px;
-                padding-left: 30px;
-                padding-right: 30px;
 
-                &:hover {
-                    background-color: #50AECD;
+                button {
+                    margin-top: 20px;
+                    margin-left: 40px;
+                    margin-right: 40px;
+                    border: none;
+                    background-color: $color-tiffany-blue;
+                    height: 40px;
+                    color: white;
+                    font-size: 1.2em;
+                    border-radius: 10px;
+                    padding-left: 30px;
+                    padding-right: 30px;
+
+                    &:hover {
+                        background-color: #50AECD;
+                    }
                 }
             }
         }

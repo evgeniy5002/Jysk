@@ -33,10 +33,6 @@ public class StorageController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(storage.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(storage);
         return Ok(storage);
     }

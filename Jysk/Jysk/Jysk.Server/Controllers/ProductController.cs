@@ -34,10 +34,6 @@ public class ProductController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(product.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(product);
         return Ok(product);
     }

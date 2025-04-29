@@ -33,10 +33,6 @@ public class UserController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(user.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(user);
         return Ok(user);
     }

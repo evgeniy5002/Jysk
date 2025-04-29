@@ -33,10 +33,6 @@ public class CargoController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(cargo.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(cargo);
         return Ok(cargo);
     }

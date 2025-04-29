@@ -24,7 +24,7 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<Cargo> Get(int id)
         {
-            var list = await db.T_Cargo.Include(o => o.Product).Include(o => o.StorageFrom).Include(o => o.StorageTo).Include(o => o.Employee).Include(o => o.Employee.User).ToListAsync();
+            var list = await db.T_Cargo.Include(o => o.Product).Include(o => o.StorageFrom).Include(o => o.StorageTo).Include(o => o.Employee).Include(o => o.Employee.User).Where(a => a.Id == id).ToListAsync();
             Cargo cargo = list.FirstOrDefault();
             if (cargo == null)
             {

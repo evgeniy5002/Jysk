@@ -24,7 +24,7 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<Employee> Get(int id)
         {
-            var list = await db.T_Employee.Include(o => o.User).ToListAsync();
+            var list = await db.T_Employee.Include(o => o.User).Where(a => a.Id == id).ToListAsync();
             Employee employee = list.FirstOrDefault();
             if (employee == null)
             {

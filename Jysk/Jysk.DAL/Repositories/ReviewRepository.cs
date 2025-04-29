@@ -24,7 +24,7 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<Review> Get(int id)
         {
-            var list = await db.T_Review.Include(o => o.Product).ToListAsync();
+            var list = await db.T_Review.Include(o => o.Product).Where(a => a.Id == id).ToListAsync();
             Review review = list.FirstOrDefault();
             if (review == null)
             {

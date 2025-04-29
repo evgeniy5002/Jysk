@@ -33,10 +33,6 @@ public class OrderController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(order.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(order);
         return Ok(order);
     }

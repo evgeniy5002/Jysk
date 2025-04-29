@@ -33,10 +33,6 @@ public class EmployeeController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(employee.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(employee);
         return Ok(employee);
     }

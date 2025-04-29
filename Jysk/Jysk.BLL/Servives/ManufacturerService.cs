@@ -83,7 +83,7 @@ namespace Jysk.BLL.Servives
                 await db.R_Manufacturer.Delete(id);
                 await db.Save();
                 Logger log = new Logger();
-                log.Log("Manufacturer deleted successfully");
+                log.Log("Manufacturer deleted successfully" + id);
             }
             catch (Exception ex)
             {

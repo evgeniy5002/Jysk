@@ -33,10 +33,6 @@ public class ReviewController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(review.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(review);
         return Ok(review);
     }

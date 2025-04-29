@@ -33,10 +33,6 @@ public class ClientController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(client.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(client);
         return Ok(client);
     }

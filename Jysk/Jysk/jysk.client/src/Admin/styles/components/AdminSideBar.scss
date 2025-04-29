@@ -20,16 +20,16 @@ body {
     left: 0;
     top: 0;
 
-    .leave{
+    .leave {
         font-size: 1.5em;
         position: fixed;
         bottom: 0;
         left: 0;
         padding-left: 135px;
-        padding-bottom:50px;
+        padding-bottom: 50px;
     }
 
-    a {
+    button {
         margin-bottom: 20px;
         text-decoration: none;
     }
@@ -43,9 +43,14 @@ body {
         li {
             margin-bottom: 40px;
 
-            a {
+            button {
+                margin: 0px;
+                padding: 0px;
                 color: white;
                 text-decoration: none;
+                border: none;
+                background-color: $color-tiffany-blue;
+                font-size: 1em;
             }
         }
     }
@@ -63,7 +68,7 @@ body {
             margin: 20px;
             text-decoration: none;
             color: black;
-            font-size:1.2em;
+            font-size: 1.2em;
         }
 
         img {
@@ -91,7 +96,6 @@ body {
 
         li {
             margin-top: 50px;
-            
         }
 
         ul {

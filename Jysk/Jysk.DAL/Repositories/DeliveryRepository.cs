@@ -24,7 +24,7 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<Delivery> Get(int id)
         {
-            var list = await db.T_Delivery.Include(o => o.Storage).Include(o => o.Manufacturer).ToListAsync();
+            var list = await db.T_Delivery.Include(o => o.Storage).Include(o => o.Manufacturer).Where(a => a.Id == id).ToListAsync();
             Delivery delivery = list.FirstOrDefault();
             if (delivery == null)
             {

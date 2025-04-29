@@ -33,10 +33,6 @@ public class WorkHoursController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(workHours.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(workHours);
         return Ok(workHours);
     }

@@ -33,10 +33,6 @@ public class WriteOffController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(writeOff.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(writeOff);
         return Ok(writeOff);
     }

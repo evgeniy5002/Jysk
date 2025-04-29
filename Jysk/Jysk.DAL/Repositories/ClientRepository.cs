@@ -24,7 +24,7 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<Client> Get(int id)
         {
-            var list = await db.T_Client.Include(o => o.User).ToListAsync();
+            var list = await db.T_Client.Include(o => o.User).Where(a => a.Id == id).ToListAsync();
             Client client = list.FirstOrDefault();
             if (client == null)
             {

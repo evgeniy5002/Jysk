@@ -1,9 +1,17 @@
 import '../styles/components/AdminSideBar.scss';
 import React, { useState } from 'react';
 import logo from '../assets/icons/logo.png';
+import { useNavigate } from 'react-router-dom';
 
 const AdminSideBar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const handleClick = (e) => {
+        const value = e.target.innerText;
+        navigate(`/Admin/Panel?value=${encodeURIComponent(value)}`)
+        window.location.reload()
+    }
         return (
             <div class="sidebar">
                 <a href="..">
@@ -14,51 +22,51 @@ const AdminSideBar = () => {
                 </a>
                 <ul>
                     <li>
-                        <a href="/Admin/Product">Products</a>
+                        <button onClick={handleClick}>Product</button>
                     </li>
                     <li onClick={() => setIsOpen(!isOpen)} class="clickable">Storages</li>
                     <li className={`nested ${isOpen ? 'open' : ''}`}>
                         <ul>
                             <li>
-                                <a href="/Admin/Storage">Storages</a>
+                                <button onClick={handleClick}>Storage</button>
                             </li>
                             <li>
-                                <a href="/Admin/Supply">Supply</a>
+                                <button onClick={handleClick}>Supply</button>
                             </li>
                             <li>
-                                <a href="/Admin/Delivery">Delivery</a>
+                                <button onClick={handleClick}>Delivery</button>
                             </li>
                             <li>
-                                <a href="/Admin/Cargo">Cargo</a>
+                                <button onClick={handleClick}>Cargo</button>
                             </li>
                             <li>
-                                <a href="/Admin/WriteOff">Write Offs</a>
+                                <button onClick={handleClick}>WriteOff</button>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/Admin/Store">Stores</a>
+                        <button onClick={handleClick}>Store</button>
                     </li>
                     <li>
-                        <a href="/Admin/Employee">Employees</a>
+                        <button onClick={handleClick}>Employee</button>
                     </li>
                     <li>
-                        <a href="/Admin/Client">Clients</a>
+                        <button onClick={handleClick}>Product</button>
                     </li>
                     <li>
-                        <a href="/Admin/Order">Orders</a>
+                        <button onClick={handleClick}>Order</button>
                     </li>
                     <li>
-                        <a href="/Admin/Review">Reviews</a>
+                        <button onClick={handleClick}>Review</button>
                     </li>
                     <li>
-                        <a href="/Admin/Manufacturer">Manufacturers</a>
+                        <button onClick={handleClick}>Manufacturer</button>
                     </li>
                     <li>
-                        <a href="/Admin/Category">Categories</a>
+                        <button onClick={handleClick}>Category</button>
                     </li>
                     <li>
-                        <a href="/Admin/WorkHours">Working hours</a>
+                        <button onClick={handleClick}>WorkHours</button>
                     </li>
                 </ul>
                 <p class="leave">Log-Out</p>

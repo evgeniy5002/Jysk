@@ -25,7 +25,7 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<Order> Get(int id)
         {
-            var list = await db.T_Order.Include(o => o.Product).Include(o => o.User).ToListAsync();
+            var list = await db.T_Order.Include(o => o.Product).Include(o => o.User).Where(a => a.Id == id).ToListAsync();
             Order order = list.FirstOrDefault();
             if (order == null)
             {

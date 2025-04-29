@@ -24,7 +24,7 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<Store> Get(int id)
         {
-            var list = await db.T_Store.Include(o => o.Storage).Include(o => o.WorkHours).ToListAsync();
+            var list = await db.T_Store.Include(o => o.Storage).Include(o => o.WorkHours).Where(a => a.Id == id).ToListAsync();
             Store store = list.FirstOrDefault();
             if (store == null)
             {

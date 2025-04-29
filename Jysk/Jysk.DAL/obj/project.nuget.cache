@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "neGV4U0gQd0=",
+  "dgSpecHash": "mglv2zmP7hg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\oitut\\source\\repos\\evgeniy1235002\\Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj",
+  "projectFilePath": "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\oitut\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\oitut\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

@@ -33,10 +33,6 @@ public class StoreController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(store.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(store);
         return Ok(store);
     }

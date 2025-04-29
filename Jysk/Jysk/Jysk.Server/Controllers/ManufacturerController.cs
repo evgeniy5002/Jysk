@@ -36,10 +36,8 @@ namespace Jysk.Server.Controllers
             {
                 return BadRequest(ModelState);
             }
-            if (db.GetById(manufacturer.Id) == null)
-            {
-                return NotFound();
-            }
+            Logger log = new Logger();
+            log.Log(manufacturer.Id.ToString() + manufacturer.Name);
             await db.Update(manufacturer);
             return Ok(manufacturer);
         }

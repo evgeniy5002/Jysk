@@ -33,10 +33,6 @@ public class SupplyController : ControllerBase
         {
             return BadRequest(ModelState);
         }
-        if (db.GetById(supply.Id) == null)
-        {
-            return NotFound();
-        }
         await db.Update(supply);
         return Ok(supply);
     }

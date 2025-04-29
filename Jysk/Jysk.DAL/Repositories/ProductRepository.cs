@@ -24,7 +24,7 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<Product> Get(int id)
         {
-            var list = await db.T_Product.Include(o => o.Manufacturer).Include(o => o.Category).ToListAsync();
+            var list = await db.T_Product.Include(o => o.Manufacturer).Include(o => o.Category).Where(a => a.Id == id).ToListAsync();
             Product product = list.FirstOrDefault();
             if (product == null)
             {

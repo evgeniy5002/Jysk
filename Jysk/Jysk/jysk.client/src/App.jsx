@@ -3,22 +3,26 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import './App.scss';
 import './styles/reset.scss';
 
+import AdminLayout from './Admin/layouts/AdminLayout';
+import Admin from './Admin/pages/Admin';
+import Panel from './Admin/pages/Panel'
+
+import AppLayout from './layouts/AppLayout';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import EditProfile from './components/EditProfile';
+import Categories from './pages/Categories';
 import Favorites from './components/Favorites';
 import MyReviews from './components/MyReviews';
-import AppLayout from './layouts/AppLayout';
 import NotFound from './pages/NotFound';
 import MyOrders from './components/MyOrders';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Search from './pages/Search';
+import Stores from './pages/Stores';
 import Login from './pages/Login';
 import Store from './pages/Store';
 import Home from './pages/Home';
-import Stores from './pages/Stores';
-import Categories from './pages/Categories';
 import Work from './pages/Work';
 
 function App() {
@@ -47,6 +51,11 @@ function App() {
                         <Route path="edit" element={<EditProfile />} />
                     </Route>
                     <Route path="*" element={<NotFound />} />
+                </Route>
+
+                <Route element={<AdminLayout />}>
+                    <Route path="/Admin" element={<Admin />}></Route>
+                    <Route path="/Admin/Panel" element={<Panel />}></Route>
                 </Route>
             </Routes>
         </div>

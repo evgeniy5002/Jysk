@@ -2,16 +2,16 @@
 @import './styles/variables';
 @import './styles/mixins';
 
-html {
-    background-color: $color-background;
-    font-size: 0.9em;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: $font-default;
+}
+
+html {
+    background-color: $color-background;
+    font-size: 0.9em;
 }
 
 main {

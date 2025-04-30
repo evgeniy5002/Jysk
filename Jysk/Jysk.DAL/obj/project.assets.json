@@ -2824,23 +2824,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\oitut\\.nuget\\packages\\": {},
+    "C:\\Users\\MSI\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj",
+      "projectUniqueName": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj",
       "projectName": "Jysk.DAL",
-      "projectPath": "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj",
-      "packagesPath": "C:\\Users\\oitut\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Jysk.DAL\\obj\\",
+      "projectPath": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj",
+      "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.DAL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\oitut\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2855,8 +2855,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Logger\\Logger.csproj": {
-              "projectPath": "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Logger\\Logger.csproj"
+            "D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj": {
+              "projectPath": "D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj"
             }
           }
         }
@@ -2898,7 +2898,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

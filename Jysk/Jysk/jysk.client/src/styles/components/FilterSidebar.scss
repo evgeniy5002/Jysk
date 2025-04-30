@@ -46,17 +46,21 @@
             height: 50px;
             border-radius: 5px;
             font-weight: bold;
-
             @include btn-default;
-            
         }
-
         .clear-all{
             width: 40%;
             background-color: $color-surface;
             border: 1px solid black;
             color: $color-text-dark;
         }
+        .clear-all.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+            position: relative;
+            cursor: not-allowed;
+        }
+        
         .show-results{
             width: 60%;
             background-color: $color-accent;

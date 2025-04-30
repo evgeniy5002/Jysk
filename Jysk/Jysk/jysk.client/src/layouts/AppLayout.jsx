@@ -2,15 +2,19 @@ import React, { useState } from 'react';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Prefooter from "../components/Prefooter";
-import FilterSidebar from "../components/FilterSidebar";
+import Sidebar from "../components/Sidebar";
+import FilterSidebarContent from "../components/FilterSidebarContent";
+import SortSidebarContent from "../components/SortSidebarContent";
 import { Outlet } from 'react-router-dom';
 
 function AppLayout() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [sidebarType, setSidebarType] = useState('filter');
     const [promotionChecked, setPromotionChecked] = useState(false);
 
-    const toggleSidebar = () => {
-        setSidebarOpen(prev => !prev);
+    const openSidebar = (type) => {
+        setSidebarType(type);
+        setSidebarOpen(true);
     };
 
     const handlePromotionChange = (nextChecked) => {
@@ -26,21 +30,28 @@ function AppLayout() {
             }}
         >
             {sidebarOpen && (
-                <div 
-                    className="sidebar-overlay" 
-                    onClick={() => setSidebarOpen(false)}
-                />
+                <div className="sidebar-overlay" onClick={() => setSidebarOpen(false)} />
             )}
- <FilterSidebar
+
+            <Sidebar
                 isOpen={sidebarOpen}
                 onClose={() => setSidebarOpen(false)}
-                promotionChecked={promotionChecked}
-                onPromotionChange={handlePromotionChange}
-            />
+                title={sidebarType === 'sort' ? 'Sort' : 'Filters'}
+                disableClear={sidebarType === 'sort'} 
+            >
+                {sidebarType === 'sort' ? (
+                    <SortSidebarContent />
+                ) : (
+                    <FilterSidebarContent
+                        promotionChecked={promotionChecked}
+                        onPromotionChange={handlePromotionChange}
+                    />
+                )}
+            </Sidebar>
 
             <Header />
             <main className="main-content">
-                <Outlet context={{ toggleSidebar, promotionChecked, onPromotionChange: handlePromotionChange }} />
+                <Outlet context={{ openSidebar, promotionChecked, onPromotionChange: handlePromotionChange }} />
             </main>
             <Prefooter />
             <Footer />

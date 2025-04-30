@@ -21,11 +21,12 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<IEnumerable<Order>> GetAll()
         {
-            return await db.T_Order.ToListAsync();
+            return await db.T_Order.Include(o => o.Product).Include(o => o.User).ToListAsync();
         }
         public async Task<Order> Get(int id)
         {
-            Order order = await db.T_Order.FindAsync(id);
+            var list = await db.T_Order.Include(o => o.Product).Include(o => o.User).Where(a => a.Id == id).ToListAsync();
+            Order order = list.FirstOrDefault();
             if (order == null)
             {
                 Logger log = new Logger();

@@ -37,10 +37,12 @@ namespace Jysk.BLL.Servives
                         ProductId = entity.ProductId,
                         Count = entity.Count
                     };
+                    Logger log = new Logger();
+                    log.Log("Supply added successfully" + entity.Id + " " + entity.ProductId + " " + entity.Count);
                     await db.R_Supply.Create(res);
                     await db.Save();
-                    Logger log = new Logger();
-                    log.Log("Supply added successfully");
+                    
+                    
                 }
             }
             catch (Exception ex)
@@ -102,13 +104,13 @@ namespace Jysk.BLL.Servives
                 log.Log("Error: GetById Supply doesnt exist");
                 throw new ValidationException("Supply doesnt exist", "");
             }
-            return new SupplyDTO
-            {
-                Id = res.Id,
-                ProductId = res.ProductId,
-                Count = res.Count,
-                Product = res.Product.Name
-            };
+                return new SupplyDTO
+                {
+                    Id = res.Id,
+                    ProductId = res.ProductId,
+                    Count = res.Count,
+                    Product = res.Product.Name
+                };
         }
         public async Task<IEnumerable<SupplyDTO>> GetAll()
         {

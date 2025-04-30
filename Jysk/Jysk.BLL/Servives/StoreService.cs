@@ -121,14 +121,14 @@ namespace Jysk.BLL.Servives
                 Storage = res.Storage.Name,
                 Photo = res.Photo,
                 WorkHoursId = res.WorkHoursId,
-                WorkHours = res.WorkHours.Select(x => $"{x.Start}-{x.End}").ToArray()
+                WorkHours = res.WorkHours.Start + "-" + res.WorkHours.End,
             };
         }
         public async Task<IEnumerable<StoreDTO>> GetAll()
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Store, StoreDTO>()
             .ForMember("Storage", opt => opt.MapFrom(c => c.Storage.Name))
-            .ForMember("WorkHours", opt => opt.MapFrom(c => c.WorkHours.Select(x => $"{x.Start}-{x.End}").ToArray())));
+            .ForMember("WorkHours", opt => opt.MapFrom(c => c.WorkHours.Start + "-" + c.WorkHours.End)));
             var mapper = new Mapper(config);
             return mapper.Map<IEnumerable<Store>, IEnumerable<StoreDTO>>(await db.R_Store.GetAll());
         }

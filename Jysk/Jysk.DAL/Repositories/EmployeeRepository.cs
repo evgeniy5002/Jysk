@@ -20,11 +20,12 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<IEnumerable<Employee>> GetAll()
         {
-            return await db.T_Employee.ToListAsync();
+            return await db.T_Employee.Include(o=>o.User).ToListAsync();
         }
         public async Task<Employee> Get(int id)
         {
-            Employee employee = await db.T_Employee.FindAsync(id);
+            var list = await db.T_Employee.Include(o => o.User).Where(a => a.Id == id).ToListAsync();
+            Employee employee = list.FirstOrDefault();
             if (employee == null)
             {
                 Logger log = new Logger();

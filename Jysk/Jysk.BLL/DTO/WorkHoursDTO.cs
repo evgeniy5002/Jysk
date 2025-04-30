@@ -12,7 +12,5 @@ namespace Jysk.BLL.DTO
         public string Day { get; set; }
         public string Start { get; set; }
         public string End { get; set; }
-        public int[] StoreId { get; set; }
-        public string[] Store { get; set; }
     }
 }

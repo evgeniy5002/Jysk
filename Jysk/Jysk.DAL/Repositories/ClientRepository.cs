@@ -20,11 +20,12 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<IEnumerable<Client>> GetAll()
         {
-            return await db.T_Client.ToListAsync();
+            return await db.T_Client.Include(o => o.User).ToListAsync();
         }
         public async Task<Client> Get(int id)
         {
-            Client client = await db.T_Client.FindAsync(id);
+            var list = await db.T_Client.Include(o => o.User).Where(a => a.Id == id).ToListAsync();
+            Client client = list.FirstOrDefault();
             if (client == null)
             {
                 Logger log = new Logger();
@@ -66,10 +67,10 @@ namespace Jysk.DAL.Repositories
         {
             try
             {
-                Cargo cargo = await db.T_Cargo.FindAsync(id);
-                if (cargo != null)
+                Client client = await db.T_Client.FindAsync(id);
+                if (client != null)
                 {
-                    db.T_Cargo.Remove(cargo);
+                    db.T_Client.Remove(client);
                 }
                 Logger log = new Logger();
                 log.Log("Client deleted from database successfully");

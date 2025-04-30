@@ -1,30 +1,43 @@
+using Jysk.BLL.Infrastructure;
+using Jysk.BLL.Interfaces;
+using Jysk.BLL.Servives;
+using Jysk.DAL.EF;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors();
 
-// Add services to the container.
+string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
+builder.Services.AddJyskContext(connection);
+builder.Services.AddUnitOfWorkService();
+builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
+builder.Services.AddTransient<ICargoService, CargoService>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IClientService, ClientService>();
+builder.Services.AddTransient<IDeliveryService, DeliveryService>();
+builder.Services.AddTransient<IEmployeeService, EmployeeService>();
+builder.Services.AddTransient<IOrderService, OrderService>();
+builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IReviewService, ReviewService>();
+builder.Services.AddTransient<IStorageService, StorageService>();
+builder.Services.AddTransient<IStoreService, StoreService>();
+builder.Services.AddTransient<ISupplyService, SupplyService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IWorkHoursService, WorkHoursService>();
+builder.Services.AddTransient<IWriteOffService, WriteOffService>();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
-app.UseDefaultFiles();
-app.UseStaticFiles();
-
-// Configure the HTTP request pipeline.
+app.UseCors(builder => builder.WithOrigins("https://localhost:51042").AllowAnyHeader().AllowAnyMethod());
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
 app.MapControllers();
-
-app.MapFallbackToFile("/index.html");
 
 app.Run();

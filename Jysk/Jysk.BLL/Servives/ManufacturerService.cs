@@ -83,7 +83,7 @@ namespace Jysk.BLL.Servives
                 await db.R_Manufacturer.Delete(id);
                 await db.Save();
                 Logger log = new Logger();
-                log.Log("Manufacturer deleted successfully");
+                log.Log("Manufacturer deleted successfully" + id);
             }
             catch (Exception ex)
             {
@@ -93,6 +93,8 @@ namespace Jysk.BLL.Servives
         }
         public async Task<ManufacturerDTO> GetById(int id)
         {
+            Logger log1 = new Logger();
+            log1.Log("TEST" + id.ToString());
             var res = await db.R_Manufacturer.Get(id);
             if (res == null)
             {

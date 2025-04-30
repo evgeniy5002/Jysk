@@ -20,11 +20,12 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<IEnumerable<Supply>> GetAll()
         {
-            return await db.T_Supply.ToListAsync();
+            return await db.T_Supply.Include(o => o.Product).ToListAsync();
         }
         public async Task<Supply> Get(int id)
         {
-            Supply supply = await db.T_Supply.FindAsync(id);
+            var list = await db.T_Supply.Include(o => o.Product).Where(a => a.Id == id).ToListAsync();
+            Supply supply = list.FirstOrDefault();
             if (supply == null)
             {
                 Logger log = new Logger();

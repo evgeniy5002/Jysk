@@ -12,6 +12,6 @@ namespace Jysk.BLL.DTO
         public int Rating { get; set; }
         public string Description { get; set; }
         public int ProductId { get; set; }
-        public string Product { get; set; }
+        public string? Product { get; set; }
     }
 }

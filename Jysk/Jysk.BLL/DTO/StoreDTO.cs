@@ -13,9 +13,9 @@ namespace Jysk.BLL.DTO
         public int HouseNumber { get; set; }
         public int TotalProductSum { get; set; }
         public int StorageId { get; set; }
-        public string Storage { get; set; }
-        public string Photo { get; set; }
-        public int[] WorkHoursId { get; set; }
-        public string[] WorkHours { get; set; }
+        public string? Storage { get; set; }
+        public string? Photo { get; set; }
+        public int WorkHoursId { get; set; }
+        public string? WorkHours { get; set; }
     }
 }

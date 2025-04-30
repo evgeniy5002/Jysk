@@ -1,0 +1,200 @@
+@import '../variables';
+@import '../mixins';
+@import '../utilities';
+
+.filter-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0; 
+    height: 100%;
+    width: $breakpoint-mobile;
+    background: $color-surface;
+    z-index: 1000;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    padding: 20px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+
+    &.open {
+        transform: translateX(0); 
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+        width: 100%;
+    }
+    .scrollable-container {
+        
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: none;
+        -ms-overflow-style: none; 
+    }
+        .scrollable-container::-webkit-scrollbar {
+            display: none; 
+        }
+        
+    .buttons-container{
+        display: flex;
+        gap: 10px;
+        padding-top: 20px;
+        margin-top: auto;
+
+        >*{
+            padding: 15px 0px;
+            height: 50px;
+            border-radius: 5px;
+            font-weight: bold;
+
+            @include btn-default;
+            
+        }
+
+        .clear-all{
+            width: 40%;
+            background-color: $color-surface;
+            border: 1px solid black;
+            color: $color-text-dark;
+        }
+        .show-results{
+            width: 60%;
+            background-color: $color-accent;
+            color: $color-text-light;
+        }
+
+        @media (max-width: $breakpoint-mobile-xs) {
+            width: 100%;
+            flex-direction: column;
+
+            .clear-all, .show-results{
+                width: 100%;
+            }
+        }
+    }
+    
+    .filter-sidebar__element{
+        width: 100%;
+        border-bottom: $border-light;
+
+        .header{
+            position: relative;
+            justify-content: flex-end !important; 
+
+            h3 {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 0;
+            }
+            button {
+                margin-left: auto;
+                z-index: 1;
+                padding: 5px 10px;
+                @include btn-default;
+
+                img{
+                    width: 10px;
+                    height: 10px;
+                }
+            }
+        }
+        .container {
+            display: flex;
+            padding: 25px 0px;
+            width: 100%;
+            height: 100%;
+            justify-content: space-between;
+            border: none;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            background-color: $color-surface;
+            
+            .input-checkbox {
+                width: 20px;        
+                height: 20px;     
+                accent-color: gray; 
+                cursor: pointer;
+            }
+            
+            .price-slider{
+                width: 90%;
+
+                .MuiSlider-thumb {
+                    background-color:$color-surface;
+                    border: 7px solid black;
+                    width: 24px;
+                    height: 24px;
+                }
+                .MuiSlider-track {
+                    background-color: $color-accent; 
+                    border: none;
+                    height: 3px;
+                }
+                .MuiSlider-rail {
+                    background-color: black; 
+                    opacity: 100%;
+                    height: 3px;
+                }
+            }
+            .input-wrapper {
+                position: relative;
+                width: 100px;
+            
+                .input-label {
+                    position: absolute;
+                    top: 4px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    font-size: 12px;
+                    color: #555;
+                    pointer-events: none;
+                }
+            
+                .input-value {
+                    @extend .input-element;
+            
+                    padding-top: 20px;
+                    padding-bottom: 5px;
+                    width: 100%;
+                    text-align: center;
+                }
+                .input-value::-webkit-inner-spin-button,
+                .input-value::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+                }
+            }
+            
+            .input-element{
+                background-color: $color-surface;
+                border-radius: 5px;
+                font-size: 14px;
+                border:$border-light;
+            }
+
+            .input-button{
+                @extend .input-element;
+                padding: 15px 20px;
+            }
+        }
+        .container--filter-buttons{
+            @media (max-width: $breakpoint-mobile) {
+                flex-direction: column!important;
+                .input-button { 
+                    width:200px;
+
+                    @media (max-width: $breakpoint-mobile-xs){
+                        width: 100%;
+                    }
+                }
+              }
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 15px;
+        }
+    }
+}

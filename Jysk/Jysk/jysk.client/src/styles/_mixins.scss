@@ -40,4 +40,8 @@
       width: 100%;
     }
 }
-
+@mixin btn-default{
+    border: none;
+    background-color: unset;
+    cursor: pointer;
+}

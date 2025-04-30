@@ -6,10 +6,20 @@
     display: flex;
     flex-direction: column;
 }
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.space-between{
+    justify-content: space-between;
+}
+.gap-sm{
+    gap: 10px;
+}
 .gap-medium {
     gap: 15px;
 }
-
 .cursor-pointer{
     cursor: pointer;
 }

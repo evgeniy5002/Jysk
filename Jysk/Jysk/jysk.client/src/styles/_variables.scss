@@ -16,9 +16,12 @@ $color-border: #d4d4d4;
 $color-text-muted: #231F20BF; 
 $color-text-transparent: #00000080; 
 $color-text-light: #ffffff;
+$color-text-dark: #000000;
+
 
 $shadow-light: 0 3px 5px rgba(0, 0, 0, 0.1);
 $overlay-light: rgba(0, 0, 0, 0.1);
+$border-light: 1px solid #00000080;
 
 $max-width: 1170px;
 $breakpoint-lg: 992px;

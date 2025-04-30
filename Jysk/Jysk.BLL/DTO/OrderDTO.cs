@@ -10,12 +10,12 @@ namespace Jysk.BLL.DTO
     {
         public int Id { get; set; }
         public int ProductId { get; set; }
-        public string Product { get; set; }
+        public string? Product { get; set; }
         public int Count { get; set; }
         public int ProductionPrice { get; set; }
         public int FinalPrice { get; set; }
         public int MarkUp { get; set; }
         public int UserId { get; set; }
-        public string User { get; set; }
+        public string? User { get; set; }
     }
 }

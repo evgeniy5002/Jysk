@@ -20,11 +20,12 @@ namespace Jysk.DAL.Repositories
         }
         public async Task<IEnumerable<Cargo>> GetAll()
         {
-            return await db.T_Cargo.ToListAsync();
+            return await db.T_Cargo.Include(o => o.Product).Include(o => o.StorageFrom).Include(o => o.StorageTo).Include(o => o.Employee).Include(o => o.Employee.User).ToListAsync();
         }
         public async Task<Cargo> Get(int id)
         {
-            Cargo cargo = await db.T_Cargo.FindAsync(id);
+            var list = await db.T_Cargo.Include(o => o.Product).Include(o => o.StorageFrom).Include(o => o.StorageTo).Include(o => o.Employee).Include(o => o.Employee.User).Where(a => a.Id == id).ToListAsync();
+            Cargo cargo = list.FirstOrDefault();
             if (cargo == null)
             {
                 Logger log = new Logger();

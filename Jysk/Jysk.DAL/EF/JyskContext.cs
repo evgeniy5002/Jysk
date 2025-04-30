@@ -33,11 +33,15 @@ namespace Jysk.DAL.EF
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Store>().HasMany(s => s.WorkHoursId).WithMany(w => w.StoreId).UsingEntity(m =>
-            {
-                m.ToTable("StoreToWorkHours");
-            });
+            modelBuilder.Entity<Storage>().HasMany(s => s.CargoFromId).WithOne(c => c.StorageFrom).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Storage>().HasMany(s => s.CargoToId).WithOne(c => c.StorageTo).OnDelete(DeleteBehavior.NoAction);
             base.OnModelCreating(modelBuilder);
+            
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+            base.OnConfiguring(optionsBuilder);
         }
     }
 }

@@ -1031,7 +1031,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj": "1.0.0",
+          "Logger": "1.0.0",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.3"
         },
         "compile": {
@@ -1039,6 +1039,16 @@
         },
         "runtime": {
           "bin/placeholder/Jysk.DAL.dll": {}
+        }
+      },
+      "Logger/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Logger.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Logger.dll": {}
         }
       }
     }
@@ -2850,34 +2860,39 @@
       "type": "project",
       "path": "../Jysk.DAL/Jysk.DAL.csproj",
       "msbuildProject": "../Jysk.DAL/Jysk.DAL.csproj"
+    },
+    "Logger/1.0.0": {
+      "type": "project",
+      "path": "../Logger/Logger.csproj",
+      "msbuildProject": "../Logger/Logger.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "AutoMapper >= 14.0.0",
-      "D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj",
       "Jysk.DAL >= 1.0.0",
+      "Logger >= 1.0.0",
       "Microsoft.Extensions.DependencyInjection >= 9.0.4"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MSI\\.nuget\\packages\\": {},
+    "C:\\Users\\oitut\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.BLL\\Jysk.BLL.csproj",
+      "projectUniqueName": "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Jysk.BLL\\Jysk.BLL.csproj",
       "projectName": "Jysk.BLL",
-      "projectPath": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.BLL\\Jysk.BLL.csproj",
-      "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.BLL\\obj\\",
+      "projectPath": "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Jysk.BLL\\Jysk.BLL.csproj",
+      "packagesPath": "C:\\Users\\oitut\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Jysk.BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\oitut\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2892,11 +2907,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj": {
-              "projectPath": "D:\\Projects\\ASP_Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj"
+            "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj": {
+              "projectPath": "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Jysk.DAL\\Jysk.DAL.csproj"
             },
-            "D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj": {
-              "projectPath": "D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj"
+            "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Logger\\Logger.csproj": {
+              "projectPath": "C:\\Users\\oitut\\source\\repos\\evgeniy50021\\Jysk\\Jysk\\Logger\\Logger.csproj"
             }
           }
         }
@@ -2942,19 +2957,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1105",
-      "level": "Error",
-      "message": "Unable to find project information for 'D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj'. If you are using Visual Studio, this may be because the project is unloaded or not part of the current solution so run a restore from the command-line. Otherwise, the project file may be invalid or missing targets required for restore.",
-      "libraryId": "D:\\Projects\\ASP_Jysk\\Jysk\\Logger\\Logger.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }

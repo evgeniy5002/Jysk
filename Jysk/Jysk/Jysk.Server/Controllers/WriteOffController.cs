@@ -12,9 +12,9 @@ public class WriteOffController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<WriteOffDTO>>> GetAllWriteOff()
+    public async Task<ActionResult<IEnumerable<WriteOffDTO>>> GetAllWriteOff([FromQuery] string sort)
     {
-        return new ObjectResult(await db.GetAll());
+        return new ObjectResult(await db.GetAll(sort));
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<WriteOffDTO>> GetWriteOff(int id)

@@ -12,9 +12,9 @@ public class SupplyController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<SupplyDTO>>> GetAllSupply()
+    public async Task<ActionResult<IEnumerable<SupplyDTO>>> GetAllSupply([FromQuery] string sort)
     {
-        return new ObjectResult(await db.GetAll());
+        return new ObjectResult(await db.GetAll(sort));
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<SupplyDTO>> GetSupply(int id)

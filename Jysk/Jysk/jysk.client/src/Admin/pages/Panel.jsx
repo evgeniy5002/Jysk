@@ -126,11 +126,28 @@ function AdminTest() {
         }));
     };
 
-    const GetAll = () => {
-        axios.get(`${url}/${k_value}`)
+    const [sortDir, setSortDir] = useState({
+        Sort: true,
+    });
+
+    const SortChange = (e) => {
+        var value = e.target.innerText;
+        if (sortDir) {
+            value += "Asc";
+            setSortDir(false);
+        }
+        else {
+            value += "Desc";
+            setSortDir(true);
+        }
+        GetAll(value);
+    }
+
+    const GetAll = (sort) => {
+        axios.get(`${url}/${k_value}`, { params: { sort: sort } })
             .then(response => setList(response.data))
             .catch(error => {
-                console.error("Error during Supply axios request", error);
+                console.error("Error during axios request", error);
             });
     };
 
@@ -153,7 +170,7 @@ function AdminTest() {
                 }
             })
             .catch(error => {
-                console.error("Error during Supply axios request", error);
+                console.error("Error during axios request", error);
             });
     };
 
@@ -203,14 +220,14 @@ function AdminTest() {
             }
         }))
         axios.post(`${url}/${k_value}`, formData[k_value])
-            .then(() => GetAll())
+            .then(() => GetAll("IdAsc"))
             .then(() => closeWindow())
             .catch(error => {
-                console.error("Error during axios request", error);
+                console.error(`Error during axios request${k_value}`, error);
             });
     };
 
-    
+
     const editFunc = () => {
         setFormData(prev => ({
             ...prev,
@@ -221,15 +238,15 @@ function AdminTest() {
             }
         }))
         axios.put(`${url}/${k_value}`, formData[k_value])
-            .then(() => GetAll())
+            .then(() => GetAll("IdAsc"))
             .then(() => closeWindow())
             .catch(error => {
-                console.error("Error during Supply axios request", error);
+                console.error(`Error during axios request`, error);
             });
     };
 
     const GetAllOptions = (e) => {
-        axios.get(`${url}/${e}`)
+        axios.get(`${url}/${e}`, { params: { sort: "IdAsc" } })
             .then(response => setOptions(prev => ({
                 ...prev,
                 [e]: response.data
@@ -241,7 +258,7 @@ function AdminTest() {
 
 
     useEffect(() => {
-        GetAll();
+        GetAll("IdAsc");
         for (var key in options) {
             GetAllOptions(key);
         }
@@ -254,7 +271,7 @@ function AdminTest() {
                 <CreateButton></CreateButton>
             </div>
             <div>
-                <AdminTable list={list} e_func={editWindow} o_func={openConfirmation} />
+                <AdminTable list={list} e_func={editWindow} o_func={openConfirmation} i_func={SortChange} />
             </div>
             <ConfirmDelete i_url={url} i_id={id.Id} get={GetAll} k_value={k_value} />
             <div className="data-window" id="data">

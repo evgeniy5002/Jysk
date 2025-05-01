@@ -18,9 +18,29 @@ namespace Jysk.DAL.Repositories
         {
             this.db = db;
         }
-        public async Task<IEnumerable<Store>> GetAll()
+        public async Task<IEnumerable<Store>> GetAll(string sort = "IdAsc")
         {
-            return await db.T_Store.Include(o => o.Storage).Include(o=>o.WorkHours).ToListAsync();
+            IQueryable<Store>? arr = db.T_Store.Include(o => o.Storage).Include(o => o.WorkHours);
+            SortState sortstate = (SortState)Enum.Parse(typeof(SortState), sort);
+            arr = sortstate switch
+            {
+                SortState.IdAsc => arr.OrderBy(s => s.Id),
+                SortState.IdDesc => arr.OrderByDescending(s => s.Id),
+                SortState.NameAsc => arr.OrderBy(s => s.Name),
+                SortState.NameDesc => arr.OrderByDescending(s => s.Name),
+                SortState.HouseNumberAsc => arr.OrderBy(s => s.HouseNumber),
+                SortState.HouseNumberDesc => arr.OrderByDescending(s => s.HouseNumber),
+                SortState.TotalProductSumAsc => arr.OrderBy(s => s.TotalProductSum),
+                SortState.TotalProductSumDesc => arr.OrderByDescending(s => s.TotalProductSum),
+                SortState.StorageAsc => arr.OrderBy(s => s.Storage),
+                SortState.StorageDesc => arr.OrderByDescending(s => s.Storage),
+                SortState.PhotoAsc => arr.OrderBy(s => s.Photo),
+                SortState.PhotoDesc => arr.OrderByDescending(s => s.Photo),
+                SortState.WorkHoursAsc => arr.OrderBy(s => s.WorkHours),
+                SortState.WorkHoursDesc => arr.OrderByDescending(s => s.WorkHours),
+                _ => arr.OrderBy(s => s.Id)
+            };
+            return await arr.ToListAsync();
         }
         public async Task<Store> Get(int id)
         {

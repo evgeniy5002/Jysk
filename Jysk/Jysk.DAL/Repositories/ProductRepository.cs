@@ -18,9 +18,35 @@ namespace Jysk.DAL.Repositories
         {
             this.db = db;
         }
-        public async Task<IEnumerable<Product>> GetAll()
+        public async Task<IEnumerable<Product>> GetAll(string sort = "IdAsc")
         {
-            return await db.T_Product.Include(o => o.Manufacturer).Include(o=>o.Category).ToListAsync();
+            IQueryable<Product>? arr = db.T_Product.Include(o => o.Manufacturer).Include(o => o.Category);
+            SortState sortstate = (SortState)Enum.Parse(typeof(SortState), sort);
+            arr = sortstate switch
+            {
+                SortState.IdAsc => arr.OrderBy(s => s.Id),
+                SortState.IdDesc => arr.OrderByDescending(s => s.Id),
+                SortState.NameAsc => arr.OrderBy(s => s.Name),
+                SortState.NameDesc => arr.OrderByDescending(s => s.Name),
+                SortState.PriceAsc => arr.OrderBy(s => s.Price),
+                SortState.PriceDesc => arr.OrderByDescending(s => s.Price),
+                SortState.ManufacturerAsc => arr.OrderBy(s => s.Manufacturer.Name),
+                SortState.ManufacturerDesc => arr.OrderByDescending(s => s.Manufacturer.Name),
+                SortState.RatingAsc => arr.OrderBy(s => s.Rating),
+                SortState.RatingDesc => arr.OrderByDescending(s => s.Rating),
+                SortState.DescriptionAsc => arr.OrderBy(s => s.Description),
+                SortState.DescriptionDesc => arr.OrderByDescending(s => s.Description),
+                SortState.DeliveryAsc => arr.OrderBy(s => s.Delivery),
+                SortState.DeliveryDesc => arr.OrderByDescending(s => s.Delivery),
+                SortState.CategoryAsc => arr.OrderBy(s => s.Category.Name),
+                SortState.CategoryDesc => arr.OrderByDescending(s => s.Category.Name),
+                SortState.DiscountAsc => arr.OrderBy(s => s.Discount),
+                SortState.DiscountDesc => arr.OrderByDescending(s => s.Discount),
+                SortState.PhotoAsc => arr.OrderBy(s => s.Photo),
+                SortState.PhotoDesc => arr.OrderByDescending(s => s.Photo),
+                _ => arr.OrderBy(s => s.Id)
+            };
+            return await arr.ToListAsync();
         }
         public async Task<Product> Get(int id)
         {

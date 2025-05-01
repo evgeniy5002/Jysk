@@ -19,9 +19,27 @@ namespace Jysk.DAL.Repositories
         {
             this.db = db;
         }
-        public async Task<IEnumerable<Order>> GetAll()
+        public async Task<IEnumerable<Order>> GetAll(string sort = "IdAsc")
         {
-            return await db.T_Order.Include(o => o.Product).Include(o => o.User).ToListAsync();
+            IQueryable<Order>? arr = db.T_Order.Include(o => o.Product).Include(o => o.User);
+            SortState sortstate = (SortState)Enum.Parse(typeof(SortState), sort);
+            arr = sortstate switch
+            {
+                SortState.IdAsc => arr.OrderBy(s => s.Id),
+                SortState.IdDesc => arr.OrderByDescending(s => s.Id),
+                SortState.ProductAsc => arr.OrderBy(s => s.Product.Name),
+                SortState.ProductDesc => arr.OrderByDescending(s => s.Product.Name),
+                SortState.FinalPriceAsc => arr.OrderBy(s => s.FinalPrice),
+                SortState.FinalPriceDesc => arr.OrderByDescending(s => s.FinalPrice),
+                SortState.UserAsc => arr.OrderBy(s => s.User.Name),
+                SortState.UserDesc => arr.OrderByDescending(s => s.User.Name),
+                SortState.MarkUpAsc => arr.OrderBy(s => s.MarkUp),
+                SortState.MarkUpDesc => arr.OrderByDescending(s => s.MarkUp),
+                SortState.ProductionPriceAsc => arr.OrderBy(s => s.ProductionPrice),
+                SortState.ProductionPriceDesc => arr.OrderByDescending(s => s.ProductionPrice),
+                _ => arr.OrderBy(s => s.Id)
+            };
+            return await arr.ToListAsync();
         }
         public async Task<Order> Get(int id)
         {

@@ -12,9 +12,9 @@ public class UserController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserDTO>>> GetAllUser()
+    public async Task<ActionResult<IEnumerable<UserDTO>>> GetAllUser([FromQuery] string sort)
     {
-        return new ObjectResult(await db.GetAll());
+        return new ObjectResult(await db.GetAll(sort));
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<UserDTO>> GetUser(int id)

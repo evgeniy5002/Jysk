@@ -15,9 +15,9 @@ namespace Jysk.Server.Controllers
             this.db = db;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ManufacturerDTO>>> GetAllManufacturer()
+        public async Task<ActionResult<IEnumerable<ManufacturerDTO>>> GetAllManufacturer([FromQuery] string sort)
         {
-            return new ObjectResult(await db.GetAll());
+            return new ObjectResult(await db.GetAll(sort));
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<ManufacturerDTO>> GetManufacturer(int id)

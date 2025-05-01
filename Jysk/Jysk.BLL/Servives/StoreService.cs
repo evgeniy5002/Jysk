@@ -124,13 +124,13 @@ namespace Jysk.BLL.Servives
                 WorkHours = res.WorkHours.Start + "-" + res.WorkHours.End,
             };
         }
-        public async Task<IEnumerable<StoreDTO>> GetAll()
+        public async Task<IEnumerable<StoreDTO>> GetAll(string sort)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Store, StoreDTO>()
             .ForMember("Storage", opt => opt.MapFrom(c => c.Storage.Name))
             .ForMember("WorkHours", opt => opt.MapFrom(c => c.WorkHours.Start + "-" + c.WorkHours.End)));
             var mapper = new Mapper(config);
-            return mapper.Map<IEnumerable<Store>, IEnumerable<StoreDTO>>(await db.R_Store.GetAll());
+            return mapper.Map<IEnumerable<Store>, IEnumerable<StoreDTO>>(await db.R_Store.GetAll(sort));
         }
     }
 }

@@ -118,10 +118,10 @@ namespace Jysk.BLL.Servives
                 Phone = res.Phone
             };
         }
-        public async Task<IEnumerable<UserDTO>> GetAll()
+        public async Task<IEnumerable<UserDTO>> GetAll(string sort)
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User,UserDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(await db.R_User.GetAll());
+            return mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(await db.R_User.GetAll(sort));
         }
     }
 }

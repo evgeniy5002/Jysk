@@ -12,9 +12,9 @@ public class OrderController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<OrderDTO>>> GetAllOrder()
+    public async Task<ActionResult<IEnumerable<OrderDTO>>> GetAllOrder([FromQuery] string sort)
     {
-        return new ObjectResult(await db.GetAll());
+        return new ObjectResult(await db.GetAll(sort));
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<OrderDTO>> GetOrder(int id)

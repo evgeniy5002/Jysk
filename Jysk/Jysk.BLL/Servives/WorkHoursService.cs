@@ -112,11 +112,11 @@ namespace Jysk.BLL.Servives
                 End = res.End,
             };
         }
-        public async Task<IEnumerable<WorkHoursDTO>> GetAll()
+        public async Task<IEnumerable<WorkHoursDTO>> GetAll(string sort)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<WorkHours, WorkHoursDTO>());
             var mapper = new Mapper(config);
-            return mapper.Map<IEnumerable<WorkHours>, IEnumerable<WorkHoursDTO>>(await db.R_WorkHours.GetAll());
+            return mapper.Map<IEnumerable<WorkHours>, IEnumerable<WorkHoursDTO>>(await db.R_WorkHours.GetAll(sort));
         }
     }
 }

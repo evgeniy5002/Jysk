@@ -12,9 +12,9 @@ public class ClientController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ClientDTO>>> GetAllClient()
+    public async Task<ActionResult<IEnumerable<ClientDTO>>> GetAllClient([FromQuery] string sort)
     {
-        return new ObjectResult(await db.GetAll());
+        return new ObjectResult(await db.GetAll(sort));
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<ClientDTO>> GetClient(int id)

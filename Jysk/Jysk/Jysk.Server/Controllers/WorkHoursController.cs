@@ -12,9 +12,9 @@ public class WorkHoursController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<WorkHoursDTO>>> GetAllWorkHours()
+    public async Task<ActionResult<IEnumerable<WorkHoursDTO>>> GetAllWorkHours([FromQuery] string sort)
     {
-        return new ObjectResult(await db.GetAll());
+        return new ObjectResult(await db.GetAll(sort));
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<WorkHoursDTO>> GetWorkHours(int id)

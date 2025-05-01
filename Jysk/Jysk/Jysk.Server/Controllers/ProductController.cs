@@ -13,9 +13,9 @@ public class ProductController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ProductDTO>>> GetAllProduct()
+    public async Task<ActionResult<IEnumerable<ProductDTO>>> GetAllProduct([FromQuery] string sort)
     {
-        return new ObjectResult(await db.GetAll());
+        return new ObjectResult(await db.GetAll(sort));
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<ProductDTO>> GetProduct(int id)

@@ -113,12 +113,12 @@ namespace Jysk.BLL.Servives
                 Product = res.Product.Name
             };
         }
-        public async Task<IEnumerable<ReviewDTO>> GetAll()
+        public async Task<IEnumerable<ReviewDTO>> GetAll(string sort)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Review, ReviewDTO>()
             .ForMember("Product", opt => opt.MapFrom(c => c.Product.Name)));
             var mapper = new Mapper(config);
-            return mapper.Map<IEnumerable<Review>, IEnumerable<ReviewDTO>>(await db.R_Review.GetAll());
+            return mapper.Map<IEnumerable<Review>, IEnumerable<ReviewDTO>>(await db.R_Review.GetAll(sort));
         }
     }
 }

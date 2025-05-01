@@ -12,9 +12,9 @@ public class CategoryController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetAllCategory()
+    public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetAllCategory([FromQuery] string sort)
     {
-        return new ObjectResult(await db.GetAll());
+        return new ObjectResult(await db.GetAll(sort));
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<CategoryDTO>> GetCategory(int id)

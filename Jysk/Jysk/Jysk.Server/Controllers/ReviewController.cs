@@ -12,9 +12,9 @@ public class ReviewController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ReviewDTO>>> GetAllReview()
+    public async Task<ActionResult<IEnumerable<ReviewDTO>>> GetAllReview([FromQuery] string sort)
     {
-        return new ObjectResult(await db.GetAll());
+        return new ObjectResult(await db.GetAll(sort));
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<ReviewDTO>> GetReview(int id)

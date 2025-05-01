@@ -13,6 +13,6 @@ namespace Jysk.BLL.Interfaces
         Task Update(StorageDTO entity);
         Task Delete(int id);
         Task<StorageDTO> GetById(int id);
-        Task<IEnumerable<StorageDTO>> GetAll();
+        Task<IEnumerable<StorageDTO>> GetAll(string sort);
     }
 }

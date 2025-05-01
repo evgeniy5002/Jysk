@@ -12,9 +12,9 @@ public class DeliveryController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<DeliveryDTO>>> GetDelivery()
+    public async Task<ActionResult<IEnumerable<DeliveryDTO>>> GetDelivery([FromQuery] string sort)
     {
-        return new ObjectResult(await db.GetAll());
+        return new ObjectResult(await db.GetAll(sort));
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<DeliveryDTO>> GetDelivery(int id)

@@ -114,12 +114,12 @@ namespace Jysk.BLL.Servives
                 Sum = res.Sum
             };
         }
-        public async Task<IEnumerable<ClientDTO>> GetAll()
+        public async Task<IEnumerable<ClientDTO>> GetAll(string sort)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Client, ClientDTO>()
             .ForMember("User", opt => opt.MapFrom(c => c.User.Name)));
             var mapper = new Mapper(config);
-            return mapper.Map<IEnumerable<Client>, IEnumerable<ClientDTO>>(await db.R_Client.GetAll());
+            return mapper.Map<IEnumerable<Client>, IEnumerable<ClientDTO>>(await db.R_Client.GetAll(sort));
         }
     }
 }

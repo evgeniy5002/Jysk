@@ -6,7 +6,7 @@ function ConfirmDelete({ i_url, i_id, get, k_value}) {
     const Delete = () => {
         axios.delete(`${i_url}/${k_value}/${i_id}`)
             .then(() => closeConfirmation())
-            .then(() => get())
+            .then(() => get("IdAsc"))
             .catch(error => {
                 console.error("Error during axios request", error);
             });

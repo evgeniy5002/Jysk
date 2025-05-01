@@ -12,9 +12,9 @@ public class CargoController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CargoDTO>>> GetAllCargo()
+    public async Task<ActionResult<IEnumerable<CargoDTO>>> GetAllCargo([FromQuery] string sort)
     {
-        return new ObjectResult(await db.GetAll());
+        return new ObjectResult(await db.GetAll(sort));
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<CargoDTO>> GetCargo(int id)

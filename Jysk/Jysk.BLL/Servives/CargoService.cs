@@ -124,7 +124,7 @@ namespace Jysk.BLL.Servives
                 Employee = res.Employee.User.Name
             };
         }
-        public async Task<IEnumerable<CargoDTO>> GetAll()
+        public async Task<IEnumerable<CargoDTO>> GetAll(string sort)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Cargo, CargoDTO>()
             .ForMember("Product", opt => opt.MapFrom(c => c.Product.Name))
@@ -132,7 +132,7 @@ namespace Jysk.BLL.Servives
             .ForMember("StorageTo", opt => opt.MapFrom(c => c.StorageTo.Name))
             .ForMember("Employee", opt => opt.MapFrom(c=>c.Employee.User.Name)));
             var mapper = new Mapper(config);
-            return mapper.Map<IEnumerable<Cargo>, IEnumerable<CargoDTO>>(await db.R_Cargo.GetAll());
+            return mapper.Map<IEnumerable<Cargo>, IEnumerable<CargoDTO>>(await db.R_Cargo.GetAll(sort));
         }
     }
 }

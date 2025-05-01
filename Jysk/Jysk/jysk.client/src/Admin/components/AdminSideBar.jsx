@@ -51,7 +51,7 @@ const AdminSideBar = () => {
                         <button onClick={handleClick}>Employee</button>
                     </li>
                     <li>
-                        <button onClick={handleClick}>Product</button>
+                        <button onClick={handleClick}>Client</button>
                     </li>
                     <li>
                         <button onClick={handleClick}>Order</button>

@@ -135,15 +135,13 @@ namespace Jysk.BLL.Servives
                 Photo = res.Photo
             };
         }
-        public async Task<IEnumerable<ProductDTO>> GetAll()
+        public async Task<IEnumerable<ProductDTO>> GetAll(string sort)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>()
             .ForMember("Manufacturer", opt => opt.MapFrom(c => c.Manufacturer.Name))
             .ForMember("Category", opt => opt.MapFrom(c => c.Category.Name)));
             var mapper = new Mapper(config);
-            var test = await db.R_Product.Get(1);
-            //Console.WriteLine(test.Manufacturer.Name);
-            return mapper.Map<IEnumerable<Product>, IEnumerable<ProductDTO>>(await db.R_Product.GetAll());
+            return mapper.Map<IEnumerable<Product>, IEnumerable<ProductDTO>>(await db.R_Product.GetAll(sort));
         }
     }
 }

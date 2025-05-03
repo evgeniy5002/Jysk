@@ -109,6 +109,9 @@ function AdminTest() {
         Category: useState([]),
     });
 
+    const [page, setPage] = useState(1);
+
+
     const [id, setId] = useState({
         Id: '',
     })
@@ -125,27 +128,41 @@ function AdminTest() {
             }
         }));
     };
-
-    const [sortDir, setSortDir] = useState({
-        Sort: true,
+    
+    const [sort, setSort] = useState({
+          SortDir: true,
+          Sort: 'IdAsc'
     });
 
     const SortChange = (e) => {
         var value = e.target.innerText;
-        if (sortDir) {
+        if (sort.SortDir) {
             value += "Asc";
-            setSortDir(false);
+            setSort({
+                Sort:value,
+                SortDir: false
+            });
         }
         else {
             value += "Desc";
-            setSortDir(true);
+            setSort({
+                Sort: value,
+                SortDir: true
+            });
         }
+        setPage(1);
         GetAll(value);
     }
 
-    const GetAll = (sort) => {
-        axios.get(`${url}/${k_value}`, { params: { sort: sort } })
-            .then(response => setList(response.data))
+    const GetAll = (c_sort = "IdAsc", c_page = 1) => {
+        axios.get(`${url}/${k_value}`, { params: { sort: c_sort, page:c_page, pageSize:5} })
+            .then(response => {
+                setList(response.data)
+                //if (response.data.length == 0) {
+                //    GetAll(sort.Sort, page);
+                //    setPage(page);
+                //}
+            })
             .catch(error => {
                 console.error("Error during axios request", error);
             });
@@ -209,6 +226,25 @@ function AdminTest() {
         document.getElementById('data').style.display = 'none';
     };
 
+    const changePage = (e) => {
+        const { name } = e.target;
+        if (name == "back" && page>1) {
+            setPage(prev => {
+                const newPage = prev - 1;
+                GetAll(sort.Sort, newPage);
+                return newPage;
+            });
+        }
+        else if (name == "forward" && list.length==5) {
+            setPage(prev => {
+                const newPage = prev + 1;
+                GetAll(sort.Sort, newPage);
+                return newPage;
+            });
+        }
+
+    }
+
 
     const createFunc = () => {
         setFormData(prev => ({
@@ -220,8 +256,9 @@ function AdminTest() {
             }
         }))
         axios.post(`${url}/${k_value}`, formData[k_value])
-            .then(() => GetAll("IdAsc"))
+            .then(() => GetAll())
             .then(() => closeWindow())
+            .then(() => setPage(1))
             .catch(error => {
                 console.error(`Error during axios request${k_value}`, error);
             });
@@ -238,8 +275,9 @@ function AdminTest() {
             }
         }))
         axios.put(`${url}/${k_value}`, formData[k_value])
-            .then(() => GetAll("IdAsc"))
+            .then(() => GetAll())
             .then(() => closeWindow())
+            .then(() => setPage(1))
             .catch(error => {
                 console.error(`Error during axios request`, error);
             });
@@ -258,7 +296,7 @@ function AdminTest() {
 
 
     useEffect(() => {
-        GetAll("IdAsc");
+        GetAll();
         for (var key in options) {
             GetAllOptions(key);
         }
@@ -272,6 +310,10 @@ function AdminTest() {
             </div>
             <div>
                 <AdminTable list={list} e_func={editWindow} o_func={openConfirmation} i_func={SortChange} />
+                <div class = "admin-page-buttons">
+                    <button name="back" onClick={changePage}>Move back</button>
+                    <button name="forward" onClick={changePage}>Move forward</button>
+                </div>
             </div>
             <ConfirmDelete i_url={url} i_id={id.Id} get={GetAll} k_value={k_value} />
             <div className="data-window" id="data">

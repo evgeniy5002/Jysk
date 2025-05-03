@@ -12,9 +12,11 @@ public class StorageController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<StorageDTO>>> GetAllStorage([FromQuery] string sort)
+    public async Task<ActionResult<IEnumerable<StorageDTO>>> GetAllStorage([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
     {
-        return new ObjectResult(await db.GetAll(sort));
+        IEnumerable<StorageDTO> arr = await db.GetAll(sort);
+        IEnumerable<StorageDTO> items = CreatePage(page, pageSize, arr);
+        return new ObjectResult(items);
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<StorageDTO>> GetStorage(int id)
@@ -55,5 +57,19 @@ public class StorageController : ControllerBase
         }
         await db.Delete(id);
         return Ok(id);
+    }
+    private IEnumerable<StorageDTO> CreatePage(int page, int pageSize, IEnumerable<StorageDTO> list)
+    {
+        IEnumerable<StorageDTO> result = new List<StorageDTO>();
+        list = list.Skip(((page - 1) * pageSize));
+        var enumerator = list.GetEnumerator();
+        for (int i = 0; i < pageSize; i++)
+        {
+            if (enumerator.MoveNext())
+            {
+                result = result.Append(enumerator.Current);
+            }
+        }
+        return result;
     }
 }

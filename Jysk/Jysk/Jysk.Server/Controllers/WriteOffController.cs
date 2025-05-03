@@ -12,9 +12,11 @@ public class WriteOffController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<WriteOffDTO>>> GetAllWriteOff([FromQuery] string sort)
+    public async Task<ActionResult<IEnumerable<WriteOffDTO>>> GetAllWriteOff([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
     {
-        return new ObjectResult(await db.GetAll(sort));
+        IEnumerable<WriteOffDTO> arr = await db.GetAll(sort);
+        IEnumerable<WriteOffDTO> items = CreatePage(page, pageSize, arr);
+        return new ObjectResult(items);
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<WriteOffDTO>> GetWriteOff(int id)
@@ -55,5 +57,19 @@ public class WriteOffController : ControllerBase
         }
         await db.Delete(id);
         return Ok(id);
+    }
+    private IEnumerable<WriteOffDTO> CreatePage(int page, int pageSize, IEnumerable<WriteOffDTO> list)
+    {
+        IEnumerable<WriteOffDTO> result = new List<WriteOffDTO>();
+        list = list.Skip(((page - 1) * pageSize));
+        var enumerator = list.GetEnumerator();
+        for (int i = 0; i < pageSize; i++)
+        {
+            if (enumerator.MoveNext())
+            {
+                result = result.Append(enumerator.Current);
+            }
+        }
+        return result;
     }
 }

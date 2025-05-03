@@ -12,9 +12,11 @@ public class CargoController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CargoDTO>>> GetAllCargo([FromQuery] string sort)
+    public async Task<ActionResult<IEnumerable<CargoDTO>>> GetAllCargo([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
     {
-        return new ObjectResult(await db.GetAll(sort));
+        IEnumerable<CargoDTO> arr = await db.GetAll(sort);
+        IEnumerable<CargoDTO> items = CreatePage(page, pageSize, arr);
+        return new ObjectResult(items);
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<CargoDTO>> GetCargo(int id)
@@ -55,5 +57,20 @@ public class CargoController : ControllerBase
         }
         await db.Delete(id);
         return Ok(id);
+    }
+
+    private IEnumerable<CargoDTO> CreatePage(int page, int pageSize, IEnumerable<CargoDTO> list)
+    {
+        IEnumerable<CargoDTO> result = new List<CargoDTO>();
+        list = list.Skip(((page - 1) * pageSize));
+        var enumerator = list.GetEnumerator();
+        for (int i = 0; i < pageSize; i++)
+        {
+            if (enumerator.MoveNext())
+            {
+                result = result.Append(enumerator.Current);
+            }
+        }
+        return result;
     }
 }

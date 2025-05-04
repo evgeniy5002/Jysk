@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import AppLayout from './layouts/AppLayout';
 import Home from './pages/Home';
+import Product from './pages/Product';
 
 import Admin from './Admin/pages/Admin';
 import Search from './pages/Search';
@@ -16,6 +17,8 @@ function App() {
                 <Route element={<AppLayout />}>
                     <Route path="/" element={<Home />} />
                     <Route path="/search" element={<Search />} />
+                    <Route path="/product" element={<Product />} />
+
 
                 </Route>
                 <Route element={<AdminLayout />}>

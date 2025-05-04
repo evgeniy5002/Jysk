@@ -1,0 +1,89 @@
+@import '../variables';
+@import '../mixins';
+
+.product-sumup{
+    width: 380px;
+    
+    @media (max-width: $breakpoint-tablet) {
+        display: none;
+    }
+}
+.product-info-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.product-gallery {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+    .row {
+      margin: 0;
+    }
+  
+    .image-row {
+      display: flex;
+      flex-wrap: nowrap;
+  
+      &.top-row{
+        gap: 10px;
+        
+      }
+      &.top-row img {
+        width: calc(50% - 5px);
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+      }
+      
+  
+      &.bottom-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+  
+        img {
+          width: 100%;
+          aspect-ratio: 1/0.9;
+          height: auto;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  .carousel-container {
+    position: relative;
+    width: 100%;
+
+    .carousel-item-wrapper {
+        width: 100%;
+        position: relative;
+
+        .carousel-img {
+            aspect-ratio: 1.5/1;
+            width: 100%;
+            object-fit: cover;
+            display: block;
+
+            @media (max-width: $breakpoint-mobile) {
+                height: 300px;
+            }
+        }
+    }
+
+    .carousel-stepper {
+        position: absolute;
+        bottom: 8px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 2;
+
+        .MuiMobileStepper-dotActive {
+            background-color: $color-accent;
+        }
+    }
+}

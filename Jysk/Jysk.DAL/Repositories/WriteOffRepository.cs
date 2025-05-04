@@ -18,9 +18,23 @@ namespace Jysk.DAL.Repositories
         {
             this.db = db;
         }
-        public async Task<IEnumerable<WriteOff>> GetAll()
+        public async Task<IEnumerable<WriteOff>> GetAll(string sort = "IdAsc")
         {
-            return await db.T_WriteOff.Include(o => o.Employee).Include(o => o.Employee.User).Include(o => o.Product).Include(o => o.Storage).ToListAsync();
+            IQueryable<WriteOff>? arr = db.T_WriteOff.Include(o => o.Employee).Include(o => o.Employee.User).Include(o => o.Product).Include(o => o.Storage);
+            SortState sortstate = (SortState)Enum.Parse(typeof(SortState), sort);
+            arr = sortstate switch
+            {
+                SortState.IdAsc => arr.OrderBy(s => s.Id),
+                SortState.IdDesc => arr.OrderByDescending(s => s.Id),
+                SortState.ProductAsc => arr.OrderBy(s => s.Product.Name),
+                SortState.ProductDesc => arr.OrderByDescending(s => s.Product.Name),
+                SortState.DateAsc => arr.OrderBy(s => s.Date),
+                SortState.DateDesc => arr.OrderByDescending(s => s.Date),
+                SortState.EmployeeAsc => arr.OrderBy(s => s.Employee.User.Name),
+                SortState.EmployeeDesc => arr.OrderByDescending(s => s.Employee.User.Name),
+                _ => arr.OrderBy(s => s.Id)
+            };
+            return await arr.ToListAsync();
         }
         public async Task<WriteOff> Get(int id)
         {

@@ -123,13 +123,13 @@ namespace Jysk.BLL.Servives
                 ManufacturerId = res.ManufacturerId,
             };
         }
-        public async Task<IEnumerable<DeliveryDTO>> GetAll()
+        public async Task<IEnumerable<DeliveryDTO>> GetAll(string sort)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Delivery, DeliveryDTO>()
             .ForMember("Storage", opt => opt.MapFrom(c => c.Storage.Name))
             .ForMember("Manufacturer", opt => opt.MapFrom(c => c.Manufacturer.Name)));
             var mapper = new Mapper(config);
-            return mapper.Map<IEnumerable<Delivery>, IEnumerable<DeliveryDTO>>(await db.R_Delivery.GetAll());
+            return mapper.Map<IEnumerable<Delivery>, IEnumerable<DeliveryDTO>>(await db.R_Delivery.GetAll(sort));
         }
     }
 }

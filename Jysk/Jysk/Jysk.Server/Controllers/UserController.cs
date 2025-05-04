@@ -12,9 +12,11 @@ public class UserController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserDTO>>> GetAllUser()
+    public async Task<ActionResult<IEnumerable<UserDTO>>> GetAllUser([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
     {
-        return new ObjectResult(await db.GetAll());
+        IEnumerable<UserDTO> arr = await db.GetAll(sort);
+        IEnumerable<UserDTO> items = CreatePage(page, pageSize, arr);
+        return new ObjectResult(items);
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<UserDTO>> GetUser(int id)
@@ -55,5 +57,19 @@ public class UserController : ControllerBase
         }
         await db.Delete(id);
         return Ok(id);
+    }
+    private IEnumerable<UserDTO> CreatePage(int page, int pageSize, IEnumerable<UserDTO> list)
+    {
+        IEnumerable<UserDTO> result = new List<UserDTO>();
+        list = list.Skip(((page - 1) * pageSize));
+        var enumerator = list.GetEnumerator();
+        for (int i = 0; i < pageSize; i++)
+        {
+            if (enumerator.MoveNext())
+            {
+                result = result.Append(enumerator.Current);
+            }
+        }
+        return result;
     }
 }

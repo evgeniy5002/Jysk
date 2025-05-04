@@ -12,9 +12,11 @@ public class OrderController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<OrderDTO>>> GetAllOrder()
+    public async Task<ActionResult<IEnumerable<OrderDTO>>> GetAllOrder([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
     {
-        return new ObjectResult(await db.GetAll());
+        IEnumerable<OrderDTO> arr = await db.GetAll(sort);
+        IEnumerable<OrderDTO> items = CreatePage(page, pageSize, arr);
+        return new ObjectResult(items);
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<OrderDTO>> GetOrder(int id)
@@ -55,5 +57,19 @@ public class OrderController : ControllerBase
         }
         await db.Delete(id);
         return Ok(id);
+    }
+    private IEnumerable<OrderDTO> CreatePage(int page, int pageSize, IEnumerable<OrderDTO> list)
+    {
+        IEnumerable<OrderDTO> result = new List<OrderDTO>();
+        list = list.Skip(((page - 1) * pageSize));
+        var enumerator = list.GetEnumerator();
+        for (int i = 0; i < pageSize; i++)
+        {
+            if (enumerator.MoveNext())
+            {
+                result = result.Append(enumerator.Current);
+            }
+        }
+        return result;
     }
 }

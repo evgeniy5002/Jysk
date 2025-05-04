@@ -108,10 +108,10 @@ namespace Jysk.BLL.Servives
                 Name = res.Name
             };
         }
-        public async Task<IEnumerable<ManufacturerDTO>> GetAll()
+        public async Task<IEnumerable<ManufacturerDTO>> GetAll(string sort)
         {
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Manufacturer, ManufacturerDTO>()).CreateMapper();
-            return mapper.Map<IEnumerable<Manufacturer>, IEnumerable<ManufacturerDTO>>(await db.R_Manufacturer.GetAll());
+            return mapper.Map<IEnumerable<Manufacturer>, IEnumerable<ManufacturerDTO>>(await db.R_Manufacturer.GetAll(sort));
         }
     }
 }

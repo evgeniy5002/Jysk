@@ -18,9 +18,29 @@ namespace Jysk.DAL.Repositories
         {
             this.db = db;
         }
-        public async Task<IEnumerable<Delivery>> GetAll()
+        public async Task<IEnumerable<Delivery>> GetAll(string sort = "IdAsc")
         {
-            return await db.T_Delivery.Include(o => o.Storage).Include(o => o.Manufacturer).ToListAsync();
+            IQueryable<Delivery>? arr = db.T_Delivery.Include(o => o.Storage).Include(o => o.Manufacturer);
+            SortState sortstate = (SortState)Enum.Parse(typeof(SortState), sort);
+            arr = sortstate switch
+            {
+                SortState.IdAsc => arr.OrderBy(s => s.Id),
+                SortState.IdDesc => arr.OrderByDescending(s => s.Id),
+                SortState.ManufacturerAsc => arr.OrderBy(s => s.Manufacturer.Name),
+                SortState.ManufacturerDesc => arr.OrderByDescending(s => s.Manufacturer.Name),
+                SortState.DateAsc => arr.OrderBy(s => s.Date),
+                SortState.DateDesc => arr.OrderByDescending(s => s.Date),
+                SortState.CountAsc => arr.OrderBy(s => s.Sum),
+                SortState.CountDesc => arr.OrderByDescending(s => s.Sum),
+                SortState.CommentAsc => arr.OrderBy(s => s.Comment),
+                SortState.CommentDesc => arr.OrderByDescending(s => s.Comment),
+                SortState.StatusAsc => arr.OrderBy(s => s.Status),
+                SortState.StatusDesc => arr.OrderByDescending(s => s.Status),
+                SortState.SumAsc => arr.OrderBy(s => s.Sum),
+                SortState.SumDesc => arr.OrderByDescending(s => s.Sum),
+                _ => arr.OrderBy(s => s.Id)
+            };
+            return await arr.ToListAsync();
         }
         public async Task<Delivery> Get(int id)
         {

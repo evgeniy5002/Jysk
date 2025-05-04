@@ -12,9 +12,11 @@ public class SupplyController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<SupplyDTO>>> GetAllSupply()
+    public async Task<ActionResult<IEnumerable<SupplyDTO>>> GetAllSupply([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
     {
-        return new ObjectResult(await db.GetAll());
+        IEnumerable<SupplyDTO> arr = await db.GetAll(sort);
+        IEnumerable<SupplyDTO> items = CreatePage(page, pageSize, arr);
+        return new ObjectResult(items);
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<SupplyDTO>> GetSupply(int id)
@@ -55,5 +57,19 @@ public class SupplyController : ControllerBase
         }
         await db.Delete(id);
         return Ok(id);
+    }
+    private IEnumerable<SupplyDTO> CreatePage(int page, int pageSize, IEnumerable<SupplyDTO> list)
+    {
+        IEnumerable<SupplyDTO> result = new List<SupplyDTO>();
+        list = list.Skip(((page - 1) * pageSize));
+        var enumerator = list.GetEnumerator();
+        for (int i = 0; i < pageSize; i++)
+        {
+            if (enumerator.MoveNext())
+            {
+                result = result.Append(enumerator.Current);
+            }
+        }
+        return result;
     }
 }

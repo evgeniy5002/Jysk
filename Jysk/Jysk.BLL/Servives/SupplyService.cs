@@ -112,12 +112,12 @@ namespace Jysk.BLL.Servives
                     Product = res.Product.Name
                 };
         }
-        public async Task<IEnumerable<SupplyDTO>> GetAll()
+        public async Task<IEnumerable<SupplyDTO>> GetAll(string sort)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Supply, SupplyDTO>()
             .ForMember("Product", opt => opt.MapFrom(c => c.Product.Name)));
             var mapper = new Mapper(config);
-            return mapper.Map<IEnumerable<Supply>, IEnumerable<SupplyDTO>>(await db.R_Supply.GetAll());
+            return mapper.Map<IEnumerable<Supply>, IEnumerable<SupplyDTO>>(await db.R_Supply.GetAll(sort));
         }
     }
 }

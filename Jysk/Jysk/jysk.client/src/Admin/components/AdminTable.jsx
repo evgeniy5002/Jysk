@@ -1,5 +1,5 @@
 import React from 'react';
-function AdminTable({ list, o_func, e_func }) {
+function AdminTable({ list, o_func, e_func, i_func}) {
 
     var t_table = [];
     var table = [];
@@ -28,7 +28,7 @@ function AdminTable({ list, o_func, e_func }) {
         for (var key in item) {
             if (!key.includes("Id") || key == "Id") {
                 key = key.charAt(0).toUpperCase() + key.slice(1)
-                h_table.push(<th>{key}</th>);
+                h_table.push(<th><button onClick={i_func}>{key}</button></th>);
             }
             
         }

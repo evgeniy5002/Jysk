@@ -12,9 +12,11 @@ public class ReviewController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ReviewDTO>>> GetAllReview()
+    public async Task<ActionResult<IEnumerable<ReviewDTO>>> GetAllReview([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
     {
-        return new ObjectResult(await db.GetAll());
+        IEnumerable<ReviewDTO> arr = await db.GetAll(sort);
+        IEnumerable<ReviewDTO> items = CreatePage(page, pageSize, arr);
+        return new ObjectResult(items);
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<ReviewDTO>> GetReview(int id)
@@ -55,5 +57,19 @@ public class ReviewController : ControllerBase
         }
         await db.Delete(id);
         return Ok(id);
+    }
+    private IEnumerable<ReviewDTO> CreatePage(int page, int pageSize, IEnumerable<ReviewDTO> list)
+    {
+        IEnumerable<ReviewDTO> result = new List<ReviewDTO>();
+        list = list.Skip(((page - 1) * pageSize));
+        var enumerator = list.GetEnumerator();
+        for (int i = 0; i < pageSize; i++)
+        {
+            if (enumerator.MoveNext())
+            {
+                result = result.Append(enumerator.Current);
+            }
+        }
+        return result;
     }
 }

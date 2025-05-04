@@ -1,4 +1,5 @@
-﻿using Jysk.BLL.DTO;
+﻿using System.Linq;
+using Jysk.BLL.DTO;
 using Jysk.BLL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,9 +13,11 @@ public class CategoryController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetAllCategory()
+    public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetAllCategory([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
     {
-        return new ObjectResult(await db.GetAll());
+        IEnumerable<CategoryDTO> arr = await db.GetAll(sort);
+        IEnumerable<CategoryDTO> items = CreatePage(page, pageSize, arr);
+        return new ObjectResult(items);
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<CategoryDTO>> GetCategory(int id)
@@ -55,5 +58,19 @@ public class CategoryController : ControllerBase
         }
         await db.Delete(id);
         return Ok(id);
+    }
+    private IEnumerable<CategoryDTO> CreatePage(int page, int pageSize, IEnumerable<CategoryDTO> list)
+    {
+        IEnumerable<CategoryDTO> result = new List<CategoryDTO>();
+        list = list.Skip(((page - 1) * pageSize));
+        var enumerator = list.GetEnumerator();
+        for (int i = 0; i < pageSize; i++)
+        {
+            if (enumerator.MoveNext())
+            {
+                result = result.Append(enumerator.Current);
+            }
+        }
+        return result;
     }
 }

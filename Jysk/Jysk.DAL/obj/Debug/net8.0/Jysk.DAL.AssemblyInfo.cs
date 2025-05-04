@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Jysk.DAL")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0fbab2311ee15bc1d5a096bc172afbb3f76e28f9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f47a8f280630883115aab67ae205674da1e0116")]
 [assembly: System.Reflection.AssemblyProductAttribute("Jysk.DAL")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Jysk.DAL")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

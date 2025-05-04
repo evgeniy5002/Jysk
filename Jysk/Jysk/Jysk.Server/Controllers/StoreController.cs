@@ -12,9 +12,11 @@ public class StoreController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<StoreDTO>>> GetAllStore()
+    public async Task<ActionResult<IEnumerable<StoreDTO>>> GetAllStore([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
     {
-        return new ObjectResult(await db.GetAll());
+        IEnumerable<StoreDTO> arr = await db.GetAll(sort);
+        IEnumerable<StoreDTO> items = CreatePage(page, pageSize, arr);
+        return new ObjectResult(items);
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<StoreDTO>> GetStore(int id)
@@ -55,5 +57,19 @@ public class StoreController : ControllerBase
         }
         await db.Delete(id);
         return Ok(id);
+    }
+    private IEnumerable<StoreDTO> CreatePage(int page, int pageSize, IEnumerable<StoreDTO> list)
+    {
+        IEnumerable<StoreDTO> result = new List<StoreDTO>();
+        list = list.Skip(((page - 1) * pageSize));
+        var enumerator = list.GetEnumerator();
+        for (int i = 0; i < pageSize; i++)
+        {
+            if (enumerator.MoveNext())
+            {
+                result = result.Append(enumerator.Current);
+            }
+        }
+        return result;
     }
 }

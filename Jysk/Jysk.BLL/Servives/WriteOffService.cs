@@ -124,14 +124,14 @@ namespace Jysk.BLL.Servives
                 Sum = res.Sum
             };
         }
-        public async Task<IEnumerable<WriteOffDTO>> GetAll()
+        public async Task<IEnumerable<WriteOffDTO>> GetAll(string sort)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<WriteOff,WriteOffDTO>()
             .ForMember("Employee", opt => opt.MapFrom(c => c.Employee.User.Name))
             .ForMember("Storage", opt => opt.MapFrom(c => c.Storage.Name))
             .ForMember("Product", opt => opt.MapFrom(c => c.Product.Name)));
             var mapper = new Mapper(config);
-            return mapper.Map<IEnumerable<WriteOff>, IEnumerable<WriteOffDTO>>(await db.R_WriteOff.GetAll());
+            return mapper.Map<IEnumerable<WriteOff>, IEnumerable<WriteOffDTO>>(await db.R_WriteOff.GetAll(sort));
         }
     }
 }

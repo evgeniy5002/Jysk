@@ -18,9 +18,23 @@ namespace Jysk.DAL.Repositories
         {
             this.db = db;
         }
-        public async Task<IEnumerable<Storage>> GetAll()
+        public async Task<IEnumerable<Storage>> GetAll(string sort = "IdAsc")
         {
-            return await db.T_Storage.ToListAsync();
+            IQueryable<Storage>? arr = db.T_Storage;
+            SortState sortstate = (SortState)Enum.Parse(typeof(SortState), sort);
+            arr = sortstate switch
+            {
+                SortState.IdAsc => arr.OrderBy(s => s.Id),
+                SortState.IdDesc => arr.OrderByDescending(s => s.Id),
+                SortState.NameAsc => arr.OrderBy(s => s.Name),
+                SortState.NameDesc => arr.OrderByDescending(s => s.Name),
+                SortState.AddressAsc => arr.OrderBy(s => s.Address),
+                SortState.AddressDesc => arr.OrderByDescending(s => s.Address),
+                SortState.SumAsc => arr.OrderBy(s => s.Sum),
+                SortState.SumDesc => arr.OrderByDescending(s => s.Sum),
+                _ => arr.OrderBy(s => s.Id)
+            };
+            return await arr.ToListAsync();
         }
         public async Task<Storage> Get(int id)
         {

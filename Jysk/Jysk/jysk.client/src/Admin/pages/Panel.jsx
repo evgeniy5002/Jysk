@@ -109,6 +109,9 @@ function AdminTest() {
         Category: useState([]),
     });
 
+    const [page, setPage] = useState(1);
+
+
     const [id, setId] = useState({
         Id: '',
     })
@@ -125,12 +128,43 @@ function AdminTest() {
             }
         }));
     };
+    
+    const [sort, setSort] = useState({
+          SortDir: true,
+          Sort: 'IdAsc'
+    });
 
-    const GetAll = () => {
-        axios.get(`${url}/${k_value}`)
-            .then(response => setList(response.data))
+    const SortChange = (e) => {
+        var value = e.target.innerText;
+        if (sort.SortDir) {
+            value += "Asc";
+            setSort({
+                Sort:value,
+                SortDir: false
+            });
+        }
+        else {
+            value += "Desc";
+            setSort({
+                Sort: value,
+                SortDir: true
+            });
+        }
+        setPage(1);
+        GetAll(value);
+    }
+
+    const GetAll = (c_sort = "IdAsc", c_page = 1) => {
+        axios.get(`${url}/${k_value}`, { params: { sort: c_sort, page:c_page, pageSize:5} })
+            .then(response => {
+                setList(response.data)
+                //if (response.data.length == 0) {
+                //    GetAll(sort.Sort, page);
+                //    setPage(page);
+                //}
+            })
             .catch(error => {
-                console.error("Error during Supply axios request", error);
+                console.error("Error during axios request", error);
             });
     };
 
@@ -153,7 +187,7 @@ function AdminTest() {
                 }
             })
             .catch(error => {
-                console.error("Error during Supply axios request", error);
+                console.error("Error during axios request", error);
             });
     };
 
@@ -192,6 +226,25 @@ function AdminTest() {
         document.getElementById('data').style.display = 'none';
     };
 
+    const changePage = (e) => {
+        const { name } = e.target;
+        if (name == "back" && page>1) {
+            setPage(prev => {
+                const newPage = prev - 1;
+                GetAll(sort.Sort, newPage);
+                return newPage;
+            });
+        }
+        else if (name == "forward" && list.length==5) {
+            setPage(prev => {
+                const newPage = prev + 1;
+                GetAll(sort.Sort, newPage);
+                return newPage;
+            });
+        }
+
+    }
+
 
     const createFunc = () => {
         setFormData(prev => ({
@@ -205,12 +258,13 @@ function AdminTest() {
         axios.post(`${url}/${k_value}`, formData[k_value])
             .then(() => GetAll())
             .then(() => closeWindow())
+            .then(() => setPage(1))
             .catch(error => {
-                console.error("Error during axios request", error);
+                console.error(`Error during axios request${k_value}`, error);
             });
     };
 
-    
+
     const editFunc = () => {
         setFormData(prev => ({
             ...prev,
@@ -223,13 +277,14 @@ function AdminTest() {
         axios.put(`${url}/${k_value}`, formData[k_value])
             .then(() => GetAll())
             .then(() => closeWindow())
+            .then(() => setPage(1))
             .catch(error => {
-                console.error("Error during Supply axios request", error);
+                console.error(`Error during axios request`, error);
             });
     };
 
     const GetAllOptions = (e) => {
-        axios.get(`${url}/${e}`)
+        axios.get(`${url}/${e}`, { params: { sort: "IdAsc" } })
             .then(response => setOptions(prev => ({
                 ...prev,
                 [e]: response.data
@@ -254,7 +309,11 @@ function AdminTest() {
                 <CreateButton></CreateButton>
             </div>
             <div>
-                <AdminTable list={list} e_func={editWindow} o_func={openConfirmation} />
+                <AdminTable list={list} e_func={editWindow} o_func={openConfirmation} i_func={SortChange} />
+                <div class = "admin-page-buttons">
+                    <button name="back" onClick={changePage}>Move back</button>
+                    <button name="forward" onClick={changePage}>Move forward</button>
+                </div>
             </div>
             <ConfirmDelete i_url={url} i_id={id.Id} get={GetAll} k_value={k_value} />
             <div className="data-window" id="data">

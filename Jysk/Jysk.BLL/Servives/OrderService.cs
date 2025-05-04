@@ -123,13 +123,13 @@ namespace Jysk.BLL.Servives
                 User = res.User.Name
             };
         }
-        public async Task<IEnumerable<OrderDTO>> GetAll()
+        public async Task<IEnumerable<OrderDTO>> GetAll(string sort)
         {
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Order, OrderDTO>()
             .ForMember("User", opt => opt.MapFrom(c => c.User.Name))
             .ForMember("Product", opt => opt.MapFrom(c => c.Product.Name)));
             var mapper = new Mapper(config);
-            return mapper.Map<IEnumerable<Order>, IEnumerable<OrderDTO>>(await db.R_Order.GetAll());
+            return mapper.Map<IEnumerable<Order>, IEnumerable<OrderDTO>>(await db.R_Order.GetAll(sort));
         }
     }
 }

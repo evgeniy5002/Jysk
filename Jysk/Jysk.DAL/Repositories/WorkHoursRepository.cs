@@ -18,9 +18,23 @@ namespace Jysk.DAL.Repositories
         {
             this.db = db;
         }
-        public async Task<IEnumerable<WorkHours>> GetAll()
+        public async Task<IEnumerable<WorkHours>> GetAll(string sort = "IdAsc")
         {
-            return await db.T_WorkHours.ToListAsync();
+            IQueryable<WorkHours>? arr = db.T_WorkHours;
+            SortState sortstate = (SortState)Enum.Parse(typeof(SortState), sort);
+            arr = sortstate switch
+            {
+                SortState.IdAsc => arr.OrderBy(s => s.Id),
+                SortState.IdDesc => arr.OrderByDescending(s => s.Id),
+                SortState.NameAsc => arr.OrderBy(s => s.Day),
+                SortState.NameDesc => arr.OrderByDescending(s => s.Day),
+                SortState.StartAsc => arr.OrderBy(s => s.Start),
+                SortState.EndAsc => arr.OrderBy(s => s.End),
+                SortState.StartDesc => arr.OrderByDescending(s => s.Start),
+                SortState.EndDesc => arr.OrderByDescending(s => s.End),
+                _ => arr.OrderBy(s => s.Id)
+            };
+            return await arr.ToListAsync();
         }
         public async Task<WorkHours> Get(int id)
         {

@@ -18,9 +18,23 @@ namespace Jysk.DAL.Repositories
         {
             this.db = db;
         }
-        public async Task<IEnumerable<Review>> GetAll()
+        public async Task<IEnumerable<Review>> GetAll(string sort = "IdAsc")
         {
-            return await db.T_Review.Include(o => o.Product).ToListAsync();
+            IQueryable<Review>? arr = db.T_Review.Include(o => o.Product);
+            SortState sortstate = (SortState)Enum.Parse(typeof(SortState), sort);
+            arr = sortstate switch
+            {
+                SortState.IdAsc => arr.OrderBy(s => s.Id),
+                SortState.IdDesc => arr.OrderByDescending(s => s.Id),
+                SortState.ProductAsc => arr.OrderBy(s => s.Product.Name),
+                SortState.ProductDesc => arr.OrderByDescending(s => s.Product.Name),
+                SortState.RatingAsc => arr.OrderBy(s => s.Rating),
+                SortState.RatingDesc => arr.OrderByDescending(s => s.Rating),
+                SortState.DescriptionAsc => arr.OrderBy(s => s.Description),
+                SortState.DescriptionDesc => arr.OrderByDescending(s => s.Description),
+                _ => arr.OrderBy(s => s.Id)
+            };
+            return await arr.ToListAsync();
         }
         public async Task<Review> Get(int id)
         {

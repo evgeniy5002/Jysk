@@ -1,0 +1,29 @@
+@import '../variables';
+@import '../mixins';
+@import '../utilities';
+
+.sort-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    cursor: pointer;
+    width: 100%;
+
+    .sort-radio {
+        
+        .MuiSvgIcon-root {
+          font-size: 25px;
+        }
+      
+        &.Mui-checked {
+          color: $color-accent !important;
+        }
+      
+        .MuiTouchRipple-root {
+          display: none;
+        }
+      }
+      
+      
+}

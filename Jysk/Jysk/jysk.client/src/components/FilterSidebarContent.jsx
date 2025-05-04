@@ -18,6 +18,7 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
     };
 
     const handleChange = (event, newValue) => setValue(newValue);
+
     const handleInputChange = (e, index) => {
         const newValue = [...value];
         newValue[index] = Number(e.target.value);
@@ -30,6 +31,10 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
                 ? prev.filter(color => color !== id)
                 : [...prev, id]
         );
+    };
+
+    const handleButtonSelection = (selectedButtons) => {
+        console.log('Selected buttons:', selectedButtons);
     };
 
     return (
@@ -105,9 +110,15 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
             </FilterAccordion>
             
             <div className="filter-sidebar__element">
-                <FilterButtonGroup options={['In stock', 'Discount', 'Wholesale pricing']} />
+                <FilterButtonGroup 
+                    options={[
+                        { label: 'In stock', value: 'in_stock' },
+                        { label: 'Discount', value: 'discount' },
+                        { label: 'Wholesale pricing', value: 'wholesale' }
+                    ]}
+                    onSelectionChange={handleButtonSelection} 
+                />
             </div>
-
             <FilterAccordion
                 title="Details"
                 isOpen={openAccordions['details']}

@@ -17,6 +17,9 @@
     display: flex;
     flex-direction: column;
 
+    label{
+        margin: 0;
+    }
     &.open {
         transform: translateX(0); 
     }
@@ -181,6 +184,11 @@
             .input-button{
                 @extend .input-element;
                 padding: 15px 20px;
+            }
+            .input-button.selected {
+                background-color: $color-accent;
+                color: white;
+                border-color: $color-accent;
             }
         }
         .container--filter-buttons{

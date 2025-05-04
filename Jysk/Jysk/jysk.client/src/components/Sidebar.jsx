@@ -1,6 +1,6 @@
 import React from 'react';
 import close from '../assets/icons/close.svg';
-import '../styles/components/FilterSidebar.scss';
+import '../styles/components/Sidebar.scss';
 
 export default function Sidebar({ isOpen, onClose, title, children, disableClear = false }) {
     return (

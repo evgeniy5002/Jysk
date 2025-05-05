@@ -12,11 +12,19 @@ public class CargoController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CargoDTO>>> GetAllCargo([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
+    public async Task<ActionResult<IEnumerable<CargoDTO>>> GetAllCargo([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize, [FromQuery] bool isOptions = false)
     {
-        IEnumerable<CargoDTO> arr = await db.GetAll(sort);
-        IEnumerable<CargoDTO> items = CreatePage(page, pageSize, arr);
-        return new ObjectResult(items);
+        IEnumerable<CargoDTO> items;
+        if (isOptions)
+        {
+            return new ObjectResult(await db.GetAll(sort));
+        }
+        else
+        {
+            IEnumerable<CargoDTO> arr = await db.GetAll(sort);
+            items = CreatePage(page, pageSize, arr);
+            return new ObjectResult(items);
+        }
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<CargoDTO>> GetCargo(int id)

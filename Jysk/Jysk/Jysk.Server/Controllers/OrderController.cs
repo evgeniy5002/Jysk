@@ -12,11 +12,19 @@ public class OrderController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<OrderDTO>>> GetAllOrder([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
+    public async Task<ActionResult<IEnumerable<OrderDTO>>> GetAllOrder([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize, [FromQuery] bool isOptions = false)
     {
-        IEnumerable<OrderDTO> arr = await db.GetAll(sort);
-        IEnumerable<OrderDTO> items = CreatePage(page, pageSize, arr);
-        return new ObjectResult(items);
+        IEnumerable<OrderDTO> items;
+        if (isOptions)
+        {
+            return new ObjectResult(await db.GetAll(sort));
+        }
+        else
+        {
+            IEnumerable<OrderDTO> arr = await db.GetAll(sort);
+            items = CreatePage(page, pageSize, arr);
+            return new ObjectResult(items);
+        }
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<OrderDTO>> GetOrder(int id)

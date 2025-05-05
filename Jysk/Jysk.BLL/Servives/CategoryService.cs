@@ -75,7 +75,7 @@ namespace Jysk.BLL.Servives
             catch (Exception ex)
             {
                 Logger log = new Logger();
-                log.Log("Error: Exception during category update\nException: " + ex.ToString());
+                log.Log("Error: Exception during category update\nException: " + entity.Id + " " + entity.Name);
             }
         }
 

@@ -13,11 +13,19 @@ public class CategoryController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetAllCategory([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
+    public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetAllCategory([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize, [FromQuery] bool isOptions = false)
     {
-        IEnumerable<CategoryDTO> arr = await db.GetAll(sort);
-        IEnumerable<CategoryDTO> items = CreatePage(page, pageSize, arr);
-        return new ObjectResult(items);
+        IEnumerable<CategoryDTO> items;
+        if (isOptions)
+        {
+            return new ObjectResult(await db.GetAll(sort));
+        }
+        else
+        {
+            IEnumerable<CategoryDTO> arr = await db.GetAll(sort);
+            items = CreatePage(page, pageSize, arr);
+            return new ObjectResult(items);
+        }
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<CategoryDTO>> GetCategory(int id)

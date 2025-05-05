@@ -18,11 +18,19 @@ namespace Jysk.Server.Controllers
             this.db = db;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ManufacturerDTO>>> GetAllManufacturer([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
+        public async Task<ActionResult<IEnumerable<ManufacturerDTO>>> GetAllManufacturer([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize, [FromQuery] bool isOptions = false)
         {
-            IEnumerable<ManufacturerDTO> arr = await db.GetAll(sort);
-            IEnumerable<ManufacturerDTO> items = CreatePage(page, pageSize, arr);
-            return new ObjectResult(items);
+            IEnumerable<ManufacturerDTO> items;
+            if (isOptions)
+            {
+                return new ObjectResult(await db.GetAll(sort));
+            }
+            else
+            {
+                IEnumerable<ManufacturerDTO> arr = await db.GetAll(sort);
+                items = CreatePage(page, pageSize, arr);
+                return new ObjectResult(items);
+            }
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<ManufacturerDTO>> GetManufacturer(int id)

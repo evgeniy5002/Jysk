@@ -12,11 +12,19 @@ public class UserController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<UserDTO>>> GetAllUser([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
+    public async Task<ActionResult<IEnumerable<UserDTO>>> GetAllUser([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize, [FromQuery] bool isOptions = false)
     {
-        IEnumerable<UserDTO> arr = await db.GetAll(sort);
-        IEnumerable<UserDTO> items = CreatePage(page, pageSize, arr);
-        return new ObjectResult(items);
+        IEnumerable<UserDTO> items;
+        if (isOptions)
+        {
+            return new ObjectResult(await db.GetAll(sort));
+        }
+        else
+        {
+            IEnumerable<UserDTO> arr = await db.GetAll(sort);
+            items = CreatePage(page, pageSize, arr);
+            return new ObjectResult(items);
+        }
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<UserDTO>> GetUser(int id)

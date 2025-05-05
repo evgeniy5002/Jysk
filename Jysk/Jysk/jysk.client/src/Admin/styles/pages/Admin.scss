@@ -15,6 +15,23 @@
         flex-direction: row;
     }
 
+    .select-size-field {
+        margin-left:97px;
+        select {
+            display: inline-block;
+            margin-left: 20px;
+            width: 350px;
+            border-radius: 10px;
+            background-color: #E0E0E0;
+            border: 1px solid;
+            border-color: grey;
+            height: 30px;
+            font-size: 1em;
+            font-family: $font-default;
+            padding-left: 10px;
+        }
+    }
+
     .create {
         position: absolute;
         top: 0px;
@@ -34,8 +51,8 @@
     .admin-page-buttons {
         button {
             border: none;
-            margin-left:100px;
-            font-size:1em;
+            margin-left: 100px;
+            font-size: 1em;
         }
     }
 

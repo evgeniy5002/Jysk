@@ -12,11 +12,19 @@ public class DeliveryController : ControllerBase
         this.db = db;
     }
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<DeliveryDTO>>> GetDelivery([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize)
+    public async Task<ActionResult<IEnumerable<DeliveryDTO>>> GetDelivery([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize, [FromQuery] bool isOptions = false)
     {
-        IEnumerable<DeliveryDTO> arr = await db.GetAll(sort);
-        IEnumerable<DeliveryDTO> items = CreatePage(page, pageSize, arr);
-        return new ObjectResult(items);
+        IEnumerable<DeliveryDTO> items;
+        if (isOptions)
+        {
+            return new ObjectResult(await db.GetAll(sort));
+        }
+        else
+        {
+            IEnumerable<DeliveryDTO> arr = await db.GetAll(sort);
+            items = CreatePage(page, pageSize, arr);
+            return new ObjectResult(items);
+        }
     }
     [HttpGet("{id}")]
     public async Task<ActionResult<DeliveryDTO>> GetDelivery(int id)

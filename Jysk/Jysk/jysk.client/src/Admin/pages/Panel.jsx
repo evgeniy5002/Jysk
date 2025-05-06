@@ -58,6 +58,7 @@ function AdminTest() {
             UserId: '',
         },
         Product: {
+            Photo: '',
             Name: '',
             Description: '',
             Price: '',
@@ -110,6 +111,7 @@ function AdminTest() {
     });
 
     const [page, setPage] = useState(1);
+    const [pageSize, setPageSize] = useState(5);
 
 
     const [id, setId] = useState({
@@ -128,6 +130,17 @@ function AdminTest() {
             }
         }));
     };
+
+    const SelectChange = (e) => {
+        const { name, checked } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [k_value]: {
+                ...prev[k_value],
+                [name]: checked
+            }
+        }));
+    }
     
     const [sort, setSort] = useState({
           SortDir: true,
@@ -154,17 +167,23 @@ function AdminTest() {
         GetAll(value);
     }
 
-    const GetAll = (c_sort = "IdAsc", c_page = 1) => {
-        axios.get(`${url}/${k_value}`, { params: { sort: c_sort, page:c_page, pageSize:5} })
+    const PageSizeChange = (e) => {
+        setPageSize(e.target.value);
+        console.log(pageSize);
+        GetAll(sort.Sort, 1, e.target.value);
+    }
+
+    const GetAll = (c_sort = "IdAsc", c_page = 1, c_pageSize = 5) => {
+        axios.get(`${url}/${k_value}`, { params: { sort: c_sort, page:c_page, pageSize:c_pageSize} })
             .then(response => {
                 setList(response.data)
-                //if (response.data.length == 0) {
-                //    GetAll(sort.Sort, page);
-                //    setPage(page);
-                //}
+                if (response.data.length == 0) {
+                    GetAll(sort.Sort, page);
+                    setPage(page);
+                }
             })
             .catch(error => {
-                console.error("Error during axios request", error);
+                console.error(`Error during axios request${c_pageSize}`, error);
             });
     };
 
@@ -210,19 +229,22 @@ function AdminTest() {
     };
 
     const closeWindow = () => {
-        const inputs = document.querySelectorAll("#data input");
-        inputs.forEach(input => input.value = "");
+        const updated = Object.keys(formData[k_value]).reduce((acc, key) => {
+            if (typeof formData[k_value][key] === "boolean")
+            {
+                acc[key] = false;
+            }
+            else {
+                acc[key] = '';
+            }
+            return acc;
+        }, {});
+        setFormData(prev => ({
+            ...prev,
+            [k_value]: updated
+        }));
         const selectors = document.querySelectorAll("#data select");
         selectors.forEach(selector => selector.value = 0);
-        for (var key in formData[k_value]) {
-            setFormData(prev => ({
-                ...prev,
-                [k_value]: {
-                    ...prev[k_value],
-                    [key]: ''
-                }
-            }));
-        }
         document.getElementById('data').style.display = 'none';
     };
 
@@ -231,51 +253,25 @@ function AdminTest() {
         if (name == "back" && page>1) {
             setPage(prev => {
                 const newPage = prev - 1;
-                GetAll(sort.Sort, newPage);
+                GetAll(sort.Sort, newPage, pageSize);
                 return newPage;
             });
         }
-        else if (name == "forward" && list.length==5) {
+        else if (name == "forward" && list.length==pageSize) {
             setPage(prev => {
                 const newPage = prev + 1;
-                GetAll(sort.Sort, newPage);
+                GetAll(sort.Sort, newPage, pageSize);
                 return newPage;
             });
         }
-
     }
 
 
     const createFunc = () => {
-        setFormData(prev => ({
-            ...prev,
-            [k_value]:
-            {
-                ...prev[k_value],
-                Id: 0,
-            }
-        }))
-        axios.post(`${url}/${k_value}`, formData[k_value])
-            .then(() => GetAll())
-            .then(() => closeWindow())
-            .then(() => setPage(1))
-            .catch(error => {
-                console.error(`Error during axios request${k_value}`, error);
-            });
-    };
-
-
-    const editFunc = () => {
-        setFormData(prev => ({
-            ...prev,
-            [k_value]:
-            {
-                ...prev[k_value],
-                Id: id.Id,
-            }
-        }))
-        axios.put(`${url}/${k_value}`, formData[k_value])
-            .then(() => GetAll())
+        var req = formData[k_value];
+        req["Id"] = 0;
+        axios.post(`${url}/${k_value}`, req)
+            .then(() => GetAll("IdAsc", 1, pageSize))
             .then(() => closeWindow())
             .then(() => setPage(1))
             .catch(error => {
@@ -283,8 +279,22 @@ function AdminTest() {
             });
     };
 
+
+    const editFunc = () => {
+        var req = formData[k_value];
+        req["Id"] = id.Id;
+             axios.put(`${url}/${k_value}`, req)
+            .then(() => GetAll("IdAsc",1,pageSize))
+            .then(() => closeWindow())
+            .then(() => setPage(1))
+            .then(() => console.log(formData[k_value].Id))
+            .catch(error => {
+                console.error(`Error during axios request`, error);
+            });
+    };
+
     const GetAllOptions = (e) => {
-        axios.get(`${url}/${e}`, { params: { sort: "IdAsc" } })
+        axios.get(`${url}/${e}`, { params: { sort: "IdAsc", isOptions: true} })
             .then(response => setOptions(prev => ({
                 ...prev,
                 [e]: response.data
@@ -309,6 +319,14 @@ function AdminTest() {
                 <CreateButton></CreateButton>
             </div>
             <div>
+                <div className="select-size-field">
+                    <label htmlFor="pageSizeSelect">Display elements: </label>
+                    <select onChange={PageSizeChange} name="PageSizeSelect" id="pageSizeSelect">
+                        <option key="5" value="5">5</option>
+                        <option key="10" value="10">10</option>
+                        <option key="25" value="25">25</option>
+                    </select>
+                </div>
                 <AdminTable list={list} e_func={editWindow} o_func={openConfirmation} i_func={SortChange} />
                 <div class = "admin-page-buttons">
                     <button name="back" onClick={changePage}>Move back</button>
@@ -319,7 +337,7 @@ function AdminTest() {
             <div className="data-window" id="data">
                 <div className="data-body">
                     <h2>Enter data</h2>
-                    <AdminForm i_func={InputChange} options={options} formData={formData[k_value]} sfd={setFormData} />
+                    <AdminForm i_func={InputChange} options={options} formData={formData[k_value]} s_func={SelectChange}/>
                     <FormButtons e_func={editFunc} c_func={createFunc} cl_func={closeWindow} />
                 </div>
             </div>

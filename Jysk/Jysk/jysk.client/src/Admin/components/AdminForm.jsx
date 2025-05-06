@@ -3,14 +3,14 @@ import AdminSelect from '../components/AdminSelect';
 import AdminInput from '../components/AdminInput';
 import StatusComponent from '../components/StatusComponent'
 
-function AdminForm({ formData, i_func, options, sfd}) {
+function AdminForm({ formData, i_func, options, s_func}) {
     var Form = [];
     const MapForm = () => {
         var r_key;
         for (const key in formData) {
             if (typeof formData[key] === 'boolean')
             {
-                //Form.push(<StatusComponent formData={formData} setFormData={sfd} key={key} />)
+                Form.push(<StatusComponent formData={formData[key]} i_func={s_func} i_key={key} />)
             }
             else if (key != "Id" && key.includes("Id")) {
                 r_key = key;

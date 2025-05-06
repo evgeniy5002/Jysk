@@ -14,7 +14,11 @@ function AdminTable({ list, o_func, e_func, i_func}) {
                 index++;
             }
             for (var key in item) {
-                if (!key.includes("Id") || key == "Id") {
+                if (typeof item[key] === 'boolean')
+                {
+                    t_table.push(<td>{item[key] ? 'Yes' : 'No'}</td>);
+                }
+                else if (!key.includes("Id") || key == "Id") {
                     t_table.push(<td>{item[key]}</td>);
                 }
             }

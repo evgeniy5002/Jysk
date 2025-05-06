@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import BodySection from "../components/BodySection";
 import ProductGallery from '../components/ProductGallery';
 import ProductSummary from '../components/ProductSummary';
+import Rating from '../components/Rating';
+import Review from '../components/Review';
+
+
 import chair from '../assets/img/chair.png';
 
 import '../styles/pages/Product.scss';
@@ -24,6 +28,34 @@ export default function Product() {
     const [deliveryOption, setDeliveryOption] = useState("delivery");
 
     const [quantity, setQuantity] = useState(1);
+
+    const [characteristics, setCharacteristics] = useState([
+      { key: "Material", value: "PPU, PU (Polyurethane), Plywood, Polyester, Steel" },
+      { key: "Seat", value: "Foam material: PU (Polyurethane), Density: 24 kg/m³" },
+      { key: "Backrest", value: "Foam material: PU (Polyurethane)" },
+      { key: "Color", value: "Olive, Oak" },
+      { key: "Size (assembled state)", value: "Width: 44 cm, Height: 87 cm, Depth: 53 cm" },
+      { key: "Seat height", value: "47 cm" },
+      { key: "Assembly instructions", value: "Self-assembly" },
+      { key: "Size (disassembled state)", value: "Width: 62 cm, Length: 42 cm, Height: 66 cm" },
+      { key: "Eco-friendliness", value: "FSC® 100% Certificate" },
+      { key: "Weight", value: "4 kg" },
+      { key: "Maximum user weight", value: "110 kg" },
+      { key: "Manufacturer", value: "HYGGY A/S, Sødalsparken 18, DK-8220 Brabrand, HYGGY.com" },
+    ]);
+    const [reviews, setReviews] = useState([
+      {
+        name: 'Olena',
+        rating: 5,
+        text: 'This chair has been a real find for our kitchen! I really like the design – the oak legs give the chair a stylish and at the same time natural look, and the olive color fits perfectly into the interior. It is comfortable to sit on, even during long family meals. It’s also easy to clean, which is very important for us with small children. Definitely recommend!'
+      },
+      {
+        name: 'Andriy',
+        rating: 4,
+        text: 'We bought several BISTRUP chairs for our dining room, and they exceeded all expectations. They look very modern and are well-made. I especially want to highlight the comfort – the ergonomic backrest really supports your back, so sitting on them is comfortable even for long periods of time. The quality of materials is top-notch, and the oak legs give the chair extra durability. A great choice for those looking for stylish and practical furniture!'
+      }
+    ]);
+    
 
     useEffect(() => {
         setTimeout(() => {
@@ -59,35 +91,75 @@ export default function Product() {
       };
 
     return (
-    <BodySection noBorder>
-        <div className="product-info-wrapper">
-        <ProductGallery images={images} isMobile={isMobile} />
+      <>
+        <BodySection>
+          <div className="product-info-wrapper">
+            <ProductGallery images={images} isMobile={isMobile} />
+            <ProductSummary
+                title={title}
+                description={description}
+                price={price}
+                oldPrice={oldPrice}
+                rating={rating}
+                reviewCount={reviewCount}
+                promotionEndsIn={promotionEndsIn}
 
-        <ProductSummary
-            title={title}
-            description={description}
-            price={price}
-            oldPrice={oldPrice}
-            rating={rating}
-            reviewCount={reviewCount}
-            promotionEndsIn={promotionEndsIn}
+                images={images}
+                isMobile={isMobile}  
 
-            images={images}
-            isMobile={isMobile}  
+                deliveryOption={deliveryOption}
+                onDeliveryChange={handleDeliveryChange}
+                isDeliveryAvailable={isDeliveryAvailable}
+                isStoreAvailable={isStoreAvailable}
+                storeCount={storeCount}
 
-            deliveryOption={deliveryOption}
-            onDeliveryChange={handleDeliveryChange}
-            isDeliveryAvailable={isDeliveryAvailable}
-            isStoreAvailable={isStoreAvailable}
-            storeCount={storeCount}
-
-            quantity={quantity}
-            onIncrease={handleIncrease}
-            onDecrease={handleDecrease}
-            onQuantityChange={handleQuantityChange}
-            onAddToCart={handleAddToCart}
-        />
-        </div>
-    </BodySection>
+                quantity={quantity}
+                onIncrease={handleIncrease}
+                onDecrease={handleDecrease}
+                onQuantityChange={handleQuantityChange}
+                onAddToCart={handleAddToCart}
+            />
+          </div>
+        </BodySection>
+        <BodySection>
+          <div className='product-characteristics'>
+            <span className='title-text flex-center'>Characteristics</span>
+            <table className="product-characteristics-table">
+              <tbody>
+                {characteristics.map((item, index) => (
+                  <tr key={index}>
+                    <td><strong>{item.key}</strong></td>
+                    <td>{item.value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </BodySection>
+        <BodySection>
+          <span className='title-text flex-center'>Reviews</span>
+          <div className='reviews-container'>
+            <div className='reviews-header'>
+              <Rating
+                value={rating}
+                showRatingText={true}
+                sx={{ gap: '5px', imgHeight: '20px', fontSize: '16px' }}
+              />
+              <span className='flex-center'>Оцінка користувачів</span>
+              <button className='font-bold'>Leave Review</button>
+            </div>
+            <hr></hr>
+            {reviews.map((review, index) => (
+              <Review
+                key={index}
+                name={review.name}
+                rating={review.rating}
+                text={review.text}
+              />
+            ))}
+          </div>
+          
+        </BodySection>
+      </>
     );
 }

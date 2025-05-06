@@ -1,10 +1,16 @@
-import React from 'react'; 
+import React from 'react';
 import star from '../assets/icons/star.svg';
 import starFilled from '../assets/icons/star-filled.svg';
 
 import '../styles/components/Rating.scss';
 
-export default function Rating({ value = 0, max = 5, reviewCount, sx = {} }) {
+export default function Rating({
+    value = 0,
+    max = 5,
+    reviewCount,
+    showRatingText = false, 
+    sx = {}
+}) {
     const stars = Array.from({ length: max }, (_, i) => (
         <img
             key={i}
@@ -20,12 +26,13 @@ export default function Rating({ value = 0, max = 5, reviewCount, sx = {} }) {
             style={{ gap: sx.gap || undefined }}
         >
             {stars}
-            {typeof reviewCount === 'number' && (
+            {(showRatingText || typeof reviewCount === 'number') && (
                 <span
                     className="review-count"
                     style={{ fontSize: sx.fontSize || undefined }}
                 >
-                    ({reviewCount})
+                    {showRatingText && `${value}/${max}`}
+                    {typeof reviewCount === 'number' && ` (${reviewCount})`}
                 </span>
             )}
         </div>

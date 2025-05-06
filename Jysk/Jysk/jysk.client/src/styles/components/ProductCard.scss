@@ -59,13 +59,7 @@
         flex-direction: column;
         gap: 10px;
 
-        .rating{
-            display: flex;
-            gap:3px;
-            img{
-                height: 15px;
-            }
-        }
+
         .price{
             font-size: 1.5em;
             font-weight: bold;
@@ -74,9 +68,8 @@
         }
         .old-price{
             font-size: 1.2em;
-            text-decoration: line-through;
-            color: $color-text-transparent;
             font-weight: 600;
+            @include old-price;
                 span{ font-size: 0.7em; }
         }
         .product-name{

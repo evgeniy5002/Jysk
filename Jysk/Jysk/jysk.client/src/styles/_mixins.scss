@@ -44,3 +44,7 @@
     border: none;
     background-color: unset;
 }
+@mixin old-price{
+    text-decoration: line-through;
+    color: $color-text-transparent;
+}

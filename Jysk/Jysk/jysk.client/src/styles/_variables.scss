@@ -12,12 +12,12 @@ $color-accent-red: #cf0013;
 $color-accent-yellow: #ffe44c;
 
 $color-border: #d4d4d4;
+$color-border-transparent: #00000080;
 
 $color-text-muted: #231F20BF; 
 $color-text-transparent: #00000080; 
 $color-text-light: #ffffff;
 $color-text-dark: #000000;
-
 
 $shadow-light: 0 3px 5px rgba(0, 0, 0, 0.1);
 $overlay-light: rgba(0, 0, 0, 0.1);
@@ -28,6 +28,10 @@ $breakpoint-lg: 992px;
 $breakpoint-tablet: 768px;
 $breakpoint-mobile: 480px;
 $breakpoint-mobile-xs: 320px;
+
+$gap-sm: 10px;
+$gap-md: 15px;
+$gap-lg: 20px;
 
 :root {
     --in-stock-green: #20873e;

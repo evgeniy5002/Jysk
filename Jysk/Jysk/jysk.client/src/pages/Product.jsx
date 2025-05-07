@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import BodySection from "../components/BodySection";
 import ProductGallery from '../components/ProductGallery';
 import ProductSummary from '../components/ProductSummary';
@@ -6,6 +7,7 @@ import Rating from '../components/Rating';
 import Review from '../components/Review';
 
 import chair from '../assets/img/chair.png';
+import { useLocation } from 'react-router-dom';
 
 import blog1 from '../assets/img/blog1.png';
 import blog2 from '../assets/img/blog2.png';
@@ -14,6 +16,37 @@ import blog3 from '../assets/img/blog3.png';
 import '../styles/pages/Product.scss';
 
 export default function Product() {
+    const { search } = useLocation();
+    const params = new URLSearchParams(search);
+    const id = params.get("id");
+    var url = "https://localhost:7196/api/Product";
+
+    const GetId = () => {
+        axios.get(`${url}/${id}`)
+            .then(response => {
+                setTitle(response.data.name);
+                setDescription(response.data.description)
+                setPrice(response.data.price - response.data.discount)
+                setOldPrice(response.data.price)
+                setRating(response.data.rating)
+                setIsDeliveryAvailable(response.data.delivery)
+                setTimeout(() => {
+                    setImages([
+                        "https://localhost:7196/images/" + response.data.photo,
+                        "https://localhost:7196/images/" + response.data.photo,
+                        "https://localhost:7196/images/" + response.data.photo,
+                        "https://localhost:7196/images/" + response.data.photo,
+                    ]);
+                });
+            })
+            .catch(error => {
+                console.error("Error during axios request", error);
+                
+            });
+    };
+
+
+
     const [isMobile, setIsMobile] = useState(false);
 
     const [title, setTitle] = useState("BISTRUP");
@@ -75,14 +108,8 @@ export default function Product() {
     ];
     
     useEffect(() => {
-        setTimeout(() => {
-          setImages([
-            chair, 
-            chair, 
-            chair,
-            chair,
-          ]);
-        });
+        GetId()
+        
         const handleResize = () => setIsMobile(window.innerWidth <= 992);
         handleResize();
         window.addEventListener("resize", handleResize);

@@ -11,6 +11,11 @@ using Jysk.DAL.Interfaces;
 using Jysk.BLL.Infrastructure;
 using LoggerLib;
 using AutoMapper;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Internal;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Jysk.BLL.Servives
 {
@@ -32,6 +37,12 @@ namespace Jysk.BLL.Servives
                 }
                 else
                 {
+                    Logger log = new Logger();
+                    using (var fileStream = new FileStream(entity.Photo, FileMode.Create))
+                    {
+                        await entity.PhotoFile.CopyToAsync(fileStream);
+                    }
+                    log.Log(entity.Photo);
                     var res = new Product
                     {
                         Id = entity.Id,
@@ -43,11 +54,11 @@ namespace Jysk.BLL.Servives
                         ManufacturerId = entity.ManufacturerId,
                         CategoryId = entity.CategoryId,
                         Discount = entity.Discount,
-                        Photo = entity.Photo
+                        Photo = entity.PhotoFile.FileName
                     };
                     await db.R_Product.Create(res);
                     await db.Save();
-                    Logger log = new Logger();
+                    
                     log.Log("Product added successfully");
                 }
             }
@@ -70,6 +81,12 @@ namespace Jysk.BLL.Servives
                 }
                 else
                 {
+                    Logger log = new Logger();
+                    using (var fileStream = new FileStream(entity.Photo, FileMode.Create))
+                    {
+                        await entity.PhotoFile.CopyToAsync(fileStream);
+                    }
+                    log.Log(entity.Photo);
                     var res = new Product
                     {
                         Id = entity.Id,
@@ -81,18 +98,20 @@ namespace Jysk.BLL.Servives
                         ManufacturerId = entity.ManufacturerId,
                         CategoryId = entity.CategoryId,
                         Discount = entity.Discount,
-                        Photo = entity.Photo
+                        Photo = entity.PhotoFile.FileName
                     };
                     db.R_Product.Update(res);
                     await db.Save();
-                    Logger log = new Logger();
+
                     log.Log("Product updated successfully");
                 }
             }
             catch (Exception ex)
             {
-                Logger log = new Logger();
-                log.Log("Error: Exception during product update\nException: " + ex.ToString());
+                {
+                    Logger log = new Logger();
+                    log.Log("Error: Exception during product creation\nException: " + ex.ToString());
+                }
             }
         }
         public async Task Delete(int id)
@@ -137,6 +156,7 @@ namespace Jysk.BLL.Servives
         }
         public async Task<IEnumerable<ProductDTO>> GetAll(string sort)
         {
+
             var config = new MapperConfiguration(cfg => cfg.CreateMap<Product, ProductDTO>()
             .ForMember("Manufacturer", opt => opt.MapFrom(c => c.Manufacturer.Name))
             .ForMember("Category", opt => opt.MapFrom(c => c.Category.Name)));

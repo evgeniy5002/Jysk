@@ -3,11 +3,11 @@ import Sticker from './Sticker';
 import Rating from './Rating';
 import InStockInfo from './InStockInfo';
 import wishlist from '../assets/icons/heart.svg';
-import chair from '../assets/img/chair.png';
+//import chair from '../assets/img/chair.png';
 import '../styles/components/ProductCard.scss';
 
-const ProductCard = ({ index }) => {
-  return (
+const ProductCard = ({ item, index }) => {
+    return (
     <div className='product-card'>
       <div className='img-container'>
         <div className='overlay-container'>
@@ -20,16 +20,16 @@ const ProductCard = ({ index }) => {
             <Sticker type="greatOffer" />
           </div>
         </div>
-        <img className='product-img' src={chair} alt={`Product ${index}`} />
+        <img className='product-img' src={"https://localhost:7196/images/" + item.photo} alt={`Product ${index}`} />
       </div>
       <div className='desc-container'>
-        <p className='product-name'>BISTRUP ({index + 1})</p>
-        <p className='product-desc'>BISTRUP Dining Chair, Olive/Door Oak</p>
+        <p className='product-name'>{item.name}</p>
+        <p className='product-desc'>{item.description}</p>
 
-        <Rating value={2} />
+        <Rating value={item.rating} />
 
-        <p className='price'>60$<span>/each</span></p>
-        <p className='old-price'>100$<span>/each</span></p>
+        <p className='price'>{item.price - item.discount}$<span>/each</span></p>
+        <p className='old-price'>{item.price}$<span>/each</span></p>
 
         <InStockInfo type="shippingUnavailable" />
         <InStockInfo type="inStock" />

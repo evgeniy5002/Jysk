@@ -2,15 +2,23 @@ import React from 'react';
 import AdminSelect from '../components/AdminSelect';
 import AdminInput from '../components/AdminInput';
 import StatusComponent from '../components/StatusComponent'
+import AdminFileInput from '../components/AdminFileInput';
 
-function AdminForm({ formData, i_func, options, s_func}) {
+function AdminForm({ formData, i_func, options, s_func, img_func}) {
     var Form = [];
     const MapForm = () => {
         var r_key;
         for (const key in formData) {
-            if (typeof formData[key] === 'boolean')
-            {
+            if (typeof formData[key] === 'boolean') {
                 Form.push(<StatusComponent formData={formData[key]} i_func={s_func} i_key={key} />)
+            }
+            else if (key == "PhotoFile")
+            {
+                var test;
+            }
+            else if (key == "Photo") {
+                r_key = key;
+                Form.push(<AdminFileInput i_key={r_key} value={formData[key]} i_func={img_func} />)
             }
             else if (key != "Id" && key.includes("Id")) {
                 r_key = key;
@@ -20,7 +28,6 @@ function AdminForm({ formData, i_func, options, s_func}) {
                 r_key = key.toLowerCase();
                 Form.push(<AdminInput i_key={r_key} value={formData[key]} i_func={i_func} />)
             }
-
             }
         }
 

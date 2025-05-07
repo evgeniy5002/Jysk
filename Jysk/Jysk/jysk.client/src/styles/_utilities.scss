@@ -14,12 +14,20 @@
 .space-between{
     justify-content: space-between;
 }
-.gap-sm{
-    gap: 10px;
-}
 .gap-medium {
-    gap: 15px;
+    gap: 15px!important;
 }
+
+.gap-sm{
+    gap: $gap-sm;
+}
+.gap-md{
+    gap: $gap-md;
+}
+.gap-lg{
+    gap: $gap-lg;
+}
+
 .cursor-pointer{
     cursor: pointer;
 }

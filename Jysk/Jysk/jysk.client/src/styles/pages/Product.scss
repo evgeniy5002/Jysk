@@ -276,3 +276,42 @@
     }
   }
 }
+.product-desc-container{
+  max-width: $breakpoint-lg;
+  width: 100%;
+
+  .related-articles{
+    img{
+      aspect-ratio: 1/0.7;
+      object-fit: cover;
+      display: block;
+    }
+  }
+  .related-articles-tile{
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .main-image{
+    display: flex;
+    justify-content: end;
+    img{
+      width: 85%;
+      aspect-ratio: 1/1.1;
+      object-fit: cover;
+    }
+  }
+  @media (max-width: $breakpoint-lg){
+    .hide-lg{
+      display: none;
+    }
+    .related-articles-tile{
+      width: 100%;
+      @include flex-center;
+    }
+  }
+  @media (max-width: $breakpoint-tablet){
+    .related-articles{
+      gap:$gap-lg;
+    }
+  }
+}

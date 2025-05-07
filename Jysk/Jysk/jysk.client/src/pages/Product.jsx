@@ -5,8 +5,11 @@ import ProductSummary from '../components/ProductSummary';
 import Rating from '../components/Rating';
 import Review from '../components/Review';
 
-
 import chair from '../assets/img/chair.png';
+
+import blog1 from '../assets/img/blog1.png';
+import blog2 from '../assets/img/blog2.png';
+import blog3 from '../assets/img/blog3.png';
 
 import '../styles/pages/Product.scss';
 
@@ -56,7 +59,21 @@ export default function Product() {
       }
     ]);
     
-
+    const blogArticles = [
+      {
+        image: blog1,
+        title: "5 ideas for organizing space"
+      },
+      {
+        image: blog2,
+        title: "Colorful dining chairs for a modern home"
+      },
+      {
+        image: blog3,
+        title: "A striking dining chair for the dining room"
+      }
+    ];
+    
     useEffect(() => {
         setTimeout(() => {
           setImages([
@@ -122,6 +139,36 @@ export default function Product() {
           </div>
         </BodySection>
         <BodySection>
+          <div className='flex-center flex-col'>
+            <span className='title-text flex-center'>Description</span>
+            <div className='product-desc-container '>
+              <div className='row'>
+                <div className='col-12 col-lg-8 flex-col gap-md '>
+                  <div className='flex-col gap-md'>
+                    <span>
+                      The BISTRUP chair is a stylish combination of modern design and natural materials, making it a true highlight of your kitchen or dining room. Its elegant olive color adds freshness to the interior, while the natural oak legs emphasize a refined Scandinavian style.
+                      A dining chair with a soft seat and backrest made of olive-colored fabric. Legs are made of steel in an oak-colored finish.
+                    </span>
+                    <strong>Article number: 3605035</strong>
+                    <span className='related-articles-tile'>Related blog articles</span>
+                  </div>
+                  <div className='row related-articles'>
+                    {blogArticles.slice(0, 3).map((article, index) => (
+                      <div key={index} className='col-md-4 flex-col gap-sm'>
+                        <img src={article.image} alt={`blogImage${index + 1}`} />
+                        {article.title}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className='col-md-4 hide-lg main-image'>
+                  <img src={chair} alt="chair" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </BodySection>
+        <BodySection>
           <div className='product-characteristics'>
             <span className='title-text flex-center'>Characteristics</span>
             <table className="product-characteristics-table">
@@ -160,6 +207,7 @@ export default function Product() {
           </div>
           
         </BodySection>
+
       </>
     );
 }

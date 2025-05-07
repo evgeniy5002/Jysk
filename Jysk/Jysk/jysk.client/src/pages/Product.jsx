@@ -45,8 +45,6 @@ export default function Product() {
             });
     };
 
-
-
     const [isMobile, setIsMobile] = useState(false);
 
     const [title, setTitle] = useState("BISTRUP");

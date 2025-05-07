@@ -4,13 +4,17 @@ import axios from 'axios';
 import BodySection from "../components/BodySection";
 import ProductCard from "../components/ProductCard";
 import FilterList from "../components/FilterList";
+import Paginator from "../components/Paginator";
 
 import '../styles/pages/Search.scss';
+
+import arrow from '../assets/icons/arrow-down.svg';
 
 export default function Search() {
     var url = "https://localhost:7196/api/Product";
     const [list, setList] = useState([]);
     const [page, setPage] = useState(1);
+    const [maxPage, setMaxPage] = useState(10);
     const [pageSize, setPageSize] = useState(12);
 
     const GetAll = (c_sort = "IdAsc", c_page = 1, c_pageSize = 12) => {
@@ -38,6 +42,11 @@ export default function Search() {
                         <ProductCard item={item} key={index} index={index} />
                     ))}
                 </div>
+                
+                <Paginator 
+                    currentPage={page} 
+                    maxPage={maxPage} 
+                />
             </BodySection>
         </div>
     );

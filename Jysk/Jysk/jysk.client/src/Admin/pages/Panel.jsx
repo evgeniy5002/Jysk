@@ -58,7 +58,7 @@ function AdminTest() {
             UserId: '',
         },
         Product: {
-            Photo: '',
+            PhotoFile: useState(null),
             Name: '',
             Description: '',
             Price: '',
@@ -67,6 +67,7 @@ function AdminTest() {
             ManufacturerId: '',
             CategoryId: '',
             Discount: '',
+            Photo: ''
         },
         Review: {
             Rating: '',
@@ -141,6 +142,21 @@ function AdminTest() {
             }
         }));
     }
+
+    const PhotoInput = (e) => {
+        const { name } = e.target;
+        var key = name + "File";
+        setFormData(prev => ({
+            ...prev,
+            [k_value]: {
+                ...prev[k_value],
+                [key]: e.target.files[0],
+                [name]: "Test.png"
+            }
+        }));
+        console.log(key);
+        console.log(name);
+    }
     
     const [sort, setSort] = useState({
           SortDir: true,
@@ -183,7 +199,7 @@ function AdminTest() {
                 }
             })
             .catch(error => {
-                console.error(`Error during axios request${c_pageSize}`, error);
+                console.error(`Error during axios request`, error);
             });
     };
 
@@ -268,9 +284,23 @@ function AdminTest() {
 
 
     const createFunc = () => {
-        var req = formData[k_value];
-        req["Id"] = 0;
-        axios.post(`${url}/${k_value}`, req)
+        var req = new FormData();
+        for (var key in formData[k_value]) {
+            req.append(key, formData[k_value][key]);
+        }
+        req.append("Id", 0)
+        var content = "application/json";
+        if (k_value == "Product" || k_value == "Store")
+        {
+            content = "";
+        }
+        //var req = formData[k_value];
+        //req["Id"] = 0;
+        axios.post(`${url}/${k_value}`, req, {
+            headers: {
+                'Content-Type': content,
+            }
+            })
             .then(() => GetAll("IdAsc", 1, pageSize))
             .then(() => closeWindow())
             .then(() => setPage(1))
@@ -281,9 +311,20 @@ function AdminTest() {
 
 
     const editFunc = () => {
-        var req = formData[k_value];
-        req["Id"] = id.Id;
-             axios.put(`${url}/${k_value}`, req)
+        var req = new FormData();
+        for (var key in formData[k_value]) {
+            req.append(key, formData[k_value][key]);
+        }
+        req.append("Id", id.Id)
+        var content = "application/json";
+        if (k_value == "Product" || k_value == "Store") {
+            content = "";
+        }
+        axios.put(`${url}/${k_value}`, req, {
+            headers: {
+                'Content-Type': content,
+            }
+        })
             .then(() => GetAll("IdAsc",1,pageSize))
             .then(() => closeWindow())
             .then(() => setPage(1))
@@ -337,7 +378,7 @@ function AdminTest() {
             <div className="data-window" id="data">
                 <div className="data-body">
                     <h2>Enter data</h2>
-                    <AdminForm i_func={InputChange} options={options} formData={formData[k_value]} s_func={SelectChange}/>
+                    <AdminForm i_func={InputChange} options={options} formData={formData[k_value]} s_func={SelectChange} img_func={PhotoInput} />
                     <FormButtons e_func={editFunc} c_func={createFunc} cl_func={closeWindow} />
                 </div>
             </div>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Jysk.BLL.DTO
 {
@@ -19,6 +20,7 @@ namespace Jysk.BLL.DTO
         public int CategoryId { get; set; }
         public string? Category { get; set; }
         public int Discount { get; set; }
-        public string Photo { get; set; }
+        public string? Photo { get; set; }
+        public IFormFile? PhotoFile { get; set; }
     }
 }

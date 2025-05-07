@@ -8,9 +8,11 @@ using Microsoft.AspNetCore.Mvc;
 public class ProductController : ControllerBase
 {
     private readonly IProductService db;
-    public ProductController(IProductService db)
+    IWebHostEnvironment _ev;
+    public ProductController(IProductService db, IWebHostEnvironment ev)
     {
         this.db = db;
+        _ev = ev;
     }
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ProductDTO>>> GetAllProduct([FromQuery] string sort, [FromQuery] int page, [FromQuery] int pageSize, [FromQuery] bool isOptions = false)
@@ -44,6 +46,8 @@ public class ProductController : ControllerBase
         {
             return BadRequest(ModelState);
         }
+        string path = _ev.WebRootPath + "/images/" + product.PhotoFile.FileName;
+        product.Photo = path;
         await db.Update(product);
         return Ok(product);
     }
@@ -54,6 +58,8 @@ public class ProductController : ControllerBase
         {
             return BadRequest(ModelState);
         }
+        string path = _ev.WebRootPath + "/images/" + product.PhotoFile.FileName;
+        product.Photo = path;
         await db.Create(product);
         return Ok(product);
     }

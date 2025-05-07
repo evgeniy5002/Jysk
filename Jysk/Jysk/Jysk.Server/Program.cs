@@ -31,6 +31,7 @@ builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
+app.UseStaticFiles();
 app.UseCors(builder => builder.WithOrigins("https://localhost:51042").AllowAnyHeader().AllowAnyMethod());
 if (app.Environment.IsDevelopment())
 {

@@ -18,6 +18,16 @@ function AdminTable({ list, o_func, e_func, i_func}) {
                 {
                     t_table.push(<td>{item[key] ? 'Yes' : 'No'}</td>);
                 }
+                else if (key == "photoFile") {
+                    var test;
+                }
+                else  if (key == "photo")
+                {
+                    var image = [];
+                    image.push(<img src={"https://localhost:7196/images/" + item[key]} width="40px" height="60px" />)
+                    t_table.push(<td>{image}</td>)
+                    
+                }
                 else if (!key.includes("Id") || key == "Id") {
                     t_table.push(<td>{item[key]}</td>);
                 }
@@ -30,11 +40,12 @@ function AdminTable({ list, o_func, e_func, i_func}) {
 
     const MapHTable = (item) => {
         for (var key in item) {
-            if (!key.includes("Id") || key == "Id") {
-                key = key.charAt(0).toUpperCase() + key.slice(1)
-                h_table.push(<th><button onClick={i_func}>{key}</button></th>);
+            if (key != "photoFile") {
+                if (!key.includes("Id") || key == "Id") {
+                    key = key.charAt(0).toUpperCase() + key.slice(1)
+                    h_table.push(<th><button onClick={i_func}>{key}</button></th>);
+                }
             }
-            
         }
     }
 

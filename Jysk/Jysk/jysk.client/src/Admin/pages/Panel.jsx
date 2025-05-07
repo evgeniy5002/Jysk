@@ -193,10 +193,10 @@ function AdminTest() {
         axios.get(`${url}/${k_value}`, { params: { sort: c_sort, page:c_page, pageSize:c_pageSize} })
             .then(response => {
                 setList(response.data)
-                if (response.data.length == 0) {
-                    GetAll(sort.Sort, page);
-                    setPage(page);
-                }
+                //if (response.data.length == 0) {
+                //    GetAll(sort.Sort, page);
+                //    setPage(page);
+                //}
             })
             .catch(error => {
                 console.error(`Error during axios request`, error);

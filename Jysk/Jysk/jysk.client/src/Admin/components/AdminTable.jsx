@@ -19,12 +19,12 @@ function AdminTable({ list, o_func, e_func, i_func}) {
                     t_table.push(<td>{item[key] ? 'Yes' : 'No'}</td>);
                 }
                 else if (key == "photoFile") {
-                    var test;
+                    var t;
                 }
                 else  if (key == "photo")
                 {
                     var image = [];
-                    image.push(<img src={"https://localhost:7196/images/" + item[key]} width="40px" height="60px" />)
+                    image.push(<img src={"https://localhost:7196/images/" + item[key]} width="60px" height="60px" />)
                     t_table.push(<td>{image}</td>)
                     
                 }

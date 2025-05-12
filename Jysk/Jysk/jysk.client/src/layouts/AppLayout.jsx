@@ -6,6 +6,7 @@ import Sidebar from "../components/Sidebar";
 import FilterSidebarContent from "../components/FilterSidebarContent";
 import SortSidebarContent from "../components/SortSidebarContent";
 import { Outlet } from 'react-router-dom';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 function AppLayout() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -50,6 +51,8 @@ function AppLayout() {
             </Sidebar>
 
             <Header />
+            <Breadcrumbs />
+
             <main className="main-content">
                 <Outlet context={{ openSidebar, promotionChecked, onPromotionChange: handlePromotionChange }} />
             </main>

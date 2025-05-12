@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom'; 
 import axios from 'axios';
 
 import BodySection from "../components/BodySection";
@@ -7,8 +8,6 @@ import FilterList from "../components/FilterList";
 import Paginator from "../components/Paginator";
 
 import '../styles/pages/Search.scss';
-
-import arrow from '../assets/icons/arrow-down.svg';
 
 export default function Search() {
     var url = "https://localhost:7196/api/Product";
@@ -48,6 +47,7 @@ export default function Search() {
                     maxPage={maxPage} 
                 />
             </BodySection>
+            <Outlet />
         </div>
     );
 }   

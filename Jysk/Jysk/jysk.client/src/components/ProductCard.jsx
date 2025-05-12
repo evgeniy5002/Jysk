@@ -1,14 +1,22 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import Sticker from './Sticker';
 import Rating from './Rating';
 import InStockInfo from './InStockInfo';
 import wishlist from '../assets/icons/heart.svg';
-//import chair from '../assets/img/chair.png';
 import '../styles/components/ProductCard.scss';
 
 const ProductCard = ({ item, index }) => {
-    return (
-    <div className='product-card'>
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/search/product?id=${item.id}`, {
+      state: { productName: item.name }
+    });
+  };
+  return (
+    <div className='product-card' onClick={handleClick}>
       <div className='img-container'>
         <div className='overlay-container'>
           <div className='wishlist-icon-container'>

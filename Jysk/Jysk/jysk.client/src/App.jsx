@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import AppLayout from './layouts/AppLayout';
+import HomeLayout from './layouts/HomeLayout';
+
 import Home from './pages/Home';
 import Product from './pages/Product';
 
@@ -14,12 +16,13 @@ function App() {
     return (
         <div>
             <Routes>
+                <Route element={<HomeLayout />}>
+                <Route path="/" element={<Home />} />
+
+                </Route>
                 <Route element={<AppLayout />}>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/search" element={<Search />} />
-                    <Route path="/product" element={<Product />} />
-
-
+                    <Route path="search" element={<Search />} />
+                    <Route path="search/product" element={<Product />} />
                 </Route>
                 <Route element={<AdminLayout />}>
                     <Route path="/Admin" element={<Admin />}></Route>

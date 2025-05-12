@@ -9,7 +9,7 @@ export default function FilterList() {
     const { openSidebar, promotionChecked, onPromotionChange } = useOutletContext();
 
     return (
-        <BodySection>
+        <BodySection noBorder>
             <div className='filter-list'>
                 <div className='flex-row gap-medium'>
                     <FilterButton text="Price (GBP)" onClick={() => openSidebar('filter')} hideOnMobile />

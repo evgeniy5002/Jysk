@@ -8,6 +8,7 @@
     box-shadow: $shadow-light;
     overflow: hidden;
     transition: transform 0.3s ease;
+    cursor: pointer;
     
     .img-container {
         aspect-ratio: 2 / 2.5; 

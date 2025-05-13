@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PromotionSwitch from '../components/PromotionSwitch';
 import FilterAccordion from '../components/FilterAccordion';
 import FilterCheckboxList from '../components/FilterCheckboxList';
 import FilterSlider from './FilterSlider';
 import FilterButtonGroup from './FilterButtonGroup';
+import {SetCategory} from './Filters'
 
 export default function FilterSidebarContent({ promotionChecked, onPromotionChange }) {
     const [openAccordions, setOpenAccordions] = useState({});
-    const [value, setValue] = React.useState([20, 37]);
+    const [value, setValue] = React.useState([1, 100]);
     const [selectedColors, setSelectedColors] = useState([]);
 
     const toggleAccordion = (section) => {
@@ -36,6 +37,10 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
     const handleButtonSelection = (selectedButtons) => {
         console.log('Selected buttons:', selectedButtons);
     };
+
+    useEffect(() => {
+        SetCategory("Chair");
+    }, []);
 
     return (
         <>

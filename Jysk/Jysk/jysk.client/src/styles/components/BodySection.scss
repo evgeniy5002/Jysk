@@ -25,7 +25,6 @@
         padding: 15px;
 
         @media (max-width: $max-width) {
-            // width: 100%;
             width: $breakpoint-lg;
         }
         @media (max-width: $breakpoint-lg) {

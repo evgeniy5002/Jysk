@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+
 import BodySection from "../components/BodySection";
 import ProductGallery from '../components/ProductGallery';
 import ProductSummary from '../components/ProductSummary';
 import Rating from '../components/Rating';
 import Review from '../components/Review';
+import SimilarProducts from '../components/SimilarProducts';
 
 import chair from '../assets/img/chair.png';
-import { useLocation } from 'react-router-dom';
-
 import blog1 from '../assets/img/blog1.png';
 import blog2 from '../assets/img/blog2.png';
 import blog3 from '../assets/img/blog3.png';
@@ -131,7 +132,6 @@ export default function Product() {
     const handleAddToCart = () => {
         console.log("Adding to cart:", { title, price, quantity, deliveryOption });
       };
-
     return (
       <>
         <BodySection>
@@ -208,6 +208,17 @@ export default function Product() {
             </table>
           </div>
         </BodySection>
+        <SimilarProducts
+          items={Array.from({ length: 10 }).map((_, index) => ({
+            id: index + 1,
+            name: "(Placeholder Item)BISTRUP",
+            description: "BISTRUP Dining Chair, Olive/Door Oak",
+            photo: "../assets/img/chair.png",
+            rating: 4,
+            price: 150,
+            discount: 50,
+          }))}
+        />
         <BodySection>
           <span className='title-text flex-center'>Reviews</span>
           <div className='reviews-container'>

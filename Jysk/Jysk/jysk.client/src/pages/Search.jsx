@@ -20,7 +20,6 @@ export default function Search() {
         axios.get(`${url}`, { params: { sort: c_sort, page: c_page, pageSize: c_pageSize } })
             .then(response => {
                 setList(response.data)
-                //console.log(response.data[1].Name);
             })
             .catch(error => {
                 console.error(`Error during axios request`, error);
@@ -30,7 +29,6 @@ export default function Search() {
     useEffect(() => {
         GetAll();
     }, []);
-    //const products = Array.from({ length: 12 }, (_, i) => i + 1);
 
     return (
         <div>
@@ -41,7 +39,6 @@ export default function Search() {
                         <ProductCard item={item} key={index} index={index} />
                     ))}
                 </div>
-                
                 <Paginator 
                     currentPage={page} 
                     maxPage={maxPage} 

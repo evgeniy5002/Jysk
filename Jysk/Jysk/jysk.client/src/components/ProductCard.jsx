@@ -11,10 +11,12 @@ const ProductCard = ({ item, index }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
+    window.scrollTo(0, 0);
     navigate(`/search/product?id=${item.id}`, {
       state: { productName: item.name }
     });
   };
+  
   return (
     <div className='product-card' onClick={handleClick}>
       <div className='img-container'>

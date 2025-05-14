@@ -1,0 +1,88 @@
+@import '../variables';
+@import '../mixins';
+
+$button-arrow-size: 25px;
+$button-arrow-margin: $gap-sm;
+$button-total-offset: ($button-arrow-size * 2 + $button-arrow-margin * 2);
+
+.similar-products-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .arrow-button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    @include flex-center;
+
+    img {
+      height: $button-arrow-size;
+      width: $button-arrow-size;
+      transform: rotate(-90deg);
+
+        @media (max-width: #{ $breakpoint-tablet + $button-total-offset }) {
+            display: none;
+        }
+    }
+
+    &.left img {
+      transform: rotate(90deg);
+    }
+  }
+
+  .similar-products-slider {
+    width: $max-width;
+    padding: 15px;
+
+    @media (max-width: #{ $max-width + $button-total-offset }) {
+      width: $breakpoint-lg;
+    }
+    @media (max-width: #{ $breakpoint-lg + $button-total-offset }) {
+      width: $breakpoint-tablet;
+    }
+    @media (max-width: #{ $breakpoint-tablet + $button-total-offset }) {
+      width: 100%;
+    }
+  }
+}
+
+.product-scroll-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+
+  scroll-snap-type: x mandatory;
+
+  gap: $gap-lg;
+  padding: 10px 0;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.scroll-item {
+  flex: 0 0 calc(25% - 15px);
+  max-width: calc(25% - 15px);
+
+  scroll-snap-align: start;
+
+  @media (max-width: #{ $max-width + $button-total-offset }) {
+    flex: 0 0 calc(33.333% - 15px);
+    max-width: calc(33.333% - 15px);
+  }
+
+  @media (max-width: #{ $breakpoint-tablet + $button-total-offset }) {
+    flex: 0 0 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+  }
+
+  @media (max-width: #{ $breakpoint-mobile + $button-total-offset }) {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

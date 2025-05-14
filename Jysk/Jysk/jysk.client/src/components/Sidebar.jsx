@@ -1,6 +1,7 @@
 import React from 'react';
 import close from '../assets/icons/close.svg';
 import '../styles/components/Sidebar.scss';
+import {triggerCallback} from './Filters'
 
 export default function Sidebar({ isOpen, onClose, title, children, disableClear = false }) {
     return (
@@ -24,8 +25,10 @@ export default function Sidebar({ isOpen, onClose, title, children, disableClear
                     Clear all
                 </button>
 
-                <button className='show-results'>Show results</button>
+                <button className='show-results' onClick={triggerCallback}>Show results</button>
             </div>
         </div>
     );
 }
+
+

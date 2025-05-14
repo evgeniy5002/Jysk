@@ -8,11 +8,10 @@ namespace Jysk.DAL.Entities
 {
     public class ProductFiltrationValues
     {
-        public int Price { get; set; }
-        public int Rating { get; set; }
-        public bool Delivery { get; set; }
-        public string? Manufacturer { get; set; }
-        public string? Category { get; set; }
-        public int Discount { get; set; }
+        public int[]? Price { get; set; }
+        public bool? Delivery { get; set; }
+        public string[]? Manufacturer { get; set; }
+        public string[]? Category { get; set; }
+        public bool? Discount { get; set; }
     }
 }

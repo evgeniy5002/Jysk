@@ -9,7 +9,7 @@ import Paginator from "../components/Paginator";
 
 import '../styles/pages/Search.scss';
 
-import { SetCallback, GetReq } from '../components/Filters'
+import { SetGetAllCallback, GetReq } from '../components/Filters'
 
 export default function Search() {
     var url = "https://localhost:7196/api/ProductFiltration";
@@ -20,15 +20,14 @@ export default function Search() {
 
     const GetAll = (c_sort = "IdAsc") => {
         var req = GetReq();
-        axios.get(`${url}`, {
-            params: {
-                ...req,
-                sort: c_sort
+        axios.post(`${url}`, req, { params: { sort: c_sort } }, {
+            headers: {
+                'Content-Type': 'application/json'
             }
         })
             .then(response => {
                 setList(response.data)
-                //console.log(response.data[1].Name);
+                console.log(response.data);
                 CountPages(response.data.length);
             })
             .catch(error => {
@@ -38,13 +37,12 @@ export default function Search() {
 
     const CountPages = (length) => {
         const max = length / pageSize;
-        alert(length);
         const rounded = Math.ceil(max);
         setMaxPage(rounded);
     }
 
     useEffect(() => {
-        SetCallback((() => {
+        SetGetAllCallback((() => {
             GetAll();
         }));
         GetAll();

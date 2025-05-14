@@ -1,15 +1,45 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import PromotionSwitch from '../components/PromotionSwitch';
 import FilterAccordion from '../components/FilterAccordion';
 import FilterCheckboxList from '../components/FilterCheckboxList';
 import FilterSlider from './FilterSlider';
 import FilterButtonGroup from './FilterButtonGroup';
-import {SetCategory} from './Filters'
+import {SetCategory, SetManufacturer, SetMaxPrice,SetMinPrice,SetDelivery,SetDiscount} from './Filters'
 
 export default function FilterSidebarContent({ promotionChecked, onPromotionChange }) {
     const [openAccordions, setOpenAccordions] = useState({});
     const [value, setValue] = React.useState([1, 100]);
     const [selectedColors, setSelectedColors] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState([]);
+    const [selectedManufacturer, setSelectedManufacturer] = useState([]);
+    const ManufacturerURL = "https://localhost:7196/api/Manufacturer"
+    const CategoryURL = "https://localhost:7196/api/Category"
+    const [ManufacturerList, setManufacturerList] = useState([]);
+    const [CategoryList, setCategoryList] = useState([]);
+
+    const GetAllCategory = () => {
+        axios.get(`${CategoryURL}`, { params: { sort: "IdAsc", page: 1, pageSize: 999 } })
+            .then(response => {
+                const list = response.data.map(item => ({
+                    label: item.name,
+                    id: item.name,
+                    count: 10
+                }))
+                setCategoryList(list);
+            })
+    }
+    const GetAllManufacturer = () => {
+        axios.get(`${ManufacturerURL}`, { params: { sort: "IdAsc", page: 1, pageSize: 999 } })
+            .then(response => {
+                const list = response.data.map(item => ({
+                    label: item.name,
+                    id: item.name,
+                    count: 10
+                }))
+                setManufacturerList(list);
+            })
+    }
 
     const toggleAccordion = (section) => {
         setOpenAccordions(prev => ({
@@ -18,7 +48,25 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
         }));
     };
 
-    const handleChange = (event, newValue) => setValue(newValue);
+    const handleChange = (event, newValue) => {
+        setValue(newValue)
+        SetMaxPrice(newValue[1])
+        SetMinPrice(newValue[0])
+    };
+
+    const handleCategoryChange = (e) => {
+        SetCategory(e.target.label);
+        alert(e.target.label)
+    }
+    const handleManufacturerChange = (e) => {
+        SetCategory(e.target.label);
+    }
+    const handleDeliverytChange = (e) => {
+        SetCategory(e.target.checked);
+    }
+    const handleDiscountChange = (e) => {
+        SetCategory(e.target.checked);
+    }
 
     const handleInputChange = (e, index) => {
         const newValue = [...value];
@@ -34,12 +82,32 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
         );
     };
 
+    const handleCategoryToggle = (id) => {
+        setSelectedCategory(prev => 
+            prev.includes(id)
+                ? prev.filter(category => category !== id)
+                : [...prev, id]
+
+        );
+        SetCategory(selectedCategory);
+    };
+
+    const handleManufacturerToggle = (id) => {
+        setSelectedManufacturer(prev =>
+            prev.includes(id)
+                ? prev.filter(category => category !== id)
+                : [...prev, id]
+        );
+        SetManufacturer(selectedCategory);
+    };
+
     const handleButtonSelection = (selectedButtons) => {
         console.log('Selected buttons:', selectedButtons);
     };
 
     useEffect(() => {
-        SetCategory("Chair");
+        GetAllCategory();
+        GetAllManufacturer();
     }, []);
 
     return (
@@ -62,12 +130,9 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
                 onToggle={() => toggleAccordion('categories')}
             >
                 <FilterCheckboxList
-                    items={[
-                        { label: 'In stock online', id: 'online', count: 34 },
-                        { label: 'In stock in stores', id: 'in-stores', count: 13 },
-                    ]}
-                    selectedItems={selectedColors}
-                    onChange={handleColorToggle}
+                    items={CategoryList}
+                    selectedItems={selectedCategory}
+                    onChange={handleCategoryToggle}
                 />
             </FilterAccordion>
             
@@ -77,12 +142,9 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
                 onToggle={() => toggleAccordion('brand')}
             >
                 <FilterCheckboxList
-                    items={[
-                        { label: 'Udsbjerg', id: 'udsbjerg', count: 34 },
-                        { label: 'Thorup', id: 'thorup', count: 13 },
-                    ]}
-                    selectedItems={selectedColors}
-                    onChange={handleColorToggle}
+                    items={ManufacturerList}
+                    selectedItems={selectedManufacturer}
+                    onChange={handleManufacturerToggle}
                 />
             </FilterAccordion>
             <FilterAccordion

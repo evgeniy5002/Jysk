@@ -20,6 +20,7 @@ export default function Search() {
 
     const GetAll = (c_sort = "IdAsc") => {
         var req = GetReq();
+        console.log(c_sort);
         axios.post(`${url}`, req, { params: { sort: c_sort } }, {
             headers: {
                 'Content-Type': 'application/json'
@@ -27,7 +28,6 @@ export default function Search() {
         })
             .then(response => {
                 setList(response.data)
-                console.log(response.data);
                 CountPages(response.data.length);
             })
             .catch(error => {
@@ -42,8 +42,8 @@ export default function Search() {
     }
 
     useEffect(() => {
-        SetGetAllCallback((() => {
-            GetAll();
+        SetGetAllCallback(((sort) => {
+            GetAll(sort);
         }));
         GetAll();
         

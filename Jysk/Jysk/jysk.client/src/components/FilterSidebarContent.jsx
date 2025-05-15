@@ -5,7 +5,7 @@ import FilterAccordion from '../components/FilterAccordion';
 import FilterCheckboxList from '../components/FilterCheckboxList';
 import FilterSlider from './FilterSlider';
 import FilterButtonGroup from './FilterButtonGroup';
-import {SetCategory, SetManufacturer, SetMaxPrice,SetMinPrice,SetDelivery,SetDiscount} from './Filters'
+import {SetCategory, SetManufacturer, SetMaxPrice,SetMinPrice,SetDelivery} from './Filters'
 
 export default function FilterSidebarContent({ promotionChecked, onPromotionChange }) {
     const [openAccordions, setOpenAccordions] = useState({});
@@ -15,29 +15,85 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
     const [selectedManufacturer, setSelectedManufacturer] = useState([]);
     const ManufacturerURL = "https://localhost:7196/api/Manufacturer"
     const CategoryURL = "https://localhost:7196/api/Category"
+    var url = "https://localhost:7196/api/ProductFiltration";
     const [ManufacturerList, setManufacturerList] = useState([]);
     const [CategoryList, setCategoryList] = useState([]);
+    const [selectedDelivery, setSelectedDelivery] = useState([]);
 
     const GetAllCategory = () => {
         axios.get(`${CategoryURL}`, { params: { sort: "IdAsc", page: 1, pageSize: 999 } })
             .then(response => {
-                const list = response.data.map(item => ({
+                var items1 = response.data.map(item => ({
                     label: item.name,
                     id: item.name,
-                    count: 10
                 }))
-                setCategoryList(list);
+                var req = [];
+                response.data.forEach(item => {
+                    req.push(item.name);
+                })
+                axios.get(`${url}/getcount`, {
+                    params: { strarr: req, key: "Category" }, paramsSerializer: params => {
+                        const query = new URLSearchParams();
+                        for (const key in params) {
+                            const value = params[key];
+                            if (Array.isArray(value)) {
+                                value.forEach(v => query.append(key, v));
+                            } else {
+                                query.append(key, value);
+                            }
+                        }
+                        return query.toString();
+                    }
+                })
+                    .then(response => {
+                        var items2 = response.data.map(item => ({
+                            count: item
+                        }))
+                        const res = items1.map((item, i) => ({
+                            ...item,
+                            count:items2[i]?.count
+                        }))
+                        console.log(res);
+                        setCategoryList(res);
+                    })
             })
     }
     const GetAllManufacturer = () => {
         axios.get(`${ManufacturerURL}`, { params: { sort: "IdAsc", page: 1, pageSize: 999 } })
             .then(response => {
-                const list = response.data.map(item => ({
+                var items1 = response.data.map(item => ({
                     label: item.name,
                     id: item.name,
-                    count: 10
                 }))
-                setManufacturerList(list);
+                var req = [];
+                response.data.forEach(item => {
+                    req.push(item.name);
+                })
+                axios.get(`${url}/getcount`, {
+                    params: { strarr: req, key: "Manufacturer" }, paramsSerializer: params => {
+                        const query = new URLSearchParams();
+                        for (const key in params) {
+                            const value = params[key];
+                            if (Array.isArray(value)) {
+                                value.forEach(v => query.append(key, v));
+                            } else {
+                                query.append(key, value);
+                            }
+                        }
+                        return query.toString();
+                    }
+                })
+                    .then(response => {
+                        var items2 = response.data.map(item => ({
+                            count: item
+                        }))
+                        const res = items1.map((item, i) => ({
+                            ...item,
+                            count: items2[i]?.count
+                        }))
+                        console.log(res);
+                        setManufacturerList(res);
+                    })
             })
     }
 
@@ -54,20 +110,6 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
         SetMinPrice(newValue[0])
     };
 
-    const handleCategoryChange = (e) => {
-        SetCategory(e.target.label);
-        alert(e.target.label)
-    }
-    const handleManufacturerChange = (e) => {
-        SetCategory(e.target.label);
-    }
-    const handleDeliverytChange = (e) => {
-        SetCategory(e.target.checked);
-    }
-    const handleDiscountChange = (e) => {
-        SetCategory(e.target.checked);
-    }
-
     const handleInputChange = (e, index) => {
         const newValue = [...value];
         newValue[index] = Number(e.target.value);
@@ -81,6 +123,35 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
                 : [...prev, id]
         );
     };
+
+    const handleDeliveryToggle = (id) => {
+        if (id == "delivery") {
+            SetDelivery(true);
+            setSelectedDelivery(prev =>
+                prev.includes("no_delivery")
+                    ? prev.filter(val => val == "")
+                    : [...prev, ""]
+            );
+            setSelectedDelivery(prev =>
+                prev.includes(id)
+                    ? prev.filter(val => val !== id)
+                    : [...prev, id]
+            );
+        }
+        else {
+            SetDelivery(false);
+            setSelectedDelivery(prev =>
+                prev.includes("delivery")
+                    ? prev.filter(val => val == "")
+                    : [...prev, ""]
+            );
+            setSelectedDelivery(prev =>
+                prev.includes(id)
+                    ? prev.filter(val => val !== id)
+                    : [...prev, id]
+            );
+        }
+    }
 
     const handleCategoryToggle = (id) => {
         setSelectedCategory(prev => 
@@ -108,6 +179,7 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
     useEffect(() => {
         GetAllCategory();
         GetAllManufacturer();
+        //GetStringCount(CategoryList, "Category");
     }, []);
 
     return (
@@ -169,10 +241,11 @@ export default function FilterSidebarContent({ promotionChecked, onPromotionChan
             >
                 <FilterCheckboxList
                     items={[
-                        { label: 'Delivery status', id: 'online', count: 34 },
+                        { label: 'Delivery', id: 'delivery' },
+                        { label: 'No Delivery', id: 'no_delivery' },
                     ]}
-                    selectedItems={selectedColors}
-                    onChange={handleColorToggle}
+                    selectedItems={selectedDelivery}
+                    onChange={handleDeliveryToggle}
                 />
             </FilterAccordion>
             

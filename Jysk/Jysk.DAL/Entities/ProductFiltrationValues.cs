@@ -12,6 +12,5 @@ namespace Jysk.DAL.Entities
         public bool? Delivery { get; set; }
         public string[]? Manufacturer { get; set; }
         public string[]? Category { get; set; }
-        public bool? Discount { get; set; }
     }
 }

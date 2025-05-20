@@ -29,10 +29,13 @@ $breakpoint-tablet: 768px;
 $breakpoint-mobile: 480px;
 $breakpoint-mobile-xs: 320px;
 
+$gap-xs: 5px;
+
 $gap-sm: 10px;
 $gap-md: 15px;
 $gap-lg: 20px;
 
+$input-padding: 15px 20px;
 :root {
     --in-stock-green: #20873e;
     --in-stock-red: #cf0013;

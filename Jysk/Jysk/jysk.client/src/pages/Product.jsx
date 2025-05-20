@@ -8,6 +8,7 @@ import ProductSummary from '../components/ProductSummary';
 import Rating from '../components/Rating';
 import Review from '../components/Review';
 import SimilarProducts from '../components/SimilarProducts';
+import ReviewModal from '../components/ReviewModal';
 
 import chair from '../assets/img/chair.png';
 import blog1 from '../assets/img/blog1.png';
@@ -105,7 +106,16 @@ export default function Product() {
         title: "A striking dining chair for the dining room"
       }
     ];
-    
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    const handleSubmitReview = () => {
+      console.log("Review submitted");
+    };
+  
     useEffect(() => {
         GetId()
         
@@ -228,8 +238,8 @@ export default function Product() {
                 showRatingText={true}
                 sx={{ gap: '5px', imgHeight: '20px', fontSize: '16px' }}
               />
-              <span className='flex-center'>Оцінка користувачів</span>
-              <button className='font-bold'>Leave Review</button>
+              <p className='flex-center'>Оцінка користувачів</p>
+              <button className='font-bold' onClick={openModal}>Leave Review</button>
             </div>
             <hr></hr>
             {reviews.map((review, index) => (
@@ -241,6 +251,12 @@ export default function Product() {
               />
             ))}
           </div>
+          
+          <ReviewModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            onSubmit={handleSubmitReview}
+          />
           
         </BodySection>
 

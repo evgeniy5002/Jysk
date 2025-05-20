@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import '../styles/components/SortSidebar.scss';
+import { triggerCallback } from './Filters'
 
 export default function SortSidebarContent() {
     const [selectedValue, setSelectedValue] = useState('option1');
@@ -10,6 +11,15 @@ export default function SortSidebarContent() {
         const value = event.target.value;
         setSelectedValue(value);
         console.log("Selected sort option:", value);
+        if (value == "price_asc") {
+            triggerCallback("PriceAsc");
+        }
+        else if (value == "price_desc") {
+            triggerCallback("PriceDesc")
+        }
+        else {
+            triggerCallback("IdAsc");
+        }
     };
 
     const options = [

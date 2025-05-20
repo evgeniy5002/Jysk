@@ -5,6 +5,8 @@ using LoggerLib;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Logging.Configuration;
+using System.Net.Http.Headers;
 using System.Reflection;
 
 namespace Jysk.Server.Controllers
@@ -23,15 +25,16 @@ namespace Jysk.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> GetAllProduct([FromBody]ProductFiltrationValues PFV, [FromQuery] string sort)
         {
+            logger.Log(sort);
             IEnumerable<ProductDTO> arr = await db.GetAll(sort);
             IEnumerable<ProductDTO> res = arr;
             Type type = PFV.GetType();
             //PFV.Category = null;
             //PFV.Delivery = false;
-            //PFV.Price = null;
+            //PFV.Price = [0,1000];
             //PFV.Manufacturer = null;
             //PFV.Discount = false;
-            //logger.Log(PFV.Category + "" + PFV.Delivery + " " + PFV.Manufacturer + " " + PFV.Discount + " " + PFV.Price); 
+            //logger.Log(PFV.Category + "" + PFV.Delivery + " " + PFV.Manufacturer  + " " + PFV.Price); 
             
             foreach (var prop in type.GetProperties())
             {
@@ -55,6 +58,33 @@ namespace Jysk.Server.Controllers
                 }
             }
             return Ok(res);
+        }
+        [HttpGet("getcount")]
+        public async Task<IEnumerable<int>> GetStringCount([FromQuery] string[] strarr, [FromQuery] string key)
+        {
+            IEnumerable<ProductDTO> arr = await db.GetAll("IdAsc");
+            int[] iarr = new int[strarr.Length];
+            for (int i = 0; i < strarr.Length; i++)
+            {
+                iarr[i] = 0;
+            }
+            Type type;
+            PropertyInfo field;
+            foreach (ProductDTO item in arr)
+            {
+                type = item.GetType();
+                field = type.GetProperty(key, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                if (field != null)
+                {
+                    object value = field.GetValue(item);
+                    if (strarr.Contains(value.ToString()))
+                    {
+                        int index = Array.IndexOf(strarr, value.ToString());
+                        iarr[index]++;
+                    }
+                }
+            }
+            return iarr;
         }
         private IEnumerable<ProductDTO> FiltrationByString(IEnumerable<ProductDTO> arr, string[] filter, string key)
         {
@@ -88,77 +118,83 @@ namespace Jysk.Server.Controllers
         }
         private IEnumerable<ProductDTO> FiltrationByInt(IEnumerable<ProductDTO> arr, int filter, string key)
         {
-            IEnumerable<ProductDTO> res = new List<ProductDTO>();
+            var res = new List<ProductDTO>();
             if (filter != 0)
             {
                 foreach (ProductDTO item in arr)
                 {
                     Type type = item.GetType();
-                    FieldInfo field = type.GetField(key, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                    PropertyInfo field = type.GetProperty(key, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                     if (field != null)
                     {
                         if ((int)field.GetValue(item) == filter)
                         {
-                            res.Append(item);
+                            res.Add(item);
                         }
                     }
                 }
+                return res;
             }
             else
             {
-                res = arr;
+                return arr;
             }
-            return res;
+            
         }
         private IEnumerable<ProductDTO> FiltrationByBool(IEnumerable<ProductDTO> arr, bool filter, string key)
         {
-            IEnumerable<ProductDTO> res = new List<ProductDTO>();
+            var res = new List<ProductDTO>();
             if (filter)
             {
                 foreach (ProductDTO item in arr)
                 {
                     Type type = item.GetType();
-                    FieldInfo field = type.GetField(key, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                    PropertyInfo field = type.GetProperty(key, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                     if (field != null)
                     {
                         if ((bool)field.GetValue(item) == filter)
                         {
-                            res.Append(item);
+                            res.Add(item);
                         }
                     }
                 }
+                return res;
             }
             else
             {
-                res = arr;
+                return arr;
             }
-            return res;
         }
         private IEnumerable<ProductDTO> FiltrationByIntArr(IEnumerable<ProductDTO> arr, int[] filter, string key)
         {
+
             //logger.Log(filter[0].ToString() + " " + filter[1].ToString());
-            IEnumerable<ProductDTO> res = new List<ProductDTO>();
+            var res = new List<ProductDTO>();
             if (filter.Length > 0)
             {
-                logger.Log("Test");
+                Type type;
+                PropertyInfo field;
                 foreach (ProductDTO item in arr)
                 {
-                    Type type = item.GetType();
-                    FieldInfo field = type.GetField(key, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+                    type = item.GetType();
+                    field = type.GetProperty(key, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
                     if (field != null)
                     {
-                        if ((int)field.GetValue(item) >= filter[0] && (int)field.GetValue(item) <= filter[1])
+                        object value = field.GetValue(item);
+                        if ((int)value - item.Discount >= filter[0] && (int)value - item.Discount <= filter[1])
                         {
-                            res.Append(item);
+                            res.Add(item);
+                            //logger.Log(item.Name);
                         }
+                        //logger.Log(filter[1].ToString() + " " + filter[0].ToString() + " " + value.ToString());
                     }
                 }
+                return res;
             }
             else
             {
-                res = arr;
+                return arr;
             }
-            return res;
         }
     }
 }

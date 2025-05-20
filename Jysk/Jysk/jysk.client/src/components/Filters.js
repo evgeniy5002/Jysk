@@ -4,7 +4,6 @@ var req = {
     Category: [],
     Manufacturer: [],
     Price: [],
-    Discount: false,
     Delivery: false
 }
 let GetAllCallback = null;
@@ -20,9 +19,6 @@ export const SetCategory = (value) => {
 export const SetManufacturer = (value) => {
     req.Manufacturer = value;
 }
-export const SetDiscount = (value) => {
-    req.Discount = value;
-}
 export const SetDelivery = (value) => {
     req.Delivery = value;
 }
@@ -36,8 +32,8 @@ export const SetMaxPrice = (value) => {
 export const SetGetAllCallback = (callback) => {
     GetAllCallback = callback
 }
-export const triggerCallback = () => {
+export const triggerCallback = (sort = "IdAsc") => {
     if (GetAllCallback) {
-        GetAllCallback()
+        GetAllCallback(sort)
     }
 }

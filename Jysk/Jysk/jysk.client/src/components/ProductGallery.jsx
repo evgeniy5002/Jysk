@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { MobileStepper } from '@mui/material';
 
+import WishlistButton from './WishlistButton';
+
+
 const ProductGallery = ({ images, isMobile }) => {
     const [activeStep, setActiveStep] = useState(0);
 
@@ -13,6 +16,12 @@ const ProductGallery = ({ images, isMobile }) => {
         <div className='product-gallery'>
             {isMobile ? (
                 <div className="carousel-container">
+                    <WishlistButton
+                        sx={{ padding: '25px' }}
+                        onToggle={(state) =>
+                        console.log(state ? 'Item favorited' : 'Item unfavorited')
+                        }
+                    />
                     <SwipeableViews
                         index={activeStep}
                         onChangeIndex={handleStepChange}

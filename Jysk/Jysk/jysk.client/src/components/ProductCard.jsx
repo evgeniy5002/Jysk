@@ -1,13 +1,13 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate} from 'react-router-dom'; 
+
 import Sticker from './Sticker';
 import Rating from './Rating';
 import InStockInfo from './InStockInfo';
-import wishlist from '../assets/icons/heart.svg';
+import WishlistButton from './WishlistButton';
 import '../styles/components/ProductCard.scss';
 
 const ProductCard = ({ item, index }) => {
-
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -16,19 +16,27 @@ const ProductCard = ({ item, index }) => {
       state: { productName: item.name }
     });
   };
-  
+
   return (
     <div className='product-card' onClick={handleClick}>
       <div className='img-container'>
         <div className='overlay-container'>
-          <div className='wishlist-icon-container'>
-            <img className='wishlist-icon' src={wishlist} alt={`Wishlist`} />
+          <div>
+           <WishlistButton
+              onToggle={(state) =>
+                console.log(state ? 'Item favorited' : 'Item unfavorited')
+              }
+            />
           </div>
+
+            <div>
           <div className='stickers'>
             <Sticker type="discount" discountValue={80} />
             <Sticker type="newItem" />
             <Sticker type="greatOffer" />
           </div>
+            </div>
+
         </div>
         <img className='product-img' src={"https://localhost:7196/images/" + item.photo} alt={`Product ${index}`} />
       </div>

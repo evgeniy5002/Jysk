@@ -1,0 +1,32 @@
+
+@import '../variables';
+
+.wishlist-icon-container {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+  z-index: 100;
+
+  .wishlist-icon {
+    width: 25px;
+    object-fit: contain;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    cursor: pointer;
+
+    @media (min-width: $breakpoint-tablet ) {
+      &:hover {
+        transform: scale(1.2);
+        filter: brightness(1.2);
+      }
+    }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    &.tapped .wishlist-icon {
+      transform: scale(1.2);
+      filter: brightness(1.2);
+    }
+  }
+}

@@ -17,7 +17,6 @@ export default function ReviewModal({ isOpen, onClose, onSubmit }) {
   const [error, setError] = useState('');
   const [rating, setRating] = useState(0);
 
-
   useEffect(() => {
   if (isOpen) {
       setShow(true);
@@ -34,7 +33,6 @@ export default function ReviewModal({ isOpen, onClose, onSubmit }) {
       document.body.classList.remove('body-no-scroll');
   };
   }, [isOpen]);
-
 
   if (!show) return null;
 
@@ -70,7 +68,6 @@ export default function ReviewModal({ isOpen, onClose, onSubmit }) {
     onClose();
   };
 
-
   return (
     <div className={`review-modal-overlay ${animate ? 'visible' : ''}`} onClick={onClose}>
       <div
@@ -96,61 +93,60 @@ export default function ReviewModal({ isOpen, onClose, onSubmit }) {
               tabIndex={0}
             />
           ))}
-        </div>
+          </div>
 
-        <div className='input-container'>
-          <input
-            type="text"
-            aria-label="Theme"
-            value={theme}
-            onChange={e => setTheme(e.target.value)}
-            placeholder="Theme"
-          />
-          <input
-            type="text"
-            aria-label="Name"
-            value={name}
-            onChange={e => setName(e.target.value)}
-            placeholder="Name"
-            required
-          />
+          <div className='input-container'>
+            <input
+              type="text"
+              aria-label="Theme"
+              value={theme}
+              onChange={e => setTheme(e.target.value)}
+              placeholder="Theme"
+            />
+            <input
+              type="text"
+              aria-label="Name"
+              value={name}
+              onChange={e => setName(e.target.value)}
+              placeholder="Name"
+              required
+            />
 
-          <input
-            type="email"
-            aria-label="E-mail"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            placeholder="E-mail"
-            required
-          />
+            <input
+              type="email"
+              aria-label="E-mail"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="E-mail"
+              required
+            />
 
-          <textarea
-            aria-label="Review"
-            placeholder="Review"
-            rows={12}
-            className="review-textarea"
-            value={reviewText}
-            onChange={e => setReviewText(e.target.value)}
-            required
-          />
-        </div>
-        <label className="terms-checkbox">
-          <input
-            type="checkbox"
-            checked={acceptedTerms}
-            onChange={e => setAcceptedTerms(e.target.checked)}
-            aria-label="Accept terms and service"
-          />
-          <span> I accept the <a href="/terms" target="_blank" rel="noopener noreferrer">terms and service</a>.</span>
-        </label>
+            <textarea
+              aria-label="Review"
+              placeholder="Review"
+              rows={12}
+              className="review-textarea"
+              value={reviewText}
+              onChange={e => setReviewText(e.target.value)}
+              required
+            />
+          </div>
+          <label className="terms-checkbox">
+            <input
+              type="checkbox"
+              checked={acceptedTerms}
+              onChange={e => setAcceptedTerms(e.target.checked)}
+              aria-label="Accept terms and service"
+            />
+            <span> I accept the <a href="/terms" target="_blank" rel="noopener noreferrer">terms and service</a>.</span>
+          </label>
 
-        {error && <p className="error-message" role="alert">{error}</p>}
+          {error && <p className="error-message" role="alert">{error}</p>}
 
-        <div className="review-modal-buttons">
-          <button className="btn cancel" onClick={onClose}>Cancel</button>
-          <button className="btn submit" onClick={handleSubmit}>Submit review</button>
-        </div>
-
+          <div className="review-modal-buttons">
+            <button className="btn cancel" onClick={onClose}>Cancel</button>
+            <button className="btn submit" onClick={handleSubmit}>Submit review</button>
+          </div>
         </div>
       </div>
     </div>

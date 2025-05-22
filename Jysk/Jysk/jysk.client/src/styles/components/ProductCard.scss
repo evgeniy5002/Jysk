@@ -28,17 +28,6 @@
             width: 100%;
         }
 
-        .wishlist-icon-container{
-            width: 100%;
-            display: flex;
-            justify-content: end;
-            padding: 10px;
-            .wishlist-icon {
-                width: 25px;
-                object-fit: contain; 
-            }
-        }
-
         .product-img {
             @include responsive-image;
             height: 100%;

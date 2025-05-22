@@ -83,37 +83,52 @@
     }
 }
 .carousel-container {
+  position: relative;
+  width: 100%;
+
+  .carousel-item-wrapper {
     position: relative;
     width: 100%;
+    aspect-ratio: 1.5 / 1;
+    background-color: $color-surface;
+    display: flex;          
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; 
 
-    .carousel-item-wrapper {
-        width: 100%;
-        position: relative;
-
-        .carousel-img {
-            aspect-ratio: 1.5/1;
-            width: 100%;
-            object-fit: cover;
-            display: block;
-
-            @media (max-width: $breakpoint-mobile) {
-                height: 300px;
-            }
-        }
+    @media (max-width: $breakpoint-mobile) {
+      aspect-ratio: unset;
+      height: 350px;
     }
 
-    .carousel-stepper {
-        position: absolute;
-        bottom: 8px;
-        left: 0;
-        right: 0;
-        text-align: center;
-        z-index: 2;
+    .carousel-img {
+      height: 100%;
+      width: auto;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      user-select: none;
 
-        .MuiMobileStepper-dotActive {
-            background-color: $color-accent;
-        }
+      @media (max-width: $breakpoint-mobile) {
+        height: 100%;
+        width: auto;
+        object-fit: cover;
+      }
     }
+  }
+
+  .carousel-stepper {
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      z-index: 2;
+
+      .MuiMobileStepper-dotActive {
+          background-color: $color-accent;
+      }
+  }
 }
 
 .add-to-basket-wrapper{

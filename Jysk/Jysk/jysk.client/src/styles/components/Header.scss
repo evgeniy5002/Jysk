@@ -15,6 +15,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    font-family: $font-default;
+    font-weight: 400;
+
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
     width: 100%;
     background-color: $color-surface;
@@ -35,7 +39,7 @@
             justify-content: space-between;
             height: 95px;
             padding: 0 15px;
-            
+
             .header-item {
                 display: flex;
                 flex-direction: row;
@@ -96,6 +100,7 @@
                             height: 20px;
                         }
                     }
+
                     .search-bar {
                         @include input-style(100%, $color-secondary-light);
                     }

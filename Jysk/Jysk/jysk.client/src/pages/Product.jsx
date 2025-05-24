@@ -91,7 +91,6 @@ export default function Product() {
         text: 'We bought several BISTRUP chairs for our dining room, and they exceeded all expectations. They look very modern and are well-made. I especially want to highlight the comfort – the ergonomic backrest really supports your back, so sitting on them is comfortable even for long periods of time. The quality of materials is top-notch, and the oak legs give the chair extra durability. A great choice for those looking for stylish and practical furniture!'
       }
     ]);
-    
     const blogArticles = [
       {
         image: blog1,
@@ -106,7 +105,6 @@ export default function Product() {
         title: "A striking dining chair for the dining room"
       }
     ];
-
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const openModal = () => setIsModalOpen(true);
@@ -218,17 +216,6 @@ export default function Product() {
             </table>
           </div>
         </BodySection>
-        <SimilarProducts
-          items={Array.from({ length: 10 }).map((_, index) => ({
-            id: index + 1,
-            name: "(Placeholder Item)BISTRUP",
-            description: "BISTRUP Dining Chair, Olive/Door Oak",
-            photo: "../assets/img/chair.png",
-            rating: 4,
-            price: 150,
-            discount: 50,
-          }))}
-        />
         <BodySection>
           <span className='title-text flex-center'>Reviews</span>
           <div className='reviews-container'>
@@ -238,10 +225,10 @@ export default function Product() {
                 showRatingText={true}
                 sx={{ gap: '5px', imgHeight: '20px', fontSize: '16px' }}
               />
-              <p className='flex-center'>Оцінка користувачів</p>
+              <p className='flex-center'>User rating</p>
               <button className='font-bold' onClick={openModal}>Leave Review</button>
             </div>
-            <hr></hr>
+            <div className='divider'/>
             {reviews.map((review, index) => (
               <Review
                 key={index}
@@ -259,7 +246,17 @@ export default function Product() {
           />
           
         </BodySection>
-
+        <SimilarProducts
+          items={Array.from({ length: 10 }).map((_, index) => ({
+            id: index + 1,
+            name: "(Placeholder Item)BISTRUP",
+            description: "BISTRUP Dining Chair, Olive/Door Oak",
+            photo: "../assets/img/chair.png",
+            rating: 4,
+            price: 150,
+            discount: 50,
+          }))}
+        />
       </>
     );
 }

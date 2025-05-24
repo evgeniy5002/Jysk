@@ -6,6 +6,9 @@ import facebookIcon from '../assets/icons/facebook.svg';
 import telegramIcon from '../assets/icons/telegram.svg';
 import instagramIcon from '../assets/icons/instagram.svg';
 import youtubeIcon from '../assets/icons/youtube.svg';
+
+
+
 export default function Footer() {
     return (
         <div>

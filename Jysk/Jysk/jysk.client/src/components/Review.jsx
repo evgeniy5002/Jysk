@@ -3,7 +3,7 @@ import Rating from './Rating';
 
 const Review = ({ name, rating, text }) => {
   return (
-    <div className='review'>
+    <div className='user-review'>
       <div className='review-rating'>
         <span className='font-bold'>{name}</span>
         <Rating value={rating} showRatingText={true} />

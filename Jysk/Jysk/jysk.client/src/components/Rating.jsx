@@ -1,6 +1,7 @@
 import React from 'react';
 import star from '../assets/icons/star.svg';
 import starFilled from '../assets/icons/star-filled.svg';
+import '../styles/pages/Search.scss';
 
 import '../styles/components/Rating.scss';
 

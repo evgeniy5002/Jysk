@@ -1,5 +1,5 @@
 import '../styles/components/Header.scss';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import logo from '../assets/icons/logo.png';
 import menuIcon from '../assets/icons/menu.svg';
@@ -14,7 +14,7 @@ export default function Header() {
     const navigate = useNavigate();
 
     const handleSearchClick = () => {
-        navigate('/search'); 
+        navigate('/search');
     };
 
     return (
@@ -24,7 +24,9 @@ export default function Header() {
                 <div className="header-wrapper">
                     <div className="header-item left">
                         <div className="section">
-                            <img className="site-logo" src={logo} alt="Logo" />
+                            <NavLink to="/">
+                                <img className="site-logo" src={logo} alt="Logo" />
+                            </NavLink>
                         </div>
                         <div className="section header-row">
                             <img className="icon-menu" src={menuIcon} alt="Menu Icon" />
@@ -47,18 +49,20 @@ export default function Header() {
                     </div>
 
                     <div className="header-item right">
-                        <div className="section header-col">
+                        <NavLink to="*" className="section header-col">
                             <img className="icon" src={wishlistIcon} alt="Wishlist Icon" />
                             <p>Favorites</p>
-                        </div>
-                        <div className="section header-col">
+                        </NavLink>
+
+                        <NavLink to="/login" className="section header-col">
                             <img className="icon" src={profileIcon} alt="Profile Icon" />
                             <p>Login</p>
-                        </div>
-                        <div className="section header-col">
+                        </NavLink>
+
+                        <NavLink to="#" className="section header-col">
                             <img className="icon" src={basketIcon} alt="Basket Icon" />
                             <p>Cart</p>
-                        </div>
+                        </NavLink>
                     </div>
                 </div>
             </div>
@@ -73,7 +77,7 @@ export default function Header() {
                         </div>
                         <div className="section header-row right">
                             <p className="element">Blog</p>
-                            <p className="element">Stores</p>
+                            <NavLink to="stores"><p className="element">Stores</p></NavLink>
                             <p className="element">FAQ</p>
                             <p className="element">Careers</p>
                         </div>

@@ -1,0 +1,28 @@
+@import '../variables';
+@import '../mixins';
+
+
+.recently-viewed {
+    .heading {
+        font-size: 2em;
+        font-weight: 700;
+
+        margin-bottom: 30px;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+
+        @media (max-width: $breakpoint-tablet) {
+            grid-template-columns: repeat(3, 1fr);
+            ap: 20px;
+        }
+
+        @media (max-width: $breakpoint-mobile) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+    }
+}

@@ -12,18 +12,19 @@
 
     .sort-radio {
         
-        .MuiSvgIcon-root {
-          font-size: 25px;
-        }
-      
-        &.Mui-checked {
-          color: $color-accent !important;
-        }
-      
-        .MuiTouchRipple-root {
-          display: none;
-        }
+      .MuiSvgIcon-root {
+        font-size: 25px;
       }
-      
-      
+    
+      &.Mui-checked {
+        color: $color-accent !important;
+      }
+    
+      .MuiTouchRipple-root {
+        display: none;
+      }
+    }
+    .MuiFormControlLabel-label {
+      font-family: $font-default !important;
+    }
 }

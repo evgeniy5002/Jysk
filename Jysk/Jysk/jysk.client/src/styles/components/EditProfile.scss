@@ -1,0 +1,81 @@
+@import '../variables';
+@import '../mixins';
+
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 40px;
+
+    .heading {
+        span {
+            font: {
+                size: 2.5rem;
+                weight: 700;
+            }
+        }
+    }
+
+    form {
+        max-width: 570px;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        @media (max-width: $breakpoint-tablet) {
+            width: 80%;
+        }
+
+        input {
+            font-size: 1.2em;
+            border-radius: 10px;
+            border-width: 1px;
+            border: 1px solid #afafaf;
+            background-color: $color-secondary-light;
+            @include input-style(100%);
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+
+            gap: 20px;
+            width: 100%;
+
+            @media (max-width: $breakpoint-tablet) {
+                margin-top: 10px;
+            }
+
+            button {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: white;
+                background-color: $color-accent;
+                height: 42px;
+                border-radius: 5px;
+                border-width: 1px;
+                border: 1px solid #afafaf;
+            }
+
+            .save-btn {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .calcel-btn {
+                grid-column: 2;
+                grid-row: 1;
+            }
+
+            .delete-acount-btn {
+                grid-column: 1 / span 2;
+                grid-row: 2;
+                background-color: rgba(247, 77, 77, 1);
+            }
+        }
+    }
+}

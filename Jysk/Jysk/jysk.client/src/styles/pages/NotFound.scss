@@ -1,0 +1,39 @@
+@import '../variables';
+
+.not-found-page {
+    display: flex;
+    justify-content: center;
+
+    .not-found-container {
+        width: 100%;
+        max-width: $max-width;
+
+        margin-top: 70px;
+        margin-bottom: 130px;
+        padding: 0px 15px;
+
+        img {
+            width: 100%;
+            max-width: 1130px;
+
+            margin-bottom: 80px;
+
+            @media (max-width: 768px) {
+                margin-bottom: 40px;
+            }
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.8em;
+
+            @media (max-width: 768px) {
+                font-size: 1.5em;
+            }
+
+            @media (max-width: 320px) {
+                font-size: 1.3em;
+            }
+        }
+    }
+}

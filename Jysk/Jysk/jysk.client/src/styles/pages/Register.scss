@@ -1,0 +1,138 @@
+@import '../variables';
+@import '../mixins';
+
+.register-page {
+    display: flex;
+    justify-content: center;
+
+    .register-container {
+        width: 100%;
+        max-width: $max-width;
+        padding: 0px 15px;
+        margin-bottom: 300px;
+
+        .heading {
+            text-align: center;
+            padding: 44px 0 34px 0px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            border-top: 1px $color-secondary-light solid;
+            border-bottom: 2px $color-secondary-light solid;
+        }
+
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            form {
+                max-width: 570px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                padding-top: 50px;
+                padding-bottom: 30px;
+
+                @media (max-width: $breakpoint-tablet) {
+                    width: 80%;
+                }
+
+                &>input {
+                    font-size: 1.2em;
+                    border-radius: 10px;
+                    border-width: 1px;
+                    border: 1px solid #afafaf;
+                    background-color: $color-secondary-light;
+                    @include input-style(100%);
+                }
+
+                .register-btn {
+                    font-size: 1.2rem;
+                    font-weight: 700;
+                    color: white;
+                    background-color: $color-accent;
+                    height: 42px;
+                    border-radius: 5px;
+                    border-width: 1px;
+                    border: 1px solid #afafaf;
+                    cursor: pointer;
+                }
+
+                .cancel {
+                    margin: auto;
+                    font-weight: 400;
+                    font-size: 1.2rem;
+                    color: $color-accent;
+                    text-decoration: underline;
+                }
+
+                .checkboxes {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                    padding-left: 75px;
+
+                    @media (max-width: $breakpoint-tablet) {
+                        padding-left: 25px;
+                        gap: 10px;
+                    }
+
+                    @media (max-width: $breakpoint-mobile) {
+                        padding-left: 0px;
+                        gap: 5px;
+                    }
+
+                    label {
+                        display: flex;
+                        align-items: center;
+                        gap: 15px;
+                        font-size: 1.2rem;
+                        position: relative;
+
+                        &hover {
+                            cursor: pointer;
+                        }
+
+                        @media (max-width: $breakpoint-mobile) {
+                            font-size: 1.2rem;
+                        }
+
+                        input[type="checkbox"] {
+                            appearance: none;
+                            min-width: 20px;
+                            min-height: 20px;
+                            border: 2px solid #afafaf;
+                            border-radius: 5px;
+                            transition: all 0.3s;
+
+                            &:hover {
+                                cursor: pointer;
+                            }
+
+                            &:checked {
+                                background-color: $color-accent;
+                                border-color: $color-accent;
+                            }
+
+                            &:checked::after {
+                                content: "✓";
+                                position: absolute;
+                                left: 5px;
+                                top: 1px;
+                                color: white;
+                                font-size: 20px;
+                            }
+                        }
+
+                        a {
+                            color: $color-accent;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

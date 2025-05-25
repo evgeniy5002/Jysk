@@ -5,10 +5,15 @@ import Sticker from './Sticker';
 import Rating from './Rating';
 import InStockInfo from './InStockInfo';
 import WishlistButton from './WishlistButton';
+
 import '../styles/components/ProductCard.scss';
 
 const ProductCard = ({ item, index }) => {
   const navigate = useNavigate();
+  
+  if (!item) {
+    return null; 
+  }
 
   const handleClick = () => {
     window.scrollTo(0, 0);
@@ -31,14 +36,19 @@ const ProductCard = ({ item, index }) => {
 
             <div>
           <div className='stickers'>
-            <Sticker type="discount" discountValue={80} />
+            <Sticker type="discount" discountValue={80} />  
             <Sticker type="newItem" />
             <Sticker type="greatOffer" />
           </div>
             </div>
 
         </div>
-        <img className='product-img' src={"https://localhost:7196/images/" + item.photo} alt={`Product ${index}`} />
+       <img
+        className='product-img'
+        src={item.imageUrl || `https://localhost:7196/images/${item.photo}`}
+        alt={`Product ${index}`}
+      />
+
       </div>
       <div className='desc-container'>
         <p className='product-name'>{item.name}</p>

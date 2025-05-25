@@ -25,18 +25,18 @@ export default function ProductSummary({
 }) {
   return (
     <div className="product-sumup flex-col">
-      <span className="product-title">{title}</span>
-      <span className="product-desc">{description}</span>
+      <p className="product-title">{title}</p>
+      <p className="product-desc">{description}</p>
       <Rating
         value={rating}
         reviewCount={reviewCount}
         sx={{ gap: '5px', imgHeight: '18px', fontSize: '16px' }}
       />
 
-      <span className="price">${price} <span>/each</span></span>
-      <span className="old-price">${oldPrice} /each</span>
+      <p className="price">${price}<span>/each</span></p>
+      <p className="old-price">${oldPrice} /each</p>
 
-      <span>Promotion ends in: {promotionEndsIn}</span>
+      <p>Promotion ends in: {promotionEndsIn}</p>
 
       <div className="delivery-wrapper">
         <hr />

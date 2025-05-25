@@ -76,7 +76,7 @@ $button-total-offset: ($button-arrow-size * 2 + $button-arrow-margin * 2);
     max-width: calc(33.333% - 15px);
   }
 
-  @media (max-width: #{ $breakpoint-tablet + $button-total-offset }) {
+  @media (max-width: #{  + $button-total-offset }) {
     flex: 0 0 calc(50% - 10px);
     max-width: calc(50% - 10px);
   }

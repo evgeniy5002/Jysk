@@ -2,37 +2,36 @@
 @import '../mixins';
 
 .product-sumup{
-    width: 380px;
-    gap: $gap-md;
+  width: 380px;
+  gap: $gap-md!important;
 
-    @media (max-width: $breakpoint-lg) {
-      width: 100%;
-      display: block;
-    }
-    .product-title{
-      font-size: 24px;
-      font-weight: 700; 
-    }
-    .delivery-select{
-      font-size: 14px;
-    }
-    .product-desc{
-      font-size: 16px;
-    }
-    .price{
-      font-size: 32px;
-      font-weight: 700; 
+  @media (max-width: $breakpoint-lg) {
+    width: 100%;
+  }
+  .product-title{
+    font-size: 24px;
+    font-weight: 700; 
+  }
+  .delivery-select{
+    font-size: 14px;
+  }
+  .product-desc{
+    font-size: 16px;
+  }
+  .price{
+    font-size: 32px;
+    font-weight: 700; 
 
-      span{
-        font-size: 12px;
-      }
+    span{
+      font-size: 12px;
     }
-    .old-price{
-      @include old-price;
+  }
+  .old-price{
+    @include old-price;
 
-      font-size: 14px;
-      font-weight: 700; 
-    }
+    font-size: 14px;
+    font-weight: 700; 
+  }
 }
 .product-info-wrapper{
     display: flex;

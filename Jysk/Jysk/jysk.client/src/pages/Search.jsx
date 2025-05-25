@@ -6,6 +6,7 @@ import BodySection from "../components/BodySection";
 import ProductCard from "../components/ProductCard";
 import FilterList from "../components/FilterList";
 import Paginator from "../components/Paginator";
+import ProductGrid from "../components/ProductGrid";
 
 import '../styles/pages/Search.scss';
 
@@ -53,14 +54,11 @@ export default function Search() {
         <div>
             <FilterList />
             <BodySection noBorder>
-                <div className='search-grid'>
-                    {list.map((item, index) => (
-                        <ProductCard item={item} key={index} index={index} />
-                    ))}
-                </div>
-                <Paginator 
-                    currentPage={page} 
+                <ProductGrid 
+                    items={list} 
+                    page={page} 
                     maxPage={maxPage} 
+                    onPageChange={setPage} 
                 />
             </BodySection>
             <Outlet />

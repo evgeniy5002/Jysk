@@ -49,7 +49,7 @@ export default function Header() {
                     </div>
 
                     <div className="header-item right">
-                        <NavLink to="*" className="section header-col">
+                        <NavLink to="/profile/favorites" className="section header-col">
                             <img className="icon" src={wishlistIcon} alt="Wishlist Icon" />
                             <p>Favorites</p>
                         </NavLink>

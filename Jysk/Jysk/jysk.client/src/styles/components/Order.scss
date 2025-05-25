@@ -2,7 +2,7 @@
 @import '../mixins';
 
 .order {
-    background: white;
+    background: $color-surface;
     display: flex;
     justify-content: space-between;
     border: 1px solid transparent;
@@ -30,16 +30,23 @@
             font-size: 1.2rem;
         }
 
-        .order-status {
-            font-family: Raleway;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: rgba(52, 185, 6, 1);
-        }
-
         .order-price {
             font-weight: 700;
             font-size: 1rem;
+        }
+    }
+    .order-status {
+        font-weight: 700;
+        font-size: 1.2rem;
+        
+        &.done {
+            color: $color-accent-green;
+        }
+        &.in-progress {
+            color: $color-accent-orange;
+        }
+        &.cancelled {
+            color: $color-accent-red;
         }
     }
 

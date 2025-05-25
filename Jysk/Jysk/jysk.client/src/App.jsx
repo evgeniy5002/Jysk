@@ -13,8 +13,9 @@ import EditProfile from './components/EditProfile';
 import Categories from './pages/Categories';
 import Favorites from './components/Favorites';
 import MyReviews from './components/MyReviews';
-import NotFound from './pages/NotFound';
 import MyOrders from './components/MyOrders';
+import CompletedOrders from './components/CompletedOrders';
+
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Stores from './pages/Stores';
@@ -23,6 +24,8 @@ import Store from './pages/Store';
 import Home from './pages/Home';
 import Work from './pages/Work';
 import Product from './pages/Product';
+import NotFound from './pages/NotFound';
+
 
 import './App.scss';
 
@@ -49,7 +52,7 @@ function App() {
                     <Route path="profile" element={<Profile />}>
                         <Route index element={<Navigate to="my-orders" />} />
                         <Route path="my-orders" element={<MyOrders />} />
-                        <Route path="completed-orders" element={<h1>Completed Orders</h1>} />
+                        <Route path="completed-orders" element={<CompletedOrders/>} />
                         <Route path="my-reviews" element={<MyReviews />} />
                         <Route path="favorites" element={<Favorites />} />
                         <Route path="edit" element={<EditProfile />} />

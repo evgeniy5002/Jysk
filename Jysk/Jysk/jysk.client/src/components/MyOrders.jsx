@@ -1,22 +1,15 @@
 import React from 'react';
-import BodySection from '../components/BodySection';
-import "../styles/components/MyOrders.scss";
+import OrdersList from "../components/OrdersList";
 
-import Order from './Order';
+import { STATUS } from './Order';
 
 export default function MyOrders() {
-    return (
-        <BodySection noBorder>
-            <div className="my-orders">
-                <div className="heading">
-                    <span>My orders</span>
-                </div>
-                {
-                    Array.from({ length: 10 }).map(() => (
-                        <Order />
-                    ))
-                }
-            </div>
-        </BodySection>
-    );
+    const orders = Array.from({ length: 10 }, (_, i) => ({
+        orderNumber: `${1000 + i}`,
+        date: `2024-11-${10 + i}`,
+        status: STATUS.IN_PROGRESS,
+        price: 1000 + i * 50,
+    }));
+
+    return <OrdersList title="My orders" orders={orders} />;
 }

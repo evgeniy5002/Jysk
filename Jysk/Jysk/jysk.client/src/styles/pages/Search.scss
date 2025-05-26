@@ -17,3 +17,35 @@
         grid-template-columns: 1fr;
     }
 }
+
+.tab-bar__container{
+    @include flex-center;
+    flex-direction: column;
+    gap: 40px;
+    
+    .tab-bar{
+        @include flex-center;
+        width: 100%;
+
+        button{
+            all: unset;
+            width: 120px;
+            padding: 5px;
+            color: $color-text-grey;
+            border-bottom: 2px solid $color-text-grey;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+
+            @media (max-width: $breakpoint-mobile-xs){
+                width: 100%;
+            }
+        }
+        button.active {
+            color: $color-accent;
+            border-color: $color-accent;
+            font-weight: 600;
+        }
+    }
+}

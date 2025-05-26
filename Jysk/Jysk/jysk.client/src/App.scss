@@ -18,7 +18,10 @@ main {
     width: 100%;
     flex: 1;
 }
-
+a {
+  all: unset;
+  cursor: pointer;
+}
 @media (max-width: $breakpoint-tablet) {
     html {
         font-size: 90%;

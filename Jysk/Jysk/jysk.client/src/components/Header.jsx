@@ -1,6 +1,6 @@
 import '../styles/components/Header.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
-
+import { useState } from 'react';
 import logo from '../assets/icons/logo.png';
 import menuIcon from '../assets/icons/menu.svg';
 import searchIcon from '../assets/icons/search.svg';
@@ -13,8 +13,15 @@ import arrowDownIcon from '../assets/icons/arrow-down.svg';
 export default function Header() {
     const navigate = useNavigate();
 
+    const [searchInput, setSearchInput] = useState("");
+
     const handleSearchClick = () => {
-        navigate('/search');
+        const params = new URLSearchParams();
+        if (searchInput.trim() !== "") {
+            params.set("query", searchInput.trim());
+        }
+        params.set("type", "product");
+        navigate(`/search?${params.toString()}`);
     };
 
     return (
@@ -41,6 +48,8 @@ export default function Header() {
                                 type="text"
                                 name="search"
                                 placeholder="Search item or category"
+                                value={searchInput}
+                                onChange={(e) => setSearchInput(e.target.value)}
                             />
                             <div className="icon-container" onClick={handleSearchClick} style={{ cursor: 'pointer' }}>
                                 <img className="icon" src={searchIcon} alt="Search Icon" />

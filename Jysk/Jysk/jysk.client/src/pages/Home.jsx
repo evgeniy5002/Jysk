@@ -19,6 +19,7 @@ import muuto from '../assets/img/muuto.png';
 
 import blogImg1 from '../assets/img/blog-img1.png';
 import blogImg2 from '../assets/img/blog-img2.png';
+import { NavLink } from 'react-router-dom';
 
 export default function Home() {
     return (
@@ -48,7 +49,9 @@ export default function Home() {
             </BodySection>
             <BodySection noBorder>
                 <div className='categories'>
-                    <h1>Categories</h1>
+                    <NavLink to="/categories" className="header-title">
+                        <h1>Categories</h1>
+                    </NavLink>
                     <div className='categories-grid'>
                         <div className='category'>
                             <p>Bedroom</p>

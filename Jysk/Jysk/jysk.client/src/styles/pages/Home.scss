@@ -94,16 +94,22 @@
     justify-content: center;
     align-items: center;
 
-    h1 {
-        font-weight: 700;
-        font-size: 1.3em;
-        text-align: center;
-        background-color: $color-secondary;
-        padding: 10px;
-        display: inline-block;
-        margin-bottom: 15px;
-        width: 50%;
-    }
+    .header-title {
+        all: unset; 
+        display: contents; 
+        cursor: pointer;
+        
+        h1 {
+            font-weight: 700;
+            font-size: 1.3em;
+            text-align: center;
+            background-color: $color-secondary;
+            padding: 10px;
+            display: inline-block;
+            margin-bottom: 15px;
+            width: 50%;
+        }
+    }       
 
     .categories-grid {
         width: 100%;
@@ -118,7 +124,6 @@
 
             @media (max-width: $breakpoint-tablet) {
                 @include flex-center;
-
             }
 
             p {
@@ -156,7 +161,7 @@
     width: 100%;
 
     .brand-box {
-        background-color: white;
+        background-color: $color-surface;
         display: flex;
         align-items: center;
         flex-direction: column;

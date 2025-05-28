@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useCartModal } from '../components/CartModalContext';
 import axios from 'axios';
 
 import BodySection from "../components/BodySection";
@@ -16,9 +17,12 @@ import blog2 from '../assets/img/blog2.png';
 import blog3 from '../assets/img/blog3.png';
 
 import '../styles/pages/Product.scss';
+import '../styles/components/CartModal.scss';
+
 
 export default function Product() {
     const { search } = useLocation();
+    const { openCartModal, closeCartModal, isCartModalOpen } = useCartModal();
     const params = new URLSearchParams(search);
     const id = params.get("id");
     var url = "https://localhost:7196/api/Product";
@@ -168,6 +172,10 @@ export default function Product() {
                 onDecrease={handleDecrease}
                 onQuantityChange={handleQuantityChange}
                 onAddToCart={handleAddToCart}
+
+                isCartModalOpen={isCartModalOpen}
+                openCartModal={openCartModal}
+                closeCartModal={closeCartModal}
             />
           </div>
         </BodySection>

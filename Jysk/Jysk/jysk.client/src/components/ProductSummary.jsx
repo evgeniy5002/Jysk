@@ -1,6 +1,7 @@
 import React from 'react';
 import Rating from './Rating';
 import DeliverySelector from './DeliverySelector';
+import CartModal from "../components/CartModal";
 
 export default function ProductSummary({
   title,
@@ -22,6 +23,10 @@ export default function ProductSummary({
   onDecrease,
   onQuantityChange,
   onAddToCart,
+  
+  isCartModalOpen,
+  openCartModal,
+  closeCartModal
 }) {
   return (
     <div className="product-sumup flex-col">
@@ -82,9 +87,17 @@ export default function ProductSummary({
           </button>
         </div>
 
-        <button className="button-add" onClick={onAddToCart}>
+        <button 
+          className="button-add" 
+          onClick={() => {
+            onAddToCart();
+            openCartModal();
+          }}
+        >
           Add
         </button>
+        <CartModal isOpen={isCartModalOpen} onClose={closeCartModal} />
+
       </div>
     </div>
   );

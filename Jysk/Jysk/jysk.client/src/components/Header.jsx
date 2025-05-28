@@ -1,6 +1,7 @@
-import '../styles/components/Header.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useCartModal } from '../components/CartModalContext';
+
 import logo from '../assets/icons/logo.png';
 import menuIcon from '../assets/icons/menu.svg';
 import searchIcon from '../assets/icons/search.svg';
@@ -10,8 +11,11 @@ import basketIcon from '../assets/icons/basket.svg';
 import markerIcon from '../assets/icons/marker.svg';
 import arrowDownIcon from '../assets/icons/arrow-down.svg';
 
+import '../styles/components/Header.scss';
+
 export default function Header() {
     const navigate = useNavigate();
+    const { openCartModal } = useCartModal();
 
     const [searchInput, setSearchInput] = useState("");
 
@@ -68,10 +72,14 @@ export default function Header() {
                             <p>Login</p>
                         </NavLink>
 
-                        <NavLink to="#" className="section header-col">
-                            <img className="icon" src={basketIcon} alt="Basket Icon" />
-                            <p>Cart</p>
-                        </NavLink>
+                    <div
+                        className="section header-col"
+                        style={{ cursor: "pointer" }}
+                        onClick={openCartModal}
+                        >
+                        <img className="icon" src={basketIcon} alt="Basket Icon" />
+                        <p>Cart</p>
+                        </div>
                     </div>
                 </div>
             </div>

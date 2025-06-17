@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import chair from '../assets/img/chair.png';
 import '../styles/components/CartModal.scss';
@@ -6,8 +7,9 @@ import CartModalItem from './CartModalItem';
 import { useCartModal } from './CartModalContext';
 
 export default function CartModal() {
+  const { isCartModalOpen, closeCartModal } = useCartModal();
+  const navigate = useNavigate();
 
-const { isCartModalOpen, closeCartModal } = useCartModal();
   const initialProducts = Array(4).fill({
     image: chair,
     name: 'BISTRUP Dining Chair, Olive/Door Oak',
@@ -34,6 +36,10 @@ const { isCartModalOpen, closeCartModal } = useCartModal();
 
   const totalPrice = products.reduce((acc, item) => acc + Number(item.newPrice.replace(/\s/g, '')), 0);
 
+  const handleCheckoutClick = () => {
+    closeCartModal();
+    navigate('/cart');
+  };
   return (
     <>
       <div
@@ -73,7 +79,12 @@ const { isCartModalOpen, closeCartModal } = useCartModal();
             </table>
           </div>
           <div className='checkout-container'>
-            <button className='btn-checkout'>Checkout</button>
+            <button 
+              className='btn-checkout' 
+              onClick={handleCheckoutClick}
+            >
+              Checkout
+            </button>
             <button 
               className='btn-continue'
               onClick={closeCartModal}

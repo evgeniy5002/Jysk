@@ -1,16 +1,23 @@
 @import '../variables';
 
-.border-bottom {
-    border-bottom: 1px solid $color-border;
-}
-.no-border {
-    border-bottom: none !important;
-}
 .bg-white {
   background-color: $color-surface;
-  border-bottom: none !important;
-  box-shadow: $shadow-light;
 }
+
+.border-bottom {
+  border-bottom: 1px solid $color-border;
+}
+
+.no-border {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.with-shadow {
+  box-shadow: $shadow-light;
+  border-bottom: none !important;
+}
+
 .body-section {
     width: 100%;
     display: flex;

@@ -2,6 +2,7 @@ import React from 'react';
 import Rating from './Rating';
 import DeliverySelector from './DeliverySelector';
 import CartModal from "../components/CartModal";
+import QuantityInput from "../components/QuantityInput";
 
 export default function ProductSummary({
   title,
@@ -17,11 +18,7 @@ export default function ProductSummary({
   isDeliveryAvailable,
   isStoreAvailable,
   storeCount,
-
-  quantity,
-  onIncrease,
-  onDecrease,
-  onQuantityChange,
+  
   onAddToCart,
   
   isCartModalOpen,
@@ -63,29 +60,7 @@ export default function ProductSummary({
       </div>
 
       <div className="add-to-basket-wrapper">
-        <div className="input-number-wrapper">
-          <button
-            className="button-decrease"
-            onClick={onDecrease}
-            disabled={quantity <= 1}
-          >
-            –
-          </button>
-
-          <input
-            type="number"
-            value={quantity}
-            onChange={onQuantityChange}
-            min="1"
-          />
-
-          <button
-            className="button-increase"
-            onClick={onIncrease}
-          >
-            +
-          </button>
-        </div>
+        <QuantityInput defaultValue={1} />
 
         <button 
           className="button-add" 

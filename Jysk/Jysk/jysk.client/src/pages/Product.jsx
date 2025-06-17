@@ -127,16 +127,6 @@ export default function Product() {
         return () => window.removeEventListener("resize", handleResize);
       }, []);
     
-    const handleIncrease = () => {
-        setQuantity(prev => prev + 1);
-    };
-
-    const handleDecrease = () => {
-        setQuantity(prev => Math.max(1, prev - 1));
-    };
-    const handleQuantityChange = e => {
-        setQuantity(Math.max(1, parseInt(e.target.value) || 1));
-      };
     const handleDeliveryChange = opt => {
         console.log("Selected:", opt);
         setDeliveryOption(opt);
@@ -168,9 +158,6 @@ export default function Product() {
                 storeCount={storeCount}
 
                 quantity={quantity}
-                onIncrease={handleIncrease}
-                onDecrease={handleDecrease}
-                onQuantityChange={handleQuantityChange}
                 onAddToCart={handleAddToCart}
 
                 isCartModalOpen={isCartModalOpen}

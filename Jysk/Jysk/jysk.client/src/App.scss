@@ -13,7 +13,9 @@ html {
     background-color: $color-background;
     font-size: 0.9em;
 }
-
+html.white-background {
+  background-color: #ffffff !important; 
+}
 main {
     width: 100%;
     flex: 1;

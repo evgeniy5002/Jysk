@@ -1,11 +1,12 @@
 import React from 'react';
 import '../styles/components/BodySection.scss';
 
-export default function BodySection({ children, bgWhite = false, noBorder = false }) {
-    const classNames = [
+export default function BodySection({ children, bgWhite = false, noBorder = false, withShadow = false }) {
+const classNames = [
         'body-section',
         bgWhite ? 'bg-white' : '',
-        !bgWhite && !noBorder ? 'border-bottom' : '',
+        !noBorder ? 'border-bottom' : 'no-border',
+        withShadow && !noBorder ? 'with-shadow' : '',
     ].join(' ').trim();
 
     return (

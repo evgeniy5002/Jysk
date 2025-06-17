@@ -80,7 +80,7 @@ export default function Home() {
                     </div>
                 </div>
             </BodySection>
-            <BodySection bgWhite>
+            <BodySection bgWhite withShadow>
                 <div className="brands">
                     <div className="row">
                         <div className="col-6 col-md-3 text-center">

@@ -4,12 +4,10 @@ import BodySection from "../components/BodySection";
 import overviewIcon1 from '../assets/icons/overview-icon1.svg';
 import overviewIcon2 from '../assets/icons/overview-icon2.svg';
 import overviewIcon3 from '../assets/icons/overview-icon3.svg';
-
-
 export default function Prefooter() {
     return (
         <div>
-            <BodySection bgWhite>
+            <BodySection bgWhite withShadow>
                 <div className="overview">
                     <div className="overview-container row flex-wrap justify-content-center">
                         <div className="overview-box col-6 col-md-4 mb-4 text-center ">

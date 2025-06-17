@@ -3,6 +3,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import AppLayout from './layouts/AppLayout';
 import HomeLayout from './layouts/HomeLayout';
 import AdminLayout from './Admin/layouts/AdminLayout';
+import CheckoutLayout from './layouts/CheckoutLayout';
+
 
 import Admin from './Admin/pages/Admin';
 import Search from './pages/Search';
@@ -25,6 +27,7 @@ import Home from './pages/Home';
 import Work from './pages/Work';
 import Product from './pages/Product';
 import NotFound from './pages/NotFound';
+import Cart from './pages/Cart';
 
 import { CartModalProvider } from './components/CartModalContext';
 import CartModal from './components/CartModal';
@@ -51,7 +54,7 @@ function App() {
                         <Route path="stores/store" element={<Store />} />
                         <Route path="categories" element={<Categories />} />
                         <Route path="work" element={<Work />} />
-
+                        
                         <Route path="profile" element={<Profile />}>
                             <Route index element={<Navigate to="my-orders" />} />
                             <Route path="my-orders" element={<MyOrders />} />
@@ -63,6 +66,11 @@ function App() {
 
                         <Route path="*" element={<NotFound />} />
                     </Route>
+
+                    <Route path="/" element={<CheckoutLayout />}>
+                        <Route path="cart" element={<Cart />} />
+                    </Route>
+
                     <Route element={<AdminLayout />}>
                         <Route path="/Admin" element={<Admin />}></Route>
                         <Route path="/Admin/Panel" element={<Panel />}></Route>

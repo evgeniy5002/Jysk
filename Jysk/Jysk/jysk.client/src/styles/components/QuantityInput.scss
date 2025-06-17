@@ -1,0 +1,34 @@
+  @import '../variables';
+@import '../mixins';
+
+  .input-number-wrapper{
+    background-color: $color-surface;
+    height: 100%;
+    width: 150px;
+    display: flex;
+    border-radius: 10px;
+    border: 1px solid $color-border-transparent;
+    overflow: hidden;
+
+    button{
+      border: none;
+      padding: 10px;
+      font-size: 20px;
+      background-color: initial;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    input{
+      width: 100%;
+      text-align: center;
+      font-size: 16px;
+      border: none;
+      background-color: initial;
+      outline: none;
+    }
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+  }

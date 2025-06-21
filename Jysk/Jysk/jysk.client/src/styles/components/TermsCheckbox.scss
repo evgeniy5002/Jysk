@@ -1,0 +1,23 @@
+@import '../variables';
+@import '../mixins';
+
+
+.terms-checkbox{
+  @include flex-center;
+  gap: $gap-sm;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    accent-color: $color-accent;
+    &:not(:checked) {
+      filter: grayscale(100%) brightness(85%);
+    }
+    &:hover {
+      accent-color:$color-accent !important;
+    }
+
+  }
+  a {
+    color: $color-accent;
+  }
+}

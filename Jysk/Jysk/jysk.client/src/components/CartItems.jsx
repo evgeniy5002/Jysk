@@ -1,6 +1,6 @@
 import React from "react";
 import CartItem from "./CartItem";
-export default function CartItems({ items, onRemove, onQuantityChange }) {
+export default function CartItems({ items, onRemove, onQuantityChange, preview = false }) {
     return (
         <div className="cart-container">
             {items.map((item, index) => (
@@ -13,8 +13,9 @@ export default function CartItems({ items, onRemove, onQuantityChange }) {
                     price={item.price}
                     currency={item.currency}
                     quantity={item.quantity}
-                    onRemove={() => onRemove(item.id)}
-                    onQuantityChange={(newQty) => onQuantityChange(item.id, newQty)}
+                    onRemove={() => onRemove?.(item.id)}
+                    onQuantityChange={(newQty) => onQuantityChange?.(item.id, newQty)}
+                    preview={preview}
                 />
             ))}
         </div>

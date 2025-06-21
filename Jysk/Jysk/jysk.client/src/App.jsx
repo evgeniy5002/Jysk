@@ -28,6 +28,7 @@ import Work from './pages/Work';
 import Product from './pages/Product';
 import NotFound from './pages/NotFound';
 import Cart from './pages/Cart';
+import Payment from './pages/Payment';
 
 import { CartModalProvider } from './components/CartModalContext';
 import CartModal from './components/CartModal';
@@ -69,6 +70,7 @@ function App() {
 
                     <Route path="/" element={<CheckoutLayout />}>
                         <Route path="cart" element={<Cart />} />
+                        <Route path="payment" element={<Payment />} />
                     </Route>
 
                     <Route element={<AdminLayout />}>

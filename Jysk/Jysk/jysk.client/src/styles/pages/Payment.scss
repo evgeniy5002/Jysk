@@ -1,0 +1,104 @@
+@import '../variables';
+@import '../mixins';
+
+.payment{
+  .error-message{
+    margin-top: 10px;
+    text-align: center;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    h1{
+      text-align: center;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .preview-container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .total-price{
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+  }
+  .container .row > div {
+    flex-grow: 1;
+    flex-basis: 100%;
+    padding: 0;
+
+    .user-info-inputs{
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      input:focus {
+        outline: none;
+      }
+      input {
+        width: 100%;
+        border-radius: 5px;
+        font-size: 1em;
+      }
+      span {
+        display: flex;
+        gap: 10px;
+
+        input {
+          width: 50% !important;
+        }
+      }
+    }
+    .btn-continue,
+    .btn-cancel {
+      cursor: pointer;
+      width: 100%;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .user-info-inputs input {
+      height: 50px;
+      background-color: $color-secondary-light;
+      border: 1px solid #72727280;
+      padding: 0px 10px;
+    }
+
+    .btn-continue {
+      background-color: $color-accent;
+      padding: 15px 0px;
+      border: none;
+      font-weight: 700;
+      color: $color-text-light;
+    }
+
+    .btn-cancel {
+      @include btn-default;
+      text-decoration: underline;
+      font-weight: 600;
+      color: $color-accent;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container .row > div {
+      flex-basis: calc(50% - 5px);
+    }
+  }
+}

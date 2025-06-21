@@ -1,14 +1,16 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "../styles/pages/Cart.scss"
 import chair from '../assets/img/chair.png';
 import CartItems from "../components/CartItems";
 
 export default function Cart() {
+    const navigate = useNavigate();
     const [cartItems, setCartItems] = useState([
         {
             id: 1,
             image: chair,
-            title: "Стілець обідній BISTRUP оливковий/дуб",
+            title: "Dining Chair BISTRUP Olive/Oak",
             subtitle: "BISTRUP",
             price: 1500,
             quantity: 1,
@@ -16,7 +18,7 @@ export default function Cart() {
         {
             id: 2,
             image: chair,
-            title: "Стілець обідній BISTRUP",
+            title: "Dining Chair BISTRUP",
             subtitle: "BISTRUP",
             price: 10,
             quantity: 1
@@ -43,6 +45,11 @@ export default function Cart() {
         (sum, item) => sum + item.price * item.quantity,
         0
     );
+
+    const handleContinueClick = () => {
+        navigate('/payment');
+    };
+    
     return (
         <div className="cart-page">
             <h1>Cart Overview</h1>
@@ -61,7 +68,7 @@ export default function Cart() {
                 </span>
                 <p>Total {totalAmount.toFixed(2)} $</p>
                 <div className="flex-row">
-                    <button className="btn-checkout">Continue</button>
+                    <button className="btn-checkout" onClick={handleContinueClick}>Continue</button>
                     <button className="btn-continue">Continue shopping</button>
                 </div>
             </div>

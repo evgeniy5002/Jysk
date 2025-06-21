@@ -4,8 +4,9 @@ import star from '../assets/icons/star_light.svg';
 import starFilled from '../assets/icons/star-filled.svg';
 
 import '../styles/components/ReviewModal.scss';
-
+import TermsCheckbox from './TermsCheckbox';
 export default function ReviewModal({ isOpen, onClose, onSubmit }) {
+  
   const [show, setShow] = useState(isOpen);
   const [animate, setAnimate] = useState(false);
 
@@ -131,16 +132,11 @@ export default function ReviewModal({ isOpen, onClose, onSubmit }) {
               required
             />
           </div>
-          <label className="terms-checkbox">
-            <input
-              type="checkbox"
-              checked={acceptedTerms}
-              onChange={e => setAcceptedTerms(e.target.checked)}
-              aria-label="Accept terms and service"
-            />
-            <span> I accept the <a href="/terms" target="_blank" rel="noopener noreferrer">terms and service</a>.</span>
-          </label>
-
+          <TermsCheckbox
+            accepted={acceptedTerms}
+            onChange={(e) => setAcceptedTerms(e.target.checked)}
+            error={error === 'You must accept the terms and service' ? error : ''}
+          />
           {error && <p className="error-message" role="alert">{error}</p>}
 
           <div className="review-modal-buttons">

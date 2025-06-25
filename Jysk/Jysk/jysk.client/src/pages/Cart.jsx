@@ -1,11 +1,17 @@
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import "../styles/pages/Cart.scss"
 import chair from '../assets/img/chair.png';
 import CartItems from "../components/CartItems";
 
 export default function Cart() {
     const navigate = useNavigate();
+    const { setTitle } = useOutletContext();
+    
+    useEffect(() => {
+        setTitle("Cart Overview");
+    }, [setTitle]);
+    
     const [cartItems, setCartItems] = useState([
         {
             id: 1,
@@ -52,7 +58,6 @@ export default function Cart() {
     
     return (
         <div className="cart-page">
-            <h1>Cart Overview</h1>
              <CartItems
                 items={cartItems}
                 onRemove={handleRemove}

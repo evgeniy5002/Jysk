@@ -1,10 +1,12 @@
 import { Outlet } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState  } from 'react';
 import BodySection from "../components/BodySection";
 import logo from '../assets/icons/logo.png';
 import '../styles/layouts/CheckoutLayout.scss';
 
 function CheckoutLayout() {
+    const [title, setTitle] = useState('');
+
     useEffect(() => {
         document.documentElement.classList.add('white-background');
 
@@ -19,8 +21,9 @@ function CheckoutLayout() {
                 <img className='logo' src={logo}/>
             </BodySection>
             <BodySection bgWhite noBorder>
+                <h1>{title}</h1>
                 <main className="main-content">
-                    <Outlet />
+                    <Outlet context={{ setTitle }} />
                 </main>
             </BodySection>
 

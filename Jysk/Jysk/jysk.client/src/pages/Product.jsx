@@ -19,7 +19,6 @@ import blog3 from '../assets/img/blog3.png';
 import '../styles/pages/Product.scss';
 import '../styles/components/CartModal.scss';
 
-
 export default function Product() {
     const { search } = useLocation();
     const { openCartModal, closeCartModal, isCartModalOpen } = useCartModal();

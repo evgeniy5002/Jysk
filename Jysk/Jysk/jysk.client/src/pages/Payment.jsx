@@ -1,10 +1,19 @@
-import "../styles/pages/Payment.scss";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useOutletContext } from 'react-router-dom';
+
 import TermsCheckbox from "../components/TermsCheckbox";
-import chair from "../assets/img/chair.png";
 import CartItems from "../components/CartItems";
 
+import chair from "../assets/img/chair.png";
+import "../styles/pages/Payment.scss";
+
 export default function Payment() {
+    const navigate = useNavigate();
+    const { setTitle } = useOutletContext();
+    useEffect(() => {
+        setTitle("Payment");
+    }, [setTitle]);
+
     const [acceptedTerms, setAcceptedTerms] = useState(false);
     const [error, setError] = useState('');
     
@@ -63,12 +72,12 @@ export default function Payment() {
 
         setError("");
         console.log("Form submitted", formData, cartItems);
+        navigate("/payment/delivery");
     };
 
     return (
         <div className="payment">
             <div className="container">
-                <h1>Payment</h1>
                 <div className="row">
                     <div className="col-md-6 order-2 order-md-1">
                         <div className="form-container">

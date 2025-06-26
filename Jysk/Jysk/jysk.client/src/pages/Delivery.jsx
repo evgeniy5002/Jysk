@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+
 import { Radio } from "@mui/material";
 
 import "../styles/pages/Delivery.scss";
@@ -9,6 +11,7 @@ export default function Delivery() {
 
   const [selectedDelivery, setSelectedDelivery] = useState(null);
   const [selectedBranch, setSelectedBranch] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTitle("Payment");
@@ -52,6 +55,10 @@ export default function Delivery() {
       address: "30 Vyacheslava Chornovola St., Kyiv, 01135.",
     },
   ];
+
+  const handleContinue = () => {
+    navigate("/payment/payment-method");
+  };
 
   return (
     <div className="delivery">
@@ -120,7 +127,7 @@ export default function Delivery() {
       </div>
 
       <div className="flex-center flex-column">
-        <button type="button" className="btn-continue">Choose payment method</button>
+        <button type="button" className="btn-continue" onClick={handleContinue}>Choose payment method</button>
         <button type="button" className="btn-cancel">Cancel</button>
       </div>
     </div>

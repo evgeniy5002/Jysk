@@ -41,3 +41,33 @@
   width: 100%;
   border-top: 1px solid rgba(0, 0, 0, 0.288);
 }
+
+  .btn-continue{
+    width: 100%;
+    max-width: 450px;
+    padding: 15px 0px;
+
+    background-color: $color-accent;
+    border: none;
+    color: $color-text-light;
+    font-weight: 600;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: darken($color-accent, 5%);
+    }
+  }
+  .btn-cancel{
+    text-decoration: underline;
+    font-size: 1em;
+    padding: 15px 0px;
+    color: $color-accent;
+    background-color: unset;
+    border: none;
+    width: 100%;
+    font-weight: 600;
+    max-width: 450px;
+    cursor: pointer;
+  }

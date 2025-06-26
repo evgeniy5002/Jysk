@@ -29,7 +29,9 @@ import Product from './pages/Product';
 import NotFound from './pages/NotFound';
 import Cart from './pages/Cart';
 import Payment from './pages/Payment';
+import PaymentMethod from './pages/PaymentMethod';
 import Delivery from './pages/Delivery';
+
 
 import { CartModalProvider } from './components/CartModalContext';
 import CartModal from './components/CartModal';
@@ -73,6 +75,7 @@ function App() {
                         <Route path="cart" element={<Cart />} />
                         <Route path="payment" element={<Payment />} />
                         <Route path="payment/delivery" element={<Delivery />} />
+                        <Route path="payment/payment-method" element={<PaymentMethod />} />
                     </Route>
 
                     <Route element={<AdminLayout />}>

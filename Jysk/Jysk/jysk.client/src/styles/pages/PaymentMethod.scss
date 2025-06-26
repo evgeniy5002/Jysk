@@ -1,0 +1,44 @@
+@import '../variables';
+@import '../mixins';
+
+
+.payment-method{
+    @include flex-center;
+    flex-direction: column;
+    gap: 10px;
+
+    .form-container{
+        @include flex-center;
+
+        max-width: 450px;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        
+        >input, span{
+            width: 100%;
+        }
+        span{
+            display: flex;
+            gap: 10px;
+        }
+        span input{
+            width: 50%;
+        }
+        input{
+            padding: 13.5px 10px;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid #72727280;
+            background-color: $color-secondary-light;
+        }
+        > div{
+            width: 100%;
+        }
+    }
+    .error {
+        color: #cf0013;
+        font-size: 0.9em;
+    }
+
+}

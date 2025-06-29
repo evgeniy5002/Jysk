@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useCartModal } from '../components/CartModalContext';
+import { addToCart } from "../utils/cartCookie";
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 import BodySection from "../components/BodySection";
 import ProductGallery from '../components/ProductGallery';
@@ -131,8 +133,20 @@ export default function Product() {
         setDeliveryOption(opt);
       };
     const handleAddToCart = () => {
-        console.log("Adding to cart:", { title, price, quantity, deliveryOption });
-      };
+      const cartItem = {
+      id,  
+      title,
+      newPrice: Math.round(price),
+      oldPrice: Math.round(oldPrice),
+      quantity,
+      deliveryOption,
+      image: images[0] || "",
+    };
+      console.log(quantity);
+      addToCart(cartItem);
+      openCartModal();
+    };
+
     return (
       <>
         <BodySection>
@@ -157,6 +171,7 @@ export default function Product() {
                 storeCount={storeCount}
 
                 quantity={quantity}
+                onQuantityChange={setQuantity}
                 onAddToCart={handleAddToCart}
 
                 isCartModalOpen={isCartModalOpen}

@@ -1,7 +1,6 @@
 import React from 'react';
 import Rating from './Rating';
 import DeliverySelector from './DeliverySelector';
-import CartModal from "../components/CartModal";
 import QuantityInput from "../components/QuantityInput";
 
 export default function ProductSummary({
@@ -19,11 +18,11 @@ export default function ProductSummary({
   isStoreAvailable,
   storeCount,
   
+  quantity,
+  onQuantityChange,
   onAddToCart,
   
-  isCartModalOpen,
-  openCartModal,
-  closeCartModal
+  openCartModal
 }) {
   return (
     <div className="product-sumup flex-col">
@@ -60,7 +59,7 @@ export default function ProductSummary({
       </div>
 
       <div className="add-to-basket-wrapper">
-        <QuantityInput defaultValue={1} />
+        <QuantityInput defaultValue={quantity} onChange={onQuantityChange} />
 
         <button 
           className="button-add" 
@@ -71,8 +70,6 @@ export default function ProductSummary({
         >
           Add
         </button>
-        <CartModal isOpen={isCartModalOpen} onClose={closeCartModal} />
-
       </div>
     </div>
   );

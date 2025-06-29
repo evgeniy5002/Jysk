@@ -5,41 +5,37 @@ import chair from '../assets/img/chair.png';
 import '../styles/components/CartModal.scss';
 import CartModalItem from './CartModalItem';
 import { useCartModal } from './CartModalContext';
+import { getCartItems, removeFromCart } from "../utils/cartCookie";
+
 
 export default function CartModal() {
   const { isCartModalOpen, closeCartModal } = useCartModal();
   const navigate = useNavigate();
 
-  const initialProducts = Array(4).fill({
-    image: chair,
-    name: 'BISTRUP Dining Chair, Olive/Door Oak',
-    newPrice: '1 005',
-    oldPrice: '1 437',
-  });
-
-  const [products, setProducts] = useState(initialProducts);
+  const [products, setProducts] = useState([]);
   const [shippingCost, setShippingCost] = useState(0);
 
-  const handleRemove = (idToRemove) => {
-    setProducts(products.filter((_, id) => id !== idToRemove));
-  };
   useEffect(() => {
     if (isCartModalOpen) {
-      document.body.classList.add('body-no-scroll');
+      document.body.classList.add("body-no-scroll");
+      const items = getCartItems();
+      setProducts(items);
     } else {
-      document.body.classList.remove('body-no-scroll');
+      document.body.classList.remove("body-no-scroll");
     }
-    return () => {
-      document.body.classList.remove('body-no-scroll');
-    };
   }, [isCartModalOpen]);
 
-  const totalPrice = products.reduce((acc, item) => acc + Number(item.newPrice.replace(/\s/g, '')), 0);
+  const totalPrice = products.reduce((acc, item) => acc + (item.newPrice * (item.quantity || 1)), 0);
 
+  const handleRemove = (id) => {
+    removeFromCart(id);
+    setProducts(getCartItems());
+  };
   const handleCheckoutClick = () => {
     closeCartModal();
     navigate('/cart');
   };
+  
   return (
     <>
       <div
@@ -47,15 +43,17 @@ export default function CartModal() {
         onClick={closeCartModal}
       />
       <div className={`filter-cart ${isCartModalOpen ? 'open' : ''}`}>
-        <div className='scrollable-container'>
+        <div className='scrollable-container' key={products.length}>
           {products.length > 0 ? (
-            products.map((product, index) => (
-              <CartModalItem
-                key={index}
-                product={product}
-                onRemove={() => handleRemove(index)}
-              />
-            ))
+            products.flatMap((product, index) => 
+              Array(product.quantity || 1).fill(null).map((_, i) => (
+                <CartModalItem
+                  key={`${index}-${i}`} 
+                  product={product}
+                  onRemove={() => handleRemove(index)}
+                />
+              ))
+            )
           ) : (
            <div className='flex-center'>
             <p>Your cart is empty</p>

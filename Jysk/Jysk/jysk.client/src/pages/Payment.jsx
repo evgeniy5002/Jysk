@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useOutletContext } from 'react-router-dom';
+import { getCartItems, saveCartItems} from "../utils/cartCookie";
 
 import TermsCheckbox from "../components/TermsCheckbox";
 import CartItems from "../components/CartItems";
 
-import chair from "../assets/img/chair.png";
 import "../styles/pages/Payment.scss";
 
 export default function Payment() {
     const navigate = useNavigate();
     const { setTitle } = useOutletContext();
-    useEffect(() => {
-        setTitle("Payment");
-    }, [setTitle]);
-
+    
+    const [cartItems, setCartItems] = useState(() => getCartItems());
     const [acceptedTerms, setAcceptedTerms] = useState(false);
     const [error, setError] = useState('');
     
@@ -27,24 +25,6 @@ export default function Payment() {
         phone: ''
     });
 
-    const [cartItems] = useState([
-        {
-            id: 1,
-            image: chair,
-            title: "Dining Chair BISTRUP Olive/Oak",
-            subtitle: "BISTRUP",
-            price: 1500,
-            quantity: 1,
-        },
-        {
-            id: 2,
-            image: chair,
-            title: "Dining Chair BISTRUP",
-            subtitle: "BISTRUP",
-            price: 10,
-            quantity: 1
-        }
-    ]);
 
     const handleChange = (e) => {
         setFormData(prev => ({
@@ -52,6 +32,11 @@ export default function Payment() {
             [e.target.name]: e.target.value
         }));
     };
+
+    useEffect(() => {
+        setTitle("Payment");
+    }, [setTitle]);
+
 
     const handleContinue = () => {
         const { firstName, lastName, city, street, houseNumber, email, phone } = formData;

@@ -10,7 +10,7 @@ export default function CartItems({ items, onRemove, onQuantityChange, preview =
                     image={item.image}
                     title={item.title}
                     subtitle={item.subtitle}
-                    price={item.price}
+                    price={item.newPrice}
                     currency={item.currency}
                     quantity={item.quantity}
                     onRemove={() => onRemove?.(item.id)}

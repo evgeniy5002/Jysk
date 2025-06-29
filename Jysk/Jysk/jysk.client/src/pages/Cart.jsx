@@ -1,56 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useOutletContext } from 'react-router-dom';
+import { getCartItems, saveCartItems} from "../utils/cartCookie";
+
 import "../styles/pages/Cart.scss"
-import chair from '../assets/img/chair.png';
 import CartItems from "../components/CartItems";
 
 export default function Cart() {
     const navigate = useNavigate();
     const { setTitle } = useOutletContext();
+    const [cartItems, setCartItems] = useState(() => getCartItems());
     
     useEffect(() => {
         setTitle("Cart Overview");
     }, [setTitle]);
-    
-    const [cartItems, setCartItems] = useState([
-        {
-            id: 1,
-            image: chair,
-            title: "Dining Chair BISTRUP Olive/Oak",
-            subtitle: "BISTRUP",
-            price: 1500,
-            quantity: 1,
-        },
-        {
-            id: 2,
-            image: chair,
-            title: "Dining Chair BISTRUP",
-            subtitle: "BISTRUP",
-            price: 10,
-            quantity: 1
-        }
-    ]);
 
     const handleRemove = (id) => {
-        setCartItems(prev => prev.filter(item => item.id !== id));
+        const updatedItems = cartItems.filter(item => item.id !== id);
+        setCartItems(updatedItems);
+        saveCartItems(updatedItems);
     };
 
     const handleQuantityChange = (id, newQuantity) => {
-        setCartItems(prev => prev.map(item => {
-            if (item.id === id) {
-                return { ...item, quantity: newQuantity };
-            }
-            return item;
-        }));
+    setCartItems(prev => {
+        const updated = prev.map(item => {
+        if (item.id === id) {
+            return { ...item, quantity: newQuantity };
+        }
+        return item;
+        });
+
+        saveCartItems(updated);
+
+        return updated;
+    });
     };
 
     const totalSavings = 249.00;
     const shippingCost = 40.00;
     const vatAmount = 131.67;
-    const totalAmount = cartItems.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
-    );
+    const totalAmount = cartItems.reduce((sum, item) => {
+        const price = Number(item.newPrice || 0);
+        const quantity = Number(item.quantity || 0);
+        return sum + price * quantity;
+    }, 0);
 
     const handleContinueClick = () => {
         navigate('/payment');
@@ -74,7 +66,7 @@ export default function Cart() {
                 <p>Total {totalAmount.toFixed(2)} $</p>
                 <div className="flex-row">
                     <button className="btn-checkout" onClick={handleContinueClick}>Continue</button>
-                    <button className="btn-continue">Continue shopping</button>
+                    <button className="btn-continue-shopping">Continue shopping</button>
                 </div>
             </div>
         </div>

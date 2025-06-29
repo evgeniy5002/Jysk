@@ -27,6 +27,15 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    .btn-continue{
+      width: 100%!important;
+      max-width: 100%!important;
+    }
+    .btn-cancel{
+      width: 100%!important;
+      max-width: 100%!important;
+    }
   }
 
   .preview-container{
@@ -87,6 +96,7 @@
       border: none;
       font-weight: 700;
       color: $color-text-light;
+      width: 100%;
     }
 
     .btn-cancel {

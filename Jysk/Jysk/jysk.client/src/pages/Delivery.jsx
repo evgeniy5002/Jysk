@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-
+import { useOutletContext, useNavigate } from "react-router-dom";
+import { useCheckout } from "../components/CheckoutContext";
 import { Radio } from "@mui/material";
 
 import "../styles/pages/Delivery.scss";
@@ -9,8 +8,7 @@ import "../styles/pages/Delivery.scss";
 export default function Delivery() {
   const { setTitle } = useOutletContext();
 
-  const [selectedDelivery, setSelectedDelivery] = useState(null);
-  const [selectedBranch, setSelectedBranch] = useState(null);
+  const { deliveryData, setDeliveryData } = useCheckout();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,6 +58,10 @@ export default function Delivery() {
     navigate("/payment/payment-method");
   };
 
+  const handlePostalCodeChange = (e) => {
+    setDeliveryData(prev => ({ ...prev, postalCode: e.target.value }));
+  };
+
   return (
     <div className="delivery">
       <h2>Select delivery method</h2>
@@ -67,12 +69,12 @@ export default function Delivery() {
         {deliveryOptions.map(({ id, label, price, details }) => (
           <label
             key={id}
-            className={`radio-label ${selectedDelivery === id ? "selected" : ""}`}
+            className={`radio-label ${deliveryData.selectedDelivery === id ? "selected" : ""}`}
           >
             <Radio
               className="custom-radio"
-              checked={selectedDelivery === id}
-              onChange={() => setSelectedDelivery(id)}
+              checked={deliveryData.selectedDelivery === id}
+              onChange={() => setDeliveryData(prev => ({ ...prev, selectedDelivery: id }))}
               value={id}
               name="delivery"
             />
@@ -86,7 +88,12 @@ export default function Delivery() {
       <p>Enter your postal code to find delivery to a Nova Poshta branch</p>
       
       <div className="flex-row">
-        <input type="text" placeholder="Your postal code" />
+        <input
+          type="text"
+          placeholder="Your postal code"
+          value={deliveryData.postalCode}
+          onChange={handlePostalCodeChange}
+        />
         <button type="button">Search</button>
       </div>
 
@@ -97,13 +104,13 @@ export default function Delivery() {
               <label
                 key={id}
                 className={`radio-label secondary-radio ${
-                  selectedBranch === id ? "selected" : ""
+                  deliveryData.selectedBranch === id ? "selected" : ""
                 }`}
               >
                 <Radio
                   className="custom-radio"
-                  checked={selectedBranch === id}
-                  onChange={() => setSelectedBranch(id)}
+                  checked={deliveryData.selectedBranch === id}
+                  onChange={() => setDeliveryData(prev => ({ ...prev, selectedBranch: id }))}
                   value={id}
                   name="postal-branch"
                 />
@@ -128,7 +135,7 @@ export default function Delivery() {
 
       <div className="flex-center flex-column">
         <button type="button" className="btn-continue" onClick={handleContinue}>Choose payment method</button>
-        <button type="button" className="btn-cancel">Cancel</button>
+        <button type="button" className="btn-cancel" onClick={() => navigate(-1)}>Cancel</button>
       </div>
     </div>
   );

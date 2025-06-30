@@ -1,34 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useOutletContext } from 'react-router-dom';
+import { useCheckout } from "../components/CheckoutContext";
 
 import "../styles/pages/PaymentMethod.scss";
-
 export default function PaymentMethod() {
     const navigate = useNavigate();
     const { setTitle } = useOutletContext();
+
+    const { paymentData, setPaymentData } = useCheckout();
+
+    const [error, setError] = useState('');
+
 
     useEffect(() => {
         setTitle("Payment");
     }, [setTitle]);
 
-    const [formData, setFormData] = useState({
-        method: '',
-        cardNumber: '',
-        expiry: '',
-        cvv: ''
-    });
-
-    const [error, setError] = useState('');
 
     const handleChange = (e) => {
-        setFormData(prev => ({
+        setPaymentData(prev => ({
             ...prev,
             [e.target.name]: e.target.value
         }));
     };
 
     const handleContinue = () => {
-        const { method, cardNumber, expiry, cvv } = formData;
+        const { method, cardNumber, expiry, cvv } = paymentData;
 
         if (
             !method.trim() ||
@@ -41,7 +38,7 @@ export default function PaymentMethod() {
         }
 
         setError('');
-        console.log("Payment method submitted", formData);
+        console.log("Payment method submitted", paymentData);
         navigate("/");
     };
 
@@ -50,26 +47,26 @@ export default function PaymentMethod() {
             <div className="form-container">
                 <input
                     name="method"
-                    value={formData.method}
+                    value={paymentData.method}
                     onChange={handleChange}
                     placeholder="Payment Method"
                 />
                 <input
                     name="cardNumber"
-                    value={formData.cardNumber}
+                    value={paymentData.cardNumber}
                     onChange={handleChange}
                     placeholder="Card Number"
                 />
                 <span>
                     <input
                         name="expiry"
-                        value={formData.expiry}
+                        value={paymentData.expiry}
                         onChange={handleChange}
                         placeholder="MM/YY"
                     />
                     <input
                         name="cvv"
-                        value={formData.cvv}
+                        value={paymentData.cvv}
                         onChange={handleChange}
                         placeholder="CVV"
                     />
@@ -80,7 +77,7 @@ export default function PaymentMethod() {
                     <button className="btn-continue" onClick={handleContinue}>
                         Confirm
                     </button>
-                    <button className="btn-cancel">
+                    <button className="btn-cancel" onClick={() => navigate(-1)}>
                         Cancel
                     </button>
                 </div>

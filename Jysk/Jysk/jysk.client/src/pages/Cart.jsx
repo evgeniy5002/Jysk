@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { getCartItems, saveCartItems} from "../utils/cartCookie";
 
-import "../styles/pages/Cart.scss"
 import CartItems from "../components/CartItems";
+
+import "../styles/pages/Cart.scss"
 
 export default function Cart() {
     const navigate = useNavigate();
@@ -66,7 +67,13 @@ export default function Cart() {
                 <p>Total {totalAmount.toFixed(2)} $</p>
                 <div className="flex-row">
                     <button className="btn-checkout" onClick={handleContinueClick}>Continue</button>
-                    <button className="btn-continue-shopping">Continue shopping</button>
+                    <button 
+                        className="btn-continue-shopping" 
+                        onClick={() => navigate(-1)}
+                    >
+                        Continue shopping
+                    </button>
+
                 </div>
             </div>
         </div>

@@ -5,7 +5,6 @@ import HomeLayout from './layouts/HomeLayout';
 import AdminLayout from './Admin/layouts/AdminLayout';
 import CheckoutLayout from './layouts/CheckoutLayout';
 
-
 import Admin from './Admin/pages/Admin';
 import Search from './pages/Search';
 import Panel from './Admin/pages/Panel'
@@ -34,6 +33,7 @@ import Delivery from './pages/Delivery';
 
 
 import { CartModalProvider } from './components/CartModalContext';
+import { CheckoutProvider } from './components/CheckoutContext';
 import CartModal from './components/CartModal';
 
 import './App.scss';
@@ -71,7 +71,14 @@ function App() {
                         <Route path="*" element={<NotFound />} />
                     </Route>
 
-                    <Route path="/" element={<CheckoutLayout />}>
+                    <Route
+                        path="/"
+                        element={
+                            <CheckoutProvider>
+                            <CheckoutLayout />
+                            </CheckoutProvider>
+                        }
+                    >
                         <Route path="cart" element={<Cart />} />
                         <Route path="payment" element={<Payment />} />
                         <Route path="payment/delivery" element={<Delivery />} />

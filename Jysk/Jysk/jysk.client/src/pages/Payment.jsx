@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { useContext } from "react";
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { getCartItems, saveCartItems} from "../utils/cartCookie";
+import { useCheckout } from "../components/CheckoutContext";
 
 import TermsCheckbox from "../components/TermsCheckbox";
 import CartItems from "../components/CartItems";
@@ -10,22 +12,11 @@ import "../styles/pages/Payment.scss";
 export default function Payment() {
     const navigate = useNavigate();
     const { setTitle } = useOutletContext();
+    const { formData, setFormData, acceptedTerms, setAcceptedTerms } = useCheckout();
     
     const [cartItems, setCartItems] = useState(() => getCartItems());
-    const [acceptedTerms, setAcceptedTerms] = useState(false);
     const [error, setError] = useState('');
     
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        city: '',
-        street: '',
-        houseNumber: '',
-        email: '',
-        phone: ''
-    });
-
-
     const handleChange = (e) => {
         setFormData(prev => ({
             ...prev,
@@ -36,7 +27,6 @@ export default function Payment() {
     useEffect(() => {
         setTitle("Payment");
     }, [setTitle]);
-
 
     const handleContinue = () => {
         const { firstName, lastName, city, street, houseNumber, email, phone } = formData;
@@ -129,7 +119,10 @@ export default function Payment() {
                             <button className="btn-continue" onClick={handleContinue}>
                                 Proceed to Delivery
                             </button>
-                            <button className="btn-cancel">
+                            <button 
+                                className="btn-cancel"
+                                onClick={() => navigate(-1)}
+                            >
                                 Cancel
                             </button>
                         </div>

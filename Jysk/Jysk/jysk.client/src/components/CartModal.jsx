@@ -1,12 +1,12 @@
-import { createContext, useContext, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import chair from '../assets/img/chair.png';
-import '../styles/components/CartModal.scss';
-import CartModalItem from './CartModalItem';
 import { useCartModal } from './CartModalContext';
 import { getCartItems, removeFromCart } from "../utils/cartCookie";
 
+import CartModalItem from './CartModalItem';
+
+import '../styles/components/CartModal.scss';
 
 export default function CartModal() {
   const { isCartModalOpen, closeCartModal } = useCartModal();

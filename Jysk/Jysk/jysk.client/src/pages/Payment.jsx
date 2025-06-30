@@ -12,6 +12,7 @@ import "../styles/pages/Payment.scss";
 export default function Payment() {
     const navigate = useNavigate();
     const { setTitle } = useOutletContext();
+    const { totalAmount } = useCheckout();
     const { formData, setFormData, acceptedTerms, setAcceptedTerms } = useCheckout();
     
     const [cartItems, setCartItems] = useState(() => getCartItems());
@@ -135,7 +136,7 @@ export default function Payment() {
                             preview={true}
                         />
                         <div className="divider" />
-                        <p className="total-price">Total 1510.00 $</p>
+                        <p className="total-price">Total {totalAmount.toFixed(2)} $</p>
                     </div>
                 </div>
             </div>

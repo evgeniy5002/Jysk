@@ -29,8 +29,8 @@ import NotFound from './pages/NotFound';
 import Cart from './pages/Cart';
 import Payment from './pages/Payment';
 import PaymentMethod from './pages/PaymentMethod';
+import PaymentSuccess from './pages/PaymentSuccess';
 import Delivery from './pages/Delivery';
-
 
 import { CartModalProvider } from './components/CartModalContext';
 import { CheckoutProvider } from './components/CheckoutContext';
@@ -83,6 +83,7 @@ function App() {
                         <Route path="payment" element={<Payment />} />
                         <Route path="payment/delivery" element={<Delivery />} />
                         <Route path="payment/payment-method" element={<PaymentMethod />} />
+                        <Route path="payment/payment-success" element={<PaymentSuccess />} />
                     </Route>
 
                     <Route element={<AdminLayout />}>

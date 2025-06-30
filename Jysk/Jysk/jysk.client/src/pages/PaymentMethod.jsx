@@ -39,7 +39,7 @@ export default function PaymentMethod() {
 
         setError('');
         console.log("Payment method submitted", paymentData);
-        navigate("/");
+        navigate("/payment/payment-success");
     };
 
     return (

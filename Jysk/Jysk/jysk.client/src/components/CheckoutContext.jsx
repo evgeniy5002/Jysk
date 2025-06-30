@@ -21,6 +21,7 @@ export function CheckoutProvider({ children }) {
   });
 
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [totalAmount, setTotalAmount] = useState(0);
 
   return (
     <CheckoutContext.Provider
@@ -28,7 +29,8 @@ export function CheckoutProvider({ children }) {
         formData, setFormData,
         acceptedTerms, setAcceptedTerms,
         deliveryData, setDeliveryData,
-        paymentData, setPaymentData 
+        paymentData, setPaymentData,
+        totalAmount, setTotalAmount 
       }}
     >
       {children}

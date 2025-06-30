@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { getCartItems, saveCartItems} from "../utils/cartCookie";
+import { useCheckout } from "../components/CheckoutContext";
 
 import CartItems from "../components/CartItems";
 
@@ -9,6 +10,8 @@ import "../styles/pages/Cart.scss"
 export default function Cart() {
     const navigate = useNavigate();
     const { setTitle } = useOutletContext();
+    const { setTotalAmount } = useCheckout();
+    
     const [cartItems, setCartItems] = useState(() => getCartItems());
     
     useEffect(() => {
@@ -46,6 +49,7 @@ export default function Cart() {
     }, 0);
 
     const handleContinueClick = () => {
+        setTotalAmount(totalAmount);
         navigate('/payment');
     };
     

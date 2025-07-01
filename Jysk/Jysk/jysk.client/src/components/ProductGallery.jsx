@@ -4,8 +4,7 @@ import { MobileStepper } from '@mui/material';
 
 import WishlistButton from './WishlistButton';
 
-
-const ProductGallery = ({ images, isMobile }) => {
+const ProductGallery = ({itemId, images, isMobile }) => {
     const [activeStep, setActiveStep] = useState(0);
 
     const handleStepChange = (step) => {
@@ -17,6 +16,7 @@ const ProductGallery = ({ images, isMobile }) => {
             {isMobile ? (
                 <div className="carousel-container">
                     <WishlistButton
+                        itemId={itemId}
                         sx={{ padding: '25px' }}
                         onToggle={(state) =>
                         console.log(state ? 'Item favorited' : 'Item unfavorited')

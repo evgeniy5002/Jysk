@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { useCartModal } from '../components/CartModalContext';
+import { useCartModal } from '../context/CartModalContext';
 
 import logo from '../assets/icons/logo.png';
 import menuIcon from '../assets/icons/menu.svg';

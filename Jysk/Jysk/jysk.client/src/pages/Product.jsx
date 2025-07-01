@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useCartModal } from '../components/CartModalContext';
+import { useCartModal } from '../context/CartModalContext';
 import { addToCart } from "../utils/cartCookie";
 import axios from 'axios';
-import Cookies from 'js-cookie';
 
 import BodySection from "../components/BodySection";
 import ProductGallery from '../components/ProductGallery';
@@ -151,7 +150,7 @@ export default function Product() {
       <>
         <BodySection>
           <div className="product-info-wrapper">
-            <ProductGallery images={images} isMobile={isMobile} />
+            <ProductGallery itemId={id} images={images} isMobile={isMobile} />
             <ProductSummary
                 title={title}
                 description={description}

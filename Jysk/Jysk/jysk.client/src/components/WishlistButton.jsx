@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useWishlist } from '../context/WishlistContext';
 import wishlist from '../assets/icons/heart.svg';
 import wishlistFilled from '../assets/icons/heart-filled.svg';
 
 import '../styles/components/WishlistButton.scss';
 
-const WishlistButton = ({ initialState = false, onToggle = () => {}, stopPropagation = true, sx = {} }) => {
-  const [isWishlisted, setIsWishlisted] = useState(initialState);
+const WishlistButton = ({
+  itemId,
+  stopPropagation = true,
+  sx = {},
+  onToggle = () => {}
+}) => {
+  const { isWishlisted, toggleWishlist } = useWishlist();
   const [isTapped, setIsTapped] = useState(false);
+  const wishlisted = isWishlisted(itemId);
 
   const handleClick = (e) => {
     if (stopPropagation) e.stopPropagation();
 
-    setIsWishlisted((prev) => {
-      const newState = !prev;
-      onToggle(newState);
-      return newState;
-    });
+    toggleWishlist(itemId);
+    onToggle(!wishlisted);
 
     if (window.innerWidth <= 480) {
       setIsTapped(true);
@@ -37,7 +41,7 @@ const WishlistButton = ({ initialState = false, onToggle = () => {}, stopPropaga
     >
       <img
         className="wishlist-icon"
-        src={isWishlisted ? wishlistFilled : wishlist}
+        src={wishlisted ? wishlistFilled : wishlist}
         alt="Wishlist"
       />
     </div>

@@ -27,10 +27,9 @@ const ProductCard = ({ item, index }) => {
       <div className='img-container'>
         <div className='overlay-container'>
           <div>
-           <WishlistButton
-              onToggle={(state) =>
-                console.log(state ? 'Item favorited' : 'Item unfavorited')
-              }
+            <WishlistButton
+              itemId={item.id}
+              onToggle={(state) => console.log(state ? 'Item favorited' : 'Item unfavorited')}
             />
           </div>
 

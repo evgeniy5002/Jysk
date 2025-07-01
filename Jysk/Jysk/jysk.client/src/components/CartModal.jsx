@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useCartModal } from './CartModalContext';
+import { useCartModal } from '../context/CartModalContext';
 import { getCartItems, removeFromCart } from "../utils/cartCookie";
 
 import CartModalItem from './CartModalItem';

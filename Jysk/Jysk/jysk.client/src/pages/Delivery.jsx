@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useOutletContext, useNavigate } from "react-router-dom";
-import { useCheckout } from "../components/CheckoutContext";
+import { useCheckout } from "../context/CheckoutContext";
 import { Radio } from "@mui/material";
 
 import "../styles/pages/Delivery.scss";

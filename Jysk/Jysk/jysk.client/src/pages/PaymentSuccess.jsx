@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useOutletContext } from 'react-router-dom';
-import { useCheckout } from "../components/CheckoutContext";
+import { useCheckout } from "../context/CheckoutContext";
 import { getCartItems, saveCartItems} from "../utils/cartCookie";
 
 import CartItems from "../components/CartItems";

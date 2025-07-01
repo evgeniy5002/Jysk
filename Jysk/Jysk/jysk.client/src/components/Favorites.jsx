@@ -1,33 +1,36 @@
 import React, { useState, useEffect } from 'react';
+import { useWishlist } from '../context/WishlistContext';
+import axios from 'axios';
 import BodySection from "./BodySection";
 import ProductGrid from "./ProductGrid";
-import chair from '../assets/img/chair.png';
-
 
 export default function Favorites() {
+    const { wishlist } = useWishlist();
     const [favorites, setFavorites] = useState([]);
     const [page, setPage] = useState(1);
-    const [maxPage, setMaxPage] = useState(1);
     const pageSize = 12;
 
-    const dummyProduct = {
-        id: 55,
-        name: "Sample Product",
-        price: 29.99,
-        imageUrl: chair,
-        description: "This is a dummy product"
-    };
-    
     useEffect(() => {
-        const products = Array.from({ length: 8 }, (_, i) => ({
-            ...dummyProduct,
-            id: 55 + i,
-            name: `Sample Product #${i + 1}`
-        }));
+        const fetchFavorites = async () => {
+        try {
+            const responses = await Promise.all(
+            wishlist.map((id) =>
+                axios.get(`https://localhost:7196/api/Product/${id}`)
+            )
+            );
+            const items = responses.map((res) => res.data);
+            setFavorites(items);
+        } catch (err) {
+            console.error('Failed to fetch favorites', err);
+        }
+        };
 
-        setFavorites(products);
-        setMaxPage(Math.ceil(products.length / pageSize));
-    }, []);
+        if (wishlist.length > 0) fetchFavorites();
+        else setFavorites([]);
+    }, [wishlist]);
+
+    const maxPage = Math.ceil(favorites.length / pageSize);
+    const paginatedFavorites = favorites.slice((page - 1) * pageSize, page * pageSize);
 
     return (
         <BodySection>
@@ -36,10 +39,10 @@ export default function Favorites() {
                     <span>Favorites</span>
                 </div>
                 <ProductGrid 
-                    items={favorites} 
-                    page={page} 
-                    maxPage={maxPage} 
-                    onPageChange={setPage} 
+                    items={paginatedFavorites}
+                    page={page}
+                    maxPage={maxPage}
+                    onPageChange={setPage}
                 />
             </div>
         </BodySection>

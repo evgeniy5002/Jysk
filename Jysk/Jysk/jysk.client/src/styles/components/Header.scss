@@ -1,16 +1,6 @@
 @import '../variables';
 @import '../mixins';
 
-.header-row {
-    display: flex;
-    flex-direction: row;
-}
-
-.header-col {
-    display: flex;
-    flex-direction: column;
-}
-
 .site-header {
     display: flex;
     flex-direction: column;
@@ -22,6 +12,16 @@
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
     width: 100%;
     background-color: $color-surface;
+
+    .header-row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .header-col {
+        display: flex;
+        flex-direction: column;
+    }
 
     .decorative-strip {
         background-color: $color-accent;
@@ -39,13 +39,15 @@
             justify-content: space-between;
             height: 95px;
             padding: 0 15px;
+            
 
             .header-item {
                 display: flex;
                 flex-direction: row;
 
                 .site-logo {
-                    height: 50px;
+                    max-width: 84px;
+                    width: 100%;
                 }
 
                 .icon {
@@ -69,15 +71,14 @@
                 }
             }
 
-            .left .section {
+            .left {
                 font-size: 1.1em;
-                margin-right: 15px;
+                gap: 20px;
+                margin-right: 10px;
             }
 
             .right {
-                .section {
-                    margin-left: 25px;
-                }
+                gap: 25px;
             }
 
             .search-bar-container {

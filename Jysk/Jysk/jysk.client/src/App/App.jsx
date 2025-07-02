@@ -2,12 +2,12 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 
 import AppLayout from './layouts/AppLayout';
 import HomeLayout from './layouts/HomeLayout';
-import AdminLayout from './Admin/layouts/AdminLayout';
+import AdminLayout from '../Admin/layouts/AdminLayout';
 import CheckoutLayout from './layouts/CheckoutLayout';
 
-import Admin from './Admin/pages/Admin';
+import Admin from '../Admin/pages/Admin';
 import Search from './pages/Search';
-import Panel from './Admin/pages/Panel'
+import Panel from '../Admin/pages/Panel'
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import EditProfile from './components/EditProfile';

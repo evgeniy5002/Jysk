@@ -31,13 +31,25 @@ export default function Payment() {
 
     const handleContinue = () => {
         const { firstName, lastName, city, street, houseNumber, email, phone } = formData;
-        
+
         if (
             !firstName.trim() || !lastName.trim() || !city.trim() ||
             !street.trim() || !houseNumber.trim() ||
             !email.trim() || !phone.trim()
         ) {
             setError("Please fill in all fields.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            setError("Please enter a valid email address.");
+            return;
+        }
+
+        const phoneRegex = /^[\d\s+\-()]+$/;
+        if (!phoneRegex.test(phone)) {
+            setError("Phone number can contain only digits and special symbols.");
             return;
         }
 
@@ -50,6 +62,7 @@ export default function Payment() {
         console.log("Form submitted", formData, cartItems);
         navigate("/payment/delivery");
     };
+
 
     return (
         <div className="payment">

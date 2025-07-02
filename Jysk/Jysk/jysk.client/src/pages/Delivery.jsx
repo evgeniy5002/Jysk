@@ -7,7 +7,7 @@ import "../styles/pages/Delivery.scss";
 
 export default function Delivery() {
   const { setTitle } = useOutletContext();
-
+  const [error, setError] = useState("");
   const { deliveryData, setDeliveryData } = useCheckout();
   const navigate = useNavigate();
 
@@ -55,6 +55,16 @@ export default function Delivery() {
   ];
 
   const handleContinue = () => {
+    if (!deliveryData.selectedDelivery) {
+      setError("Please select a delivery method.");
+      return;
+    }
+    if (!deliveryData.selectedBranch) {
+      setError("Please select a postal branch.");
+      return;
+    }
+
+    setError("");
     navigate("/payment/payment-method");
   };
 
@@ -132,8 +142,8 @@ export default function Delivery() {
           ></iframe>
         </div>
       </div>
-
       <div className="flex-center flex-column">
+        {error && <p className="error">{error}</p>}  
         <button type="button" className="btn-continue" onClick={handleContinue}>Choose payment method</button>
         <button type="button" className="btn-cancel" onClick={() => navigate(-1)}>Cancel</button>
       </div>

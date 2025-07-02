@@ -5,6 +5,10 @@
   flex-direction: column;
   gap: 25px;
 
+  .error{
+    color: $color-accent-red;
+    margin-bottom: 1rem;
+  }
   .custom-radio {
     padding: 0 !important;
     margin: 0 !important;
@@ -24,7 +28,6 @@
       font-size: 16px;
     }
   }
-
 
   .map-container{
     display: flex;

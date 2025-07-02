@@ -9,7 +9,10 @@
         }
         public void Log(string message)
         {
-            File.WriteAllText(File_path, message);
+            using (StreamWriter writer = new StreamWriter(File_path, append: true))
+            {
+                writer.WriteLine(message);
+            }
         }
     }
 }

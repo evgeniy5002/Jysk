@@ -1,1 +1,41 @@
+Storage added into database successfully
+Storage added successfully
+Test
+oitut5@gmail.com123
+test3
+Testoitut5@gmail.com213123
+test2
+Testoitut5@gmail.com213123
+oitut5@gmail.com
+test3
+Testoitut5@gmail.com123
+test2
+Testoitut5@gmail.com123
+oitut5@gmail.com
+Test
+Test
+User added into database successfully
+User added successfully
+Storage added into database successfully
+Storage added successfully
+IdAsc
+Product deleted from database successfully
+Product deleted successfully
+Manufacturer added into database successfully
+Manufacturer added successfully
+Category added into database successfully
+Category added successfully
+C:\Users\oitut\source\repos\evgeniy50021\Jysk\Jysk\Jysk\Jysk.Server\wwwroot/images/chair.png
+Product added into database successfully
+Product added successfully
+IdAsc
+IdAsc
+C:\Users\oitut\source\repos\evgeniy50021\Jysk\Jysk\Jysk\Jysk.Server\wwwroot/images/chair.png
+Product added into database successfully
+Product added successfully
+C:\Users\oitut\source\repos\evgeniy50021\Jysk\Jysk\Jysk\Jysk.Server\wwwroot/images/chair.png
+Product added into database successfully
+Product added successfully
+IdAsc
+IdAsc
 IdAsc

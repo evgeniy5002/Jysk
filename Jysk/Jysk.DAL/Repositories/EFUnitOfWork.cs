@@ -165,7 +165,7 @@ namespace Jysk.DAL.Repositories
                 return supplyRepository;
             }
         }
-        public IRepository<User> R_User
+        public IUserRepository R_User
         {
             get
             {

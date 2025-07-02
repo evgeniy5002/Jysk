@@ -14,5 +14,6 @@ namespace Jysk.BLL.Interfaces
         Task Delete(int id);
         Task<UserDTO> GetById(int id);
         Task<IEnumerable<UserDTO>> GetAll(string sort);
+        bool CheckUser(string email, string password);
     }
 }

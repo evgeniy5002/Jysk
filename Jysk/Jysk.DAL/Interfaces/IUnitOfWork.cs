@@ -21,7 +21,7 @@ namespace Jysk.DAL.Interfaces
         IRepository<Storage> R_Storage { get; }
         IRepository<Store> R_Store { get; }
         IRepository<Supply> R_Supply { get; }
-        IRepository<User> R_User { get; }
+        IUserRepository R_User { get; }
         IRepository<WorkHours> R_WorkHours { get; }
         IRepository<WriteOff> R_WriteOff { get; }
 

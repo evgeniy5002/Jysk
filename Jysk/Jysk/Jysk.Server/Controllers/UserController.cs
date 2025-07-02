@@ -1,5 +1,7 @@
 ﻿using Jysk.BLL.DTO;
 using Jysk.BLL.Interfaces;
+using LoggerLib;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -49,6 +51,8 @@ public class UserController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<UserDTO>> PostUser(UserDTO user)
     {
+        Logger log = new Logger();
+        log.Log("Test");
         if (!ModelState.IsValid)
         {
             return BadRequest(ModelState);
@@ -65,6 +69,15 @@ public class UserController : ControllerBase
         }
         await db.Delete(id);
         return Ok(id);
+    }
+    [HttpPost("login")]
+    public IActionResult Login([FromBody] LoginRequest request)
+    {
+        if (db.CheckUser(request.Email, request.Password))
+        {
+            return Ok("User exists");
+        }
+        return Unauthorized();
     }
     private IEnumerable<UserDTO> CreatePage(int page, int pageSize, IEnumerable<UserDTO> list)
     {

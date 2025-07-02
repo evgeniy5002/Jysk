@@ -123,5 +123,12 @@ namespace Jysk.BLL.Servives
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User,UserDTO>()).CreateMapper();
             return mapper.Map<IEnumerable<User>, IEnumerable<UserDTO>>(await db.R_User.GetAll(sort));
         }
+        public bool CheckUser(string email, string password)
+        {
+            Logger log = new Logger();
+            log.Log("test3");
+            log.Log("Test" + email + password);
+            return db.R_User.UserExists(email, password);
+        }
     }
 }

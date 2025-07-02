@@ -2,6 +2,7 @@ using Jysk.BLL.Infrastructure;
 using Jysk.BLL.Interfaces;
 using Jysk.BLL.Servives;
 using Jysk.DAL.EF;
+using Jysk.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,7 @@ builder.Services.AddCors();
 
 string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddJyskContext(connection);
+builder.Services.AddJyskContext("Server=DESKTOP-JR45IKU;Database=Jysk;Integrated Security=SSPI;TrustServerCertificate=true");
 builder.Services.AddUnitOfWorkService();
 builder.Services.AddTransient<IManufacturerService, ManufacturerService>();
 builder.Services.AddTransient<ICargoService, CargoService>();
@@ -27,6 +28,7 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IWorkHoursService, WorkHoursService>();
 builder.Services.AddTransient<IWriteOffService, WriteOffService>();
 builder.Services.AddControllers();
+
 
 builder.Services.AddSwaggerGen();
 var app = builder.Build();

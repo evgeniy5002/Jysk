@@ -36,7 +36,7 @@ namespace Jysk.DAL.EF
             modelBuilder.Entity<Storage>().HasMany(s => s.CargoFromId).WithOne(c => c.StorageFrom).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Storage>().HasMany(s => s.CargoToId).WithOne(c => c.StorageTo).OnDelete(DeleteBehavior.NoAction);
             base.OnModelCreating(modelBuilder);
-            
+            //Console.WriteLine(this.Database.GetConnectionString());
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

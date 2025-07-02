@@ -1,8 +1,26 @@
-import React from 'react';
+import { useState } from "react";
 import "../styles/pages/Login.scss";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate} from 'react-router-dom';
+import axios from 'axios';
 
 export default function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    var navigate = useNavigate();
+    let url = "https://localhost:7196/api/User/login"
+    const CheckLogin = () => {
+        console.log(email, password);
+        axios.post(`${url}`, {email: email, password: password})
+            .then(response => {
+                alert("good");
+            })
+            .catch(error => {
+                console.log(email, password);
+                alert("Incorrect login or password");
+            });
+    }
+    
+
     return (
         <div className="login-page">
             <div className="login-container">
@@ -12,10 +30,10 @@ export default function Login() {
 
                 <div className="login-form">
                     <form>
-                        <input placeholder="E-mail" className="email" type="email" name="email" />
-                        <input placeholder="Password" className="password" type="password" name="password" />
+                        <input placeholder="E-mail" className="email" type="email" name="email" onChange={(e) => setEmail(e.target.value)} />
+                        <input placeholder="Password" className="password" type="password" name="password" onChange={(e) => setPassword(e.target.value)} />
 
-                        <button type="submit" className="login-btn">Log In</button>
+                        <button type="button" className="login-btn" onClick={() => { CheckLogin() }}>Log In</button>
 
                         <div className="forgot-password">
                             <NavLink to="/forgot-password">Forgot Password?</NavLink>

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Jysk.DAL.Repositories
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : IRepository<User>, IUserRepository
     {
         private JyskContext db;
         public UserRepository(JyskContext db)
@@ -90,6 +90,16 @@ namespace Jysk.DAL.Repositories
                 log.Log("Error: Exception during deleting user from database\nException: " + ex.ToString());
             }
             
+        }
+
+        public bool UserExists(string email, string password)
+        {
+            Logger log = new Logger();
+            log.Log("test2");
+            log.Log("Test" + email + password);
+            Logger logger = new Logger();
+            logger.Log(email);
+            return db.T_User.Any(u => u.Email == email && u.Password == password);
         }
     }
 }

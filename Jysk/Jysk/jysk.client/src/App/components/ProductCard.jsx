@@ -35,9 +35,7 @@ const ProductCard = ({ item, index }) => {
 
             <div>
           <div className='stickers'>
-            <Sticker type="discount" discountValue={80} />  
-            <Sticker type="newItem" />
-            <Sticker type="greatOffer" />
+            <Sticker type="discount" discountValue={item.discount} />  
           </div>
             </div>
 

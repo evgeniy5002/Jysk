@@ -43,58 +43,58 @@ function App() {
     return (
         <div>
             <WishlistProvider>
-            <CartModalProvider>
-                <Routes>
-                    <Route element={<HomeLayout />}>
-                        <Route path="/" element={<Home />} />
-                    </Route>
-                    <Route path="/" element={<AppLayout />}>
-                        <Route path="search" element={<Search />} />
-                        <Route path="search/product" element={<Product />} />
+                <CartModalProvider>
+                    <Routes>
+                        <Route element={<HomeLayout />}>
+                            <Route path="/" element={<Home />} />
+                        </Route>
+                        <Route path="/" element={<AppLayout />}>
+                            <Route path="search" element={<Search />} />
+                            <Route path="search/product" element={<Product />} />
 
-                        <Route path="login" element={<Login />} />
-                        <Route path="register" element={<Register />} />
-                        <Route path="forgot-password" element={<ForgotPassword />} />
-                        <Route path="reset-password" element={<ResetPassword />} />
-                        <Route path="stores" element={<Stores />} />
-                        <Route path="stores/store" element={<Store />} />
-                        <Route path="categories" element={<Categories />} />
-                        <Route path="work" element={<Work />} />
-                        
-                        <Route path="profile" element={<Profile />}>
-                            <Route index element={<Navigate to="my-orders" />} />
-                            <Route path="my-orders" element={<MyOrders />} />
-                            <Route path="completed-orders" element={<CompletedOrders/>} />
-                            <Route path="my-reviews" element={<MyReviews />} />
-                            <Route path="favorites" element={<Favorites />} />
-                            <Route path="edit" element={<EditProfile />} />
+                            <Route path="login" element={<Login />} />
+                            <Route path="register" element={<Register />} />
+                            <Route path="forgot-password" element={<ForgotPassword />} />
+                            <Route path="reset-password" element={<ResetPassword />} />
+                            <Route path="stores" element={<Stores />} />
+                            <Route path="stores/store" element={<Store />} />
+                            <Route path="categories" element={<Categories />} />
+                            <Route path="work" element={<Work />} />
+                            
+                            <Route path="profile" element={<Profile />}>
+                                <Route index element={<Navigate to="my-orders" />} />
+                                <Route path="my-orders" element={<MyOrders />} />
+                                <Route path="completed-orders" element={<CompletedOrders/>} />
+                                <Route path="my-reviews" element={<MyReviews />} />
+                                <Route path="favorites" element={<Favorites />} />
+                                <Route path="edit" element={<EditProfile />} />
+                            </Route>
+
+                            <Route path="*" element={<NotFound />} />
                         </Route>
 
-                        <Route path="*" element={<NotFound />} />
-                    </Route>
+                        <Route
+                            path="/"
+                            element={
+                                <CheckoutProvider>
+                                <CheckoutLayout />
+                                </CheckoutProvider>
+                            }
+                        >
+                            <Route path="cart" element={<Cart />} />
+                            <Route path="payment" element={<Payment />} />
+                            <Route path="payment/delivery" element={<Delivery />} />
+                            <Route path="payment/payment-method" element={<PaymentMethod />} />
+                            <Route path="payment/payment-success" element={<PaymentSuccess />} />
+                        </Route>
 
-                    <Route
-                        path="/"
-                        element={
-                            <CheckoutProvider>
-                            <CheckoutLayout />
-                            </CheckoutProvider>
-                        }
-                    >
-                        <Route path="cart" element={<Cart />} />
-                        <Route path="payment" element={<Payment />} />
-                        <Route path="payment/delivery" element={<Delivery />} />
-                        <Route path="payment/payment-method" element={<PaymentMethod />} />
-                        <Route path="payment/payment-success" element={<PaymentSuccess />} />
-                    </Route>
-
-                    <Route element={<AdminLayout />}>
-                        <Route path="/Admin" element={<Admin />}></Route>
-                        <Route path="/Admin/Panel" element={<Panel />}></Route>
-                    </Route>
-                </Routes>
-                <CartModal />
-            </CartModalProvider>
+                        <Route element={<AdminLayout />}>
+                            <Route path="/Admin" element={<Admin />}></Route>
+                            <Route path="/Admin/Panel" element={<Panel />}></Route>
+                        </Route>
+                    </Routes>
+                    <CartModal />
+                </CartModalProvider>
             </WishlistProvider>
         </div>
     );

@@ -1,13 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BodySection from '../components/BodySection';
 import "../styles/pages/Profile.scss";
-
+import axios from 'axios';
 import profilePhoto from "../assets/img/profile-photo.png";
 import profileArrow from "../assets/icons/profile-arrow.svg";
 import { NavLink, Outlet } from 'react-router-dom';
 import RecentlyViewed from '../components/RecentlyViewed';
 
 export default function Profile() {
+    const [email, SetEmail] = useState("");
+    const [name, SetName] = useState("");
+    const [surname, SetSurname] = useState("");
+    const [phone, SetPhone] = useState("");
+    const url = "https://localhost:7196/api/User"
+    const GetId = (id) => {
+        axios.get(`${url}/${id}`)
+            .then((response) => {
+                //console.log(response);
+                SetEmail(response.data.email);
+                SetName(response.data.name);
+                SetSurname(response.data.surname);
+                SetPhone(response.data.phone);
+            })
+            .catch(error => {
+                console.error("Error during axios request", error);
+            });
+    };
+    useEffect(() => {
+        let value
+        const cookieArr = document.cookie.split("; ");
+        for (let cookie of cookieArr) {
+            const [key, val] = cookie.split("=");
+            if (key === "Id") {
+                value = decodeURIComponent(val);
+            }
+        }
+        GetId(value);
+    }, []);
     return (
         <div className="profile">
             <BodySection noBorder={true}>
@@ -23,7 +52,7 @@ export default function Profile() {
                             </div>
 
                             <div className="profile-details">
-                                <span className="user-name">Василь Васил’єв</span>
+                                <span className="user-name">{name} {surname}</span>
                                 <a className="upload-photo">Upload a photo</a>
                             </div>
                         </div>
@@ -31,12 +60,12 @@ export default function Profile() {
                         <div className="contacts">
                             <div>
                                 <span>Email</span>
-                                <span>something@gmail.com</span>
+                                <span>{email}</span>
                             </div>
 
                             <div>
                                 <span>Phone number</span>
-                                <span>+380123456789</span>
+                                <span>{phone}</span>
                             </div>
                         </div>
 

@@ -783,3 +783,15 @@ User added into database successfully
 User added successfully
 Error: User doesnt exist
 Error: GetById Cargo doesnt exist
+test3
+Testoitut5@gmail.com2U25EKS7Y3S9nxW
+test2
+Testoitut5@gmail.com2U25EKS7Y3S9nxW
+oitut5@gmail.com
+User deleted from database successfully
+User deleted successfully
+test3
+Testoitut5@gmail.com2U25EKS7Y3S9nxW
+test2
+Testoitut5@gmail.com2U25EKS7Y3S9nxW
+oitut5@gmail.com

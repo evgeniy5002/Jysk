@@ -22,10 +22,9 @@ export default function Register() {
     const Register = () => {
         axios.post(`${url}`, { Name: req.Name, Surname: req.Surname, Password: req.Password, Email: req.Email, Phone: req.Phone })
             .then(response => {
-                alert("good");
+                navigate("/login");
             })
             .catch(error => {
-                alert("bad");
             });
     }
     

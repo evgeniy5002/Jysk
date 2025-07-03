@@ -42,6 +42,16 @@ namespace Jysk.DAL.Repositories
             }
             return user;
         }
+        public async Task<User> GetEmail(string email)
+        {
+            User user = await db.T_User.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null)
+            {
+                Logger log = new Logger();
+                log.Log("Error: User doesnt exist");
+            }
+            return user;
+        }
         public async Task Create(User user)
         {
             try

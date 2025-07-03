@@ -130,5 +130,24 @@ namespace Jysk.BLL.Servives
             log.Log("Test" + email + password);
             return db.R_User.UserExists(email, password);
         }
+        public async Task<UserDTO> GetByEmail(string email)
+        {
+            var res = await db.R_User.GetEmail(email);
+            if (res == null)
+            {
+                Logger log = new Logger();
+                log.Log("Error: GetById Cargo doesnt exist");
+                throw new ValidationException("Cargo doesnt exist", "");
+            }
+            return new UserDTO
+            {
+                Id = res.Id,
+                Name = res.Name,
+                Email = res.Email,
+                Password = res.Password,
+                Surname = res.Surname,
+                Phone = res.Phone
+            };
+        }
     }
 }

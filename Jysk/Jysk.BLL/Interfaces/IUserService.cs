@@ -15,5 +15,6 @@ namespace Jysk.BLL.Interfaces
         Task<UserDTO> GetById(int id);
         Task<IEnumerable<UserDTO>> GetAll(string sort);
         bool CheckUser(string email, string password);
+        Task<UserDTO> GetByEmail(string email);
     }
 }

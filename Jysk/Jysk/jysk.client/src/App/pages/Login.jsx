@@ -9,14 +9,21 @@ export default function Login() {
     var navigate = useNavigate();
     let url = "https://localhost:7196/api/User/login"
     const CheckLogin = () => {
-        console.log(email, password);
+        //console.log(email, password);
         axios.post(`${url}`, {email: email, password: password})
             .then(response => {
-                alert("good");
+                axios.get(`${url}/${email}`)
+                    .then(response => {
+                        document.cookie = "Id" + "=" + encodeURIComponent(response.data.id) + "; path=/;";
+                    })
+                    .catch(error => {
+                    })
+                
+                
+                navigate("/");
             })
             .catch(error => {
-                console.log(email, password);
-                alert("Incorrect login or password");
+                
             });
     }
     

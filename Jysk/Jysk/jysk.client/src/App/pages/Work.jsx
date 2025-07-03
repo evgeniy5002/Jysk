@@ -28,8 +28,8 @@ export default function Work() {
 
                 <div className="work-with-us">
                     <h3>Work with us</h3>
-                    <p>Ми – сучасний і динамічний інтернет-магазин, який активно зростає та шукає талановитих і мотивованих людей. Якщо ти готовий долучитися до команди, що рухає інновації та обслуговує клієнтів на найвищому рівні, ми будемо раді вітати тебе серед нас! Ми цінуємо професійний розвиток наших співробітників. Пропонуємо навчання, тренінги та можливість кар'єрного зростання у різних напрямках – від обслуговування клієнтів до IT і маркетингу. Ми цінуємо внесок кожного члена нашої команди, тому пропонуємо конкурентну оплату праці та систему бонусів за результативну роботу.</p>
-                    <p>Наш інтернет-магазин спеціалізується на продажі товарів для дому, меблів та декору. Ми прагнемо надавати нашим клієнтам широкий вибір високоякісної продукції за доступними цінами. Завдяки постійній орієнтації на потреби споживачів та впровадженню новітніх технологій, ми стали одним із лідерів ринку. Наші головні цінності – це довіра, інновації та сервіс, орієнтований на клієнта. Ми працюємо для того, щоб кожен покупець отримував найкращий досвід покупок, а кожен працівник – можливість для особистого та професійного розвитку.</p>
+                    <p>We are a modern and dynamic online store that is actively growing and looking for talented and motivated individuals. If you're ready to join a team that drives innovation and serves customers at the highest level, we’ll be happy to welcome you! We value the professional development of our employees. We offer training, workshops, and career growth opportunities in various directions — from customer service to IT and marketing. We appreciate the contribution of each team member, so we offer competitive pay and a bonus system based on performance.</p>
+                    <p>Our online store specializes in selling home goods, furniture, and decor. We strive to offer our customers a wide selection of high-quality products at affordable prices. Thanks to our constant focus on customer needs and implementation of the latest technologies, we have become one of the market leaders. Our core values are trust, innovation, and customer-oriented service. We work to ensure that every customer gets the best shopping experience, and every employee — the opportunity for personal and professional growth.</p>
                 </div>
             </BodySection >
             <BodySection bgWhite>
@@ -70,33 +70,33 @@ export default function Work() {
 
                 <div className="job-details">
                     <div className="job-details-top">
-                        <h3>ЗНАЙДИ РОБОТУ, ЯКУ ТИ ШУКАЄШ</h3>
-                        <p>Ми віримо в потенціал кожного члена нашої команди. У нас ти зможеш постійно вдосконалювати свої навички, відвідувати тренінги, брати участь у внутрішніх програмах навчання та розвивати свою кар’єру. Ми підтримуємо ініціативи та заохочуємо досягнення. Розвивайся в напрямках, які тобі цікаві – від клієнтського сервісу до логістики, від маркетингу до IT-рішень. Ми розуміємо, наскільки важливо підтримувати баланс між роботою та особистим життям. Тому пропонуємо гнучкий графік роботи, що дозволяє поєднувати роботу з іншими ва</p>
+                        <h3>FIND THE JOB YOU'RE LOOKING FOR</h3>
+                        <p>We believe in the potential of every team member. With us, you can continuously improve your skills, attend training sessions, participate in internal learning programs, and develop your career. We support initiatives and encourage achievements. Grow in the directions that interest you — from customer service to logistics, from marketing to IT solutions. We understand how important it is to maintain a work-life balance. That’s why we offer a flexible schedule, allowing you to combine work with other important activities.</p>
                     </div>
 
                     <div className="job-details-middle" >
                         <div>
-                            <h3>РОБОТА В РІТЕЙЛІ</h3>
-                            <p>жливими справами. Окрім того, ти зможеш працювати віддалено з будь-якої точки світу, використовуючи сучасні технології для ефективної комунікації з командою. Ми цінуємо талант і наполегливість наших співробітників, тому пропонуємо гідну оплату праці та систему бонусів, яка мотивує досягати нових висот. Твоя праця буде винагороджена відповідно до твоїх зусиль і результатів. Наш інтернет-магазин постійно впроваджує новітні технології, щоб залишатися на піку ринку електронної комерції. В нашій компанії ти знайдеш колектив однодумців, які підтримують одне одного та прагнуть досягати спільних цілей. </p>
+                            <h3>WORK IN RETAIL</h3>
+                            <p>In addition, you can work remotely from anywhere in the world, using modern technologies for effective team communication. We value the talent and determination of our employees, so we offer decent wages and a bonus system that motivates you to reach new heights. Your work will be rewarded according to your efforts and results. Our online store constantly implements the latest technologies to stay at the forefront of the e-commerce market. In our company, you’ll find a team of like-minded people who support each other and strive to achieve shared goals.</p>
                         </div>
                         <img src={workInRetail} alt="" />
 
                         <img src={workInMainOffice} alt="" />
                         <div>
-                            <h3>РОБОТА В ГОЛОВНОМУ ОФІСІ</h3>
-                            <p>Ми віримо, що успіх – це результат командної роботи, де кожен співробітник відіграє важливу роль. У нас ти знайдеш не тільки колег, але й друзів, які завжди готові допомогти та підтримати. У нас кожен співробітник може впливати на майбутнє компанії. Твої ідеї, ініціативи та пропозиції не залишаться непоміченими. Ми заохочуємо творчий підхід до роботи та надаємо можливість втілювати нові ідеї в життя. Ти зможеш робити реальний внесок у розвиток бізнесу, бачивши результати своєї праці. Ми віримо в чесність, відповідальність та взаємодопомогу.</p>
+                            <h3>WORK IN THE MAIN OFFICE</h3>
+                            <p>We believe that success is the result of teamwork, where every employee plays an important role. With us, you’ll find not only colleagues but also friends who are always ready to help and support you. Every employee can influence the future of the company. Your ideas, initiatives, and suggestions will not go unnoticed. We encourage a creative approach to work and provide the opportunity to implement new ideas. You will make a real contribution to business development, seeing the results of your work. We believe in honesty, responsibility, and mutual support.</p>
                         </div>
 
                         <div>
-                            <h3>РОБОТА В ВІДДІЛІ ПО РОБОТІ З КЛІЄНТАМИ</h3>
-                            <p>жливими справами. Окрім того, ти зможеш працювати віддалено з будь-якої точки світу, використовуючи сучасні технології для ефективної комунікації з командою. Ми цінуємо талант і наполегливість наших співробітників, тому пропонуємо гідну оплату праці та систему бонусів, яка мотивує досягати нових висот. Твоя праця буде винагороджена відповідно до твоїх зусиль і результатів. Наш інтернет-магазин постійно впроваджує новітні технології, щоб залишатися на піку ринку електронної комерції. В нашій компанії ти знайдеш колектив однодумців, які підтримують одне одного та прагнуть досягати спільних цілей. </p>
+                            <h3>WORK IN THE CUSTOMER SERVICE DEPARTMENT</h3>
+                            <p>In addition, you can work remotely from anywhere in the world, using modern technologies for effective team communication. We value the talent and determination of our employees, so we offer decent wages and a bonus system that motivates you to reach new heights. Your work will be rewarded according to your efforts and results. Our online store constantly implements the latest technologies to stay at the forefront of the e-commerce market. In our company, you’ll find a team of like-minded people who support each other and strive to achieve shared goals.</p>
                         </div>
                         <img src={workInCustomerDepartment} alt="" />
                     </div>
 
                     <div className="job-details-bottom">
-                        <h3>ПРИЄДНУЙСЯ ДО НАШОЇ КОМАНДИ І ПРАЦЮЙ З НАМИ</h3>
-                        <p>Ми віримо в потенціал кожного члена нашої команди. У нас ти зможеш постійно вдосконалювати свої навички, відвідувати тренінги, брати участь у внутрішніх програмах навчання та розвивати свою кар’єру. Ми підтримуємо ініціативи та заохочуємо досягнення. Розвивайся в напрямках, які тобі цікаві – від клієнтського сервісу до логістики, від маркетингу до IT-рішень. Ми розуміємо, наскільки важливо підтримувати баланс між роботою та особистим життям. Тому пропонуємо гнучкий графік роботи, що дозволяє поєднувати роботу з іншими ва</p>
+                        <h3>JOIN OUR TEAM AND WORK WITH US</h3>
+                        <p>We believe in the potential of every team member. With us, you can continuously improve your skills, attend training sessions, participate in internal learning programs, and develop your career. We support initiatives and encourage achievements. Grow in the directions that interest you — from customer service to logistics, from marketing to IT solutions. We understand how important it is to maintain a work-life balance. That’s why we offer a flexible schedule, allowing you to combine work with other important activities.</p>
                     </div>
                 </div>
 

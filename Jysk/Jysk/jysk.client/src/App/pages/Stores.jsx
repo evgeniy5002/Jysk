@@ -27,7 +27,7 @@ export default function Stores() {
                     </div>
                     <div className="choose-store">
                         <h3>Choose store</h3>
-                        <p>Щоб вибрати магазин, натисніть відповідний значок на карті. Після вибору значка магазина масштаб карти збільшується на цій ділянці.</p>
+                        <p>To select a store, click the corresponding icon on the map. After selecting a store icon, the map zooms in on that area.</p>
                     </div>
                 </div>
             </BodySection>

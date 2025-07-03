@@ -14,5 +14,7 @@ namespace Jysk.DAL.Interfaces
     public interface IUserRepository : IRepository<User>
     {
         bool UserExists(string email, string password);
+        Task<User> GetEmail(string email);
     }
+
 }

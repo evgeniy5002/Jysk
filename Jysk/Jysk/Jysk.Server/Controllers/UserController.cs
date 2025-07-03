@@ -38,6 +38,16 @@ public class UserController : ControllerBase
         }
         return new ObjectResult(res);
     }
+    [HttpGet("login/{email}")]
+    public async Task<ActionResult<UserDTO>> GetUserByEmail(string email)
+    {
+        var res = await db.GetByEmail(email);
+        if (res == null)
+        {
+            return NotFound();
+        }
+        return new ObjectResult(res);
+    }
     [HttpPut]
     public async Task<ActionResult<UserDTO>> PutUser(UserDTO user)
     {
